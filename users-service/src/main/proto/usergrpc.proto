@@ -1,0 +1,78 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.userservice.grpc";
+
+service UserService {
+    rpc RegisterUser(RegisterUserRequest) returns(GetUserResponse);
+    rpc GetUser(GetUserRequest) returns(GetUserResponse);
+    rpc GetUserByTienda(GetUsersByTiendaRequest) returns(GetUsersByTiendaResponse);
+    rpc DeleteUser(DeleteUserRequest) returns(DeleteUserResponse);
+    rpc GetAllUsers(Empty) returns(GetAllUsersResponse);
+    rpc UpdateUser(UpdateUserRequest) returns(GetUserResponse);
+}
+
+message RegisterUserRequest {
+    string username = 1;
+    string firstName = 2;
+    string lastName = 3;
+    string email = 4;
+    string rol = 5;
+    string codigoTienda = 6;
+    bool activo=7;
+    string password=8;
+}
+
+
+message GetUserRequest {
+    string username = 1;
+}
+
+message GetUserResponse {
+    string username = 1;
+    string firstName = 2;
+    string lastName = 3;
+    string rol = 4;
+    string codigoTienda = 5;
+    bool activo=7;
+}
+
+message GetUsersByTiendaRequest {
+    string codigoTienda = 1;
+}
+
+message GetUsersByTiendaResponse {
+    repeated UserInfo user = 1;
+}
+
+message UserInfo {
+    string username = 1;
+    string firstName = 2;
+    string lastName = 3;
+}
+
+message DeleteUserRequest {
+    string username = 1;
+}
+
+message DeleteUserResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message Empty {}
+
+message GetAllUsersResponse {
+    repeated UserInfo user = 1;
+}
+
+message UpdateUserRequest {
+    string username = 1;
+    string firstName = 2;
+    string lastName = 3;
+    string email = 4;
+    string rol = 5;
+    string codigoTienda = 6;
+    bool activo=7;
+    string password=8;
+}
