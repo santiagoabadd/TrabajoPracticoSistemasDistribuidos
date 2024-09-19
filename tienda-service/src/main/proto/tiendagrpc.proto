@@ -1,0 +1,84 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.tiendaservice.grpc";
+
+service TiendaService {
+    rpc GetTienda(GetTiendaRequest) returns (GetTiendaResponse);
+    rpc RegistrarTienda(RegistrarTiendaRequest) returns (RegistrarTiendaResponse);
+    rpc UpdateTienda(UpdateTiendaRequest) returns (UpdateTiendaResponse);
+    rpc ListarTiendas(EmptyTienda) returns (ListarTiendasResponse);
+    rpc GetTiendasByEstado(GetTiendaByEstadoRequest) returns (ListarTiendasResponse);
+    rpc DeleteTienda(DeleteTiendaRequest) returns (DeleteTiendaResponse);
+}
+
+message RegistrarTiendaRequest{
+    string codigo=1;
+    bool estado=2;
+    string direccion = 3;
+    string ciudad = 4;
+    string provincia = 5;
+}
+
+message RegistrarTiendaResponse{
+      string codigo=1;
+      bool estado=2;
+      string direccion = 3;
+      string ciudad = 4;
+      string provincia = 5;
+}
+
+
+message GetTiendaRequest {
+    string codigo = 1;
+}
+
+message GetTiendaResponse {
+    string codigo = 1;
+    bool estado = 2;
+}
+
+message UpdateTiendaRequest {
+    int64 id = 1;
+    string codigo=2;
+    bool estado=3;
+    string direccion = 4;
+    string ciudad = 5;
+    string provincia = 6;
+}
+
+message UpdateTiendaResponse {
+    string codigo=1;
+    bool estado=2;
+    string direccion = 3;
+    string ciudad = 4;
+    string provincia = 5;
+}
+
+message ListarTiendasResponse {
+    repeated TiendaInfo tiendasInfo = 1;
+}
+
+message TiendaInfo {
+    string codigo = 1;
+    bool estado = 2;
+    string direccion = 3;
+    string ciudad = 4;
+    string provincia = 5;
+}
+
+message DeleteTiendaRequest {
+    int64 id = 1;
+}
+
+message DeleteTiendaResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+
+message GetTiendaByEstadoRequest {
+    bool estado = 1;
+}
+
+message EmptyTienda {}
