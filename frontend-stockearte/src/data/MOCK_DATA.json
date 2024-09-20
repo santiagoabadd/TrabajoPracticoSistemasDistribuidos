@@ -1,0 +1,2370 @@
+{
+    "rol": [
+        {
+            "id_rol": "1",
+            "nombre_rol": "Casa Central"
+        },
+        {
+            "id_rol": "2",
+            "nombre_rol": "Tienda"
+        }
+    ],
+    "tienda": [
+        {
+            "id_tienda": "T001",
+            "direccion": "Av. Santa Fe 1234",
+            "ciudad": "Buenos Aires",
+            "provincia": "Buenos Aires",
+            "habilitada": "true"
+        },
+        {
+            "id_tienda": "T002",
+            "direccion": "Calle Corrientes 456",
+            "ciudad": "Buenos Aires",
+            "provincia": "Buenos Aires",
+            "habilitada": "false"
+        },
+        {
+            "id_tienda": "T003",
+            "direccion": "Av. Rivadavia 789",
+            "ciudad": "Buenos Aires",
+            "provincia": "Buenos Aires",
+            "habilitada": "false"
+        },
+        {
+            "id_tienda": "T004",
+            "direccion": "San Martín 1010",
+            "ciudad": "La Plata",
+            "provincia": "Buenos Aires",
+            "habilitada": "false"
+        },
+        {
+            "id_tienda": "T005",
+            "direccion": "Calle 12 2020",
+            "ciudad": "La Plata",
+            "provincia": "Buenos Aires",
+            "habilitada": "false"
+        },
+        {
+            "id_tienda": "T006",
+            "direccion": "Av. Colón 3030",
+            "ciudad": "Mar del Plata",
+            "provincia": "Buenos Aires",
+            "habilitada": "true"
+        },
+        {
+            "id_tienda": "T007",
+            "direccion": "Calle 1 4040",
+            "ciudad": "Mar del Plata",
+            "provincia": "Buenos Aires",
+            "habilitada": "true"
+        },
+        {
+            "id_tienda": "T008",
+            "direccion": "Av. 9 de Julio 5050",
+            "ciudad": "Rosario",
+            "provincia": "Santa Fe",
+            "habilitada": "false"
+        },
+        {
+            "id_tienda": "T009",
+            "direccion": "Calle San Luis 6060",
+            "ciudad": "Rosario",
+            "provincia": "Santa Fe",
+            "habilitada": "true"
+        },
+        {
+            "id_tienda": "T010",
+            "direccion": "Calle Mendoza 7070",
+            "ciudad": "Santa Fe",
+            "provincia": "Santa Fe",
+            "habilitada": "false"
+        },
+        {
+            "id_tienda": "T011",
+            "direccion": "Av. Belgrano 8080",
+            "ciudad": "Santa Fe",
+            "provincia": "Santa Fe",
+            "habilitada": "true"
+        },
+        {
+            "id_tienda": "T012",
+            "direccion": "Calle Alem 9090",
+            "ciudad": "Córdoba",
+            "provincia": "Córdoba",
+            "habilitada": "false"
+        },
+        {
+            "id_tienda": "T013",
+            "direccion": "Av. Sabatini 10101",
+            "ciudad": "Córdoba",
+            "provincia": "Córdoba",
+            "habilitada": "true"
+        },
+        {
+            "id_tienda": "T014",
+            "direccion": "Calle Avellaneda 11111",
+            "ciudad": "Córdoba",
+            "provincia": "Córdoba",
+            "habilitada": "true"
+        },
+        {
+            "id_tienda": "T015",
+            "direccion": "Av. Cruz Roja 12121",
+            "ciudad": "San Francisco",
+            "provincia": "Córdoba",
+            "habilitada": "false"
+        },
+        {
+            "id_tienda": "T016",
+            "direccion": "Calle Tucumán 13131",
+            "ciudad": "San Francisco",
+            "provincia": "Córdoba",
+            "habilitada": "false"
+        },
+        {
+            "id_tienda": "T017",
+            "direccion": "Av. Belgrano 14141",
+            "ciudad": "San Luis",
+            "provincia": "San Luis",
+            "habilitada": "true"
+        },
+        {
+            "id_tienda": "T018",
+            "direccion": "Calle 25 de Mayo 15151",
+            "ciudad": "San Luis",
+            "provincia": "San Luis",
+            "habilitada": "true"
+        },
+        {
+            "id_tienda": "T019",
+            "direccion": "Calle 9 de Julio 16161",
+            "ciudad": "Mendoza",
+            "provincia": "Mendoza",
+            "habilitada": "false"
+        },
+        {
+            "id_tienda": "T020",
+            "direccion": "Av. Libertador 17171",
+            "ciudad": "Mendoza",
+            "provincia": "Mendoza",
+            "habilitada": "false"
+        },
+        {
+            "id_tienda": "T021",
+            "direccion": "Calle 9 de Julio 18181",
+            "ciudad": "Neuquén",
+            "provincia": "Neuquén",
+            "habilitada": "false"
+        },
+        {
+            "id_tienda": "T022",
+            "direccion": "Av. Argentina 19191",
+            "ciudad": "Neuquén",
+            "provincia": "Neuquén",
+            "habilitada": "true"
+        },
+        {
+            "id_tienda": "T023",
+            "direccion": "Calle San Martín 20202",
+            "ciudad": "Río Negro",
+            "provincia": "Río Negro",
+            "habilitada": "false"
+        },
+        {
+            "id_tienda": "T024",
+            "direccion": "Av. Mitre 21212",
+            "ciudad": "Río Negro",
+            "provincia": "Río Negro",
+            "habilitada": "true"
+        },
+        {
+            "id_tienda": "T025",
+            "direccion": "Calle Moreno 22222",
+            "ciudad": "Chubut",
+            "provincia": "Chubut",
+            "habilitada": "true"
+        },
+        {
+            "id_tienda": "T026",
+            "direccion": "Av. Roca 23232",
+            "ciudad": "Chubut",
+            "provincia": "Chubut",
+            "habilitada": "false"
+        },
+        {
+            "id_tienda": "T027",
+            "direccion": "Calle Rawson 24242",
+            "ciudad": "Santa Cruz",
+            "provincia": "Santa Cruz",
+            "habilitada": "true"
+        },
+        {
+            "id_tienda": "T028",
+            "direccion": "Av. Kirchner 25252",
+            "ciudad": "Santa Cruz",
+            "provincia": "Santa Cruz",
+            "habilitada": "false"
+        },
+        {
+            "id_tienda": "T029",
+            "direccion": "Calle Godoy Cruz 26262",
+            "ciudad": "Tierra del Fuego",
+            "provincia": "Tierra del Fuego",
+            "habilitada": "true"
+        },
+        {
+            "id_tienda": "T030",
+            "direccion": "Av. Malvinas 27272",
+            "ciudad": "Tierra del Fuego",
+            "provincia": "Tierra del Fuego",
+            "habilitada": "true"
+        },
+        {
+            "id_tienda": "T031",
+            "direccion": "Calle Don Bosco 28282",
+            "ciudad": "Catamarca",
+            "provincia": "Catamarca",
+            "habilitada": "false"
+        },
+        {
+            "id_tienda": "T032",
+            "direccion": "Av. Rivadavia 29292",
+            "ciudad": "Catamarca",
+            "provincia": "Catamarca",
+            "habilitada": "true"
+        },
+        {
+            "id_tienda": "T033",
+            "direccion": "Calle Chacabuco 30303",
+            "ciudad": "La Rioja",
+            "provincia": "La Rioja",
+            "habilitada": "true"
+        },
+        {
+            "id_tienda": "T034",
+            "direccion": "Av. San Nicolás 31313",
+            "ciudad": "La Rioja",
+            "provincia": "La Rioja",
+            "habilitada": "true"
+        },
+        {
+            "id_tienda": "T035",
+            "direccion": "Calle Tucumán 32323",
+            "ciudad": "Santiago del Estero",
+            "provincia": "Santiago del Estero",
+            "habilitada": "false"
+        },
+        {
+            "id_tienda": "T036",
+            "direccion": "Av. 25 de Mayo 33333",
+            "ciudad": "Santiago del Estero",
+            "provincia": "Santiago del Estero",
+            "habilitada": "false"
+        },
+        {
+            "id_tienda": "T037",
+            "direccion": "Calle 9 de Julio 34343",
+            "ciudad": "Jujuy",
+            "provincia": "Jujuy",
+            "habilitada": "true"
+        },
+        {
+            "id_tienda": "T038",
+            "direccion": "Av. Güemes 35353",
+            "ciudad": "Jujuy",
+            "provincia": "Jujuy",
+            "habilitada": "false"
+        },
+        {
+            "id_tienda": "T039",
+            "direccion": "Calle Belgrano 36363",
+            "ciudad": "Salta",
+            "provincia": "Salta",
+            "habilitada": "true"
+        },
+        {
+            "id_tienda": "T040",
+            "direccion": "Av. San Martín 37373",
+            "ciudad": "Salta",
+            "provincia": "Salta",
+            "habilitada": "false"
+        },
+        {
+            "id_tienda": "T041",
+            "direccion": "Calle San Luis 38383",
+            "ciudad": "Formosa",
+            "provincia": "Formosa",
+            "habilitada": "false"
+        },
+        {
+            "id_tienda": "T042",
+            "direccion": "Av. Rivadavia 39393",
+            "ciudad": "Formosa",
+            "provincia": "Formosa",
+            "habilitada": "false"
+        },
+        {
+            "id_tienda": "T043",
+            "direccion": "Calle 12 40404",
+            "ciudad": "Chaco",
+            "provincia": "Chaco",
+            "habilitada": "true"
+        },
+        {
+            "id_tienda": "T044",
+            "direccion": "Av. Roca 41414",
+            "ciudad": "Chaco",
+            "provincia": "Chaco",
+            "habilitada": "true"
+        },
+        {
+            "id_tienda": "T045",
+            "direccion": "Calle Moreno 42424",
+            "ciudad": "Misiones",
+            "provincia": "Misiones",
+            "habilitada": "true"
+        },
+        {
+            "id_tienda": "T046",
+            "direccion": "Av. Santa Fe 43434",
+            "ciudad": "Misiones",
+            "provincia": "Misiones",
+            "habilitada": "false"
+        },
+        {
+            "id_tienda": "T047",
+            "direccion": "Calle San Martín 44444",
+            "ciudad": "Entre Ríos",
+            "provincia": "Entre Ríos",
+            "habilitada": "false"
+        },
+        {
+            "id_tienda": "T048",
+            "direccion": "Av. Paraná 45454",
+            "ciudad": "Entre Ríos",
+            "provincia": "Entre Ríos",
+            "habilitada": "true"
+        },
+        {
+            "id_tienda": "T049",
+            "direccion": "Calle La Rioja 46464",
+            "ciudad": "Corrientes",
+            "provincia": "Corrientes",
+            "habilitada": "true"
+        },
+        {
+            "id_tienda": "T050",
+            "direccion": "Av. San Juan 47474",
+            "ciudad": "Corrientes",
+            "provincia": "Corrientes",
+            "habilitada": "true"
+        }
+    ],
+    "usuario": [
+        {
+            "nombre_usuario": "usuario1",
+            "clave": "abc123defg",
+            "nombre": "Juan",
+            "apellido": "Pérez",
+            "habilitado": "TRUE",
+            "id_rol": "1",
+            "id_tienda": "T044"
+        },
+        {
+            "nombre_usuario": "usuario2",
+            "clave": "def456ghi7",
+            "nombre": "Ana",
+            "apellido": "Gómez",
+            "habilitado": "TRUE",
+            "id_rol": "2",
+            "id_tienda": "T001"
+        },
+        {
+            "nombre_usuario": "usuario3",
+            "clave": "ghi789jkl0",
+            "nombre": "Carlos",
+            "apellido": "López",
+            "habilitado": "TRUE",
+            "id_rol": "2",
+            "id_tienda": "T002"
+        },
+        {
+            "nombre_usuario": "usuario4",
+            "clave": "abc234def5",
+            "nombre": "María",
+            "apellido": "Rodríguez",
+            "habilitado": "TRUE",
+            "id_rol": "2",
+            "id_tienda": "T003"
+        },
+        {
+            "nombre_usuario": "usuario5",
+            "clave": "jkl890mno1",
+            "nombre": "Pedro",
+            "apellido": "Martínez",
+            "habilitado": "FALSE",
+            "id_rol": "2",
+            "id_tienda": "T004"
+        },
+        {
+            "nombre_usuario": "usuario6",
+            "clave": "ghi567klm8",
+            "nombre": "Javier",
+            "apellido": "Sánchez",
+            "habilitado": "TRUE",
+            "id_rol": "2",
+            "id_tienda": "T005"
+        },
+        {
+            "nombre_usuario": "usuario7",
+            "clave": "mno012pqr9",
+            "nombre": "Laura",
+            "apellido": "Romero",
+            "habilitado": "TRUE",
+            "id_rol": "2",
+            "id_tienda": "T006"
+        },
+        {
+            "nombre_usuario": "usuario8",
+            "clave": "def789stu2",
+            "nombre": "Sofía",
+            "apellido": "Fernández",
+            "habilitado": "TRUE",
+            "id_rol": "2",
+            "id_tienda": "T007"
+        },
+        {
+            "nombre_usuario": "usuario9",
+            "clave": "stu345vwx3",
+            "nombre": "Martín",
+            "apellido": "Giménez",
+            "habilitado": "TRUE",
+            "id_rol": "2",
+            "id_tienda": "T008"
+        },
+        {
+            "nombre_usuario": "usuario10",
+            "clave": "jkl456yz0",
+            "nombre": "Patricia",
+            "apellido": "Herrera",
+            "habilitado": "FALSE",
+            "id_rol": "2",
+            "id_tienda": "T009"
+        },
+        {
+            "nombre_usuario": "usuario11",
+            "clave": "abc567jkl1",
+            "nombre": "Mateo",
+            "apellido": "Domínguez",
+            "habilitado": "TRUE",
+            "id_rol": "2",
+            "id_tienda": "T010"
+        },
+        {
+            "nombre_usuario": "usuario12",
+            "clave": "mno234def5",
+            "nombre": "Valentina",
+            "apellido": "Castro",
+            "habilitado": "TRUE",
+            "id_rol": "2",
+            "id_tienda": "T011"
+        },
+        {
+            "nombre_usuario": "usuario13",
+            "clave": "stu890ghi2",
+            "nombre": "Lucas",
+            "apellido": "Silva",
+            "habilitado": "TRUE",
+            "id_rol": "1",
+            "id_tienda": "T045"
+        },
+        {
+            "nombre_usuario": "usuario14",
+            "clave": "def012jkl4",
+            "nombre": "Tomás",
+            "apellido": "Morales",
+            "habilitado": "TRUE",
+            "id_rol": "2",
+            "id_tienda": "T012"
+        },
+        {
+            "nombre_usuario": "usuario15",
+            "clave": "ghi123klm6",
+            "nombre": "Camila",
+            "apellido": "Mendoza",
+            "habilitado": "TRUE",
+            "id_rol": "2",
+            "id_tienda": "T013"
+        },
+        {
+            "nombre_usuario": "usuario16",
+            "clave": "jkl567mno0",
+            "nombre": "Diego",
+            "apellido": "Arias",
+            "habilitado": "FALSE",
+            "id_rol": "2",
+            "id_tienda": "T014"
+        },
+        {
+            "nombre_usuario": "usuario17",
+            "clave": "stu789nop2",
+            "nombre": "Lucía",
+            "apellido": "Reyes",
+            "habilitado": "TRUE",
+            "id_rol": "2",
+            "id_tienda": "T015"
+        },
+        {
+            "nombre_usuario": "usuario18",
+            "clave": "abc901pqr7",
+            "nombre": "Ignacio",
+            "apellido": "Duarte",
+            "habilitado": "TRUE",
+            "id_rol": "2",
+            "id_tienda": "T016"
+        },
+        {
+            "nombre_usuario": "usuario19",
+            "clave": "ghi345stu5",
+            "nombre": "Gabriela",
+            "apellido": "Acosta",
+            "habilitado": "TRUE",
+            "id_rol": "2",
+            "id_tienda": "T017"
+        },
+        {
+            "nombre_usuario": "usuario20",
+            "clave": "stu012vwx8",
+            "nombre": "Alberto",
+            "apellido": "Ruiz",
+            "habilitado": "FALSE",
+            "id_rol": "2",
+            "id_tienda": "T018"
+        },
+        {
+            "nombre_usuario": "usuario21",
+            "clave": "mno678yz3",
+            "nombre": "Victoria",
+            "apellido": "Martín",
+            "habilitado": "TRUE",
+            "id_rol": "1",
+            "id_tienda": "T046"
+        },
+        {
+            "nombre_usuario": "usuario22",
+            "clave": "abc890pqr4",
+            "nombre": "Sebastián",
+            "apellido": "Ortiz",
+            "habilitado": "TRUE",
+            "id_rol": "2",
+            "id_tienda": "T019"
+        },
+        {
+            "nombre_usuario": "usuario23",
+            "clave": "ghi234vwx1",
+            "nombre": "Micaela",
+            "apellido": "Luna",
+            "habilitado": "TRUE",
+            "id_rol": "2",
+            "id_tienda": "T020"
+        },
+        {
+            "nombre_usuario": "usuario24",
+            "clave": "jkl123nop2",
+            "nombre": "Rodrigo",
+            "apellido": "Espinoza",
+            "habilitado": "FALSE",
+            "id_rol": "2",
+            "id_tienda": "T021"
+        },
+        {
+            "nombre_usuario": "usuario25",
+            "clave": "stu345ghi3",
+            "nombre": "Delfina",
+            "apellido": "Ibarra",
+            "habilitado": "TRUE",
+            "id_rol": "2",
+            "id_tienda": "T022"
+        },
+        {
+            "nombre_usuario": "usuario26",
+            "clave": "mno789klm5",
+            "nombre": "Agustín",
+            "apellido": "Mejía",
+            "habilitado": "TRUE",
+            "id_rol": "2",
+            "id_tienda": "T023"
+        },
+        {
+            "nombre_usuario": "usuario27",
+            "clave": "ghi567stu6",
+            "nombre": "Fernanda",
+            "apellido": "Navarro",
+            "habilitado": "TRUE",
+            "id_rol": "1",
+            "id_tienda": "T047"
+        },
+        {
+            "nombre_usuario": "usuario28",
+            "clave": "abc012vwx7",
+            "nombre": "Cintia",
+            "apellido": "Soto",
+            "habilitado": "FALSE",
+            "id_rol": "2",
+            "id_tienda": "T024"
+        },
+        {
+            "nombre_usuario": "usuario29",
+            "clave": "stu456yz8",
+            "nombre": "Leonardo",
+            "apellido": "Rojas",
+            "habilitado": "TRUE",
+            "id_rol": "2",
+            "id_tienda": "T025"
+        },
+        {
+            "nombre_usuario": "usuario30",
+            "clave": "ghi678klm9",
+            "nombre": "Liliana",
+            "apellido": "Mora",
+            "habilitado": "TRUE",
+            "id_rol": "2",
+            "id_tienda": "T026"
+        },
+        {
+            "nombre_usuario": "usuario31",
+            "clave": "abc123pqr1",
+            "nombre": "Santiago",
+            "apellido": "Pardo",
+            "habilitado": "FALSE",
+            "id_rol": "2",
+            "id_tienda": "T027"
+        },
+        {
+            "nombre_usuario": "usuario32",
+            "clave": "stu789vwx4",
+            "nombre": "Guadalupe",
+            "apellido": "Vera",
+            "habilitado": "TRUE",
+            "id_rol": "2",
+            "id_tienda": "T028"
+        },
+        {
+            "nombre_usuario": "usuario33",
+            "clave": "mno345ghi6",
+            "nombre": "Julieta",
+            "apellido": "Figueroa",
+            "habilitado": "TRUE",
+            "id_rol": "2",
+            "id_tienda": "T029"
+        },
+        {
+            "nombre_usuario": "usuario34",
+            "clave": "ghi012nop3",
+            "nombre": "Joaquín",
+            "apellido": "Méndez",
+            "habilitado": "TRUE",
+            "id_rol": "1",
+            "id_tienda": "T048"
+        },
+        {
+            "nombre_usuario": "usuario35",
+            "clave": "stu123yz0",
+            "nombre": "Manuel",
+            "apellido": "Otero",
+            "habilitado": "TRUE",
+            "id_rol": "2",
+            "id_tienda": "T030"
+        },
+        {
+            "nombre_usuario": "usuario36",
+            "clave": "ghi789mno2",
+            "nombre": "Sol",
+            "apellido": "Escobar",
+            "habilitado": "TRUE",
+            "id_rol": "2",
+            "id_tienda": "T031"
+        },
+        {
+            "nombre_usuario": "usuario37",
+            "clave": "abc678stu3",
+            "nombre": "Bruno",
+            "apellido": "Palacios",
+            "habilitado": "FALSE",
+            "id_rol": "2",
+            "id_tienda": "T032"
+        },
+        {
+            "nombre_usuario": "usuario38",
+            "clave": "mno456vwx4",
+            "nombre": "Florencia",
+            "apellido": "Núñez",
+            "habilitado": "TRUE",
+            "id_rol": "2",
+            "id_tienda": "T033"
+        },
+        {
+            "nombre_usuario": "usuario39",
+            "clave": "ghi345nop5",
+            "nombre": "Cristian",
+            "apellido": "Rivera",
+            "habilitado": "TRUE",
+            "id_rol": "2",
+            "id_tienda": "T034"
+        },
+        {
+            "nombre_usuario": "usuario40",
+            "clave": "stu901klm6",
+            "nombre": "Diana",
+            "apellido": "Ponce",
+            "habilitado": "TRUE",
+            "id_rol": "1",
+            "id_tienda": "T049"
+        },
+        {
+            "nombre_usuario": "usuario41",
+            "clave": "abc789yz9",
+            "nombre": "Esteban",
+            "apellido": "Correa",
+            "habilitado": "FALSE",
+            "id_rol": "2",
+            "id_tienda": "T035"
+        },
+        {
+            "nombre_usuario": "usuario42",
+            "clave": "mno234pqr7",
+            "nombre": "Daniela",
+            "apellido": "Ramírez",
+            "habilitado": "TRUE",
+            "id_rol": "2",
+            "id_tienda": "T036"
+        },
+        {
+            "nombre_usuario": "usuario43",
+            "clave": "ghi123vwx1",
+            "nombre": "Jorge",
+            "apellido": "Molina",
+            "habilitado": "TRUE",
+            "id_rol": "2",
+            "id_tienda": "T037"
+        },
+        {
+            "nombre_usuario": "usuario44",
+            "clave": "stu456nop2",
+            "nombre": "Marcos",
+            "apellido": "Paz",
+            "habilitado": "TRUE",
+            "id_rol": "2",
+            "id_tienda": "T038"
+        },
+        {
+            "nombre_usuario": "usuario45",
+            "clave": "ghi678stu5",
+            "nombre": "Magdalena",
+            "apellido": "Lagos",
+            "habilitado": "FALSE",
+            "id_rol": "2",
+            "id_tienda": "T039"
+        },
+        {
+            "nombre_usuario": "usuario46",
+            "clave": "abc012yz6",
+            "nombre": "Rocío",
+            "apellido": "García",
+            "habilitado": "TRUE",
+            "id_rol": "1",
+            "id_tienda": "T050"
+        },
+        {
+            "nombre_usuario": "usuario47",
+            "clave": "mno567ghi7",
+            "nombre": "Pablo",
+            "apellido": "Salinas",
+            "habilitado": "TRUE",
+            "id_rol": "2",
+            "id_tienda": "T040"
+        },
+        {
+            "nombre_usuario": "usuario48",
+            "clave": "stu234klm3",
+            "nombre": "Victoria",
+            "apellido": "Bustos",
+            "habilitado": "TRUE",
+            "id_rol": "2",
+            "id_tienda": "T041"
+        },
+        {
+            "nombre_usuario": "usuario49",
+            "clave": "ghi789vwx4",
+            "nombre": "Maximiliano",
+            "apellido": "Valle",
+            "habilitado": "TRUE",
+            "id_rol": "2",
+            "id_tienda": "T042"
+        },
+        {
+            "nombre_usuario": "usuario50",
+            "clave": "mno890yz9",
+            "nombre": "Bárbara",
+            "apellido": "Campos",
+            "habilitado": "FALSE",
+            "id_rol": "2",
+            "id_tienda": "T043"
+        }
+    ],
+    "producto": [
+        {
+            "id_producto": "P001",
+            "nombre_producto": "Camiseta Deportiva",
+            "talle": "M",
+            "foto": "",
+            "color": "Rojo",
+            "stock": "50"
+        },
+        {
+            "id_producto": "P002",
+            "nombre_producto": "Pantalón de Entrenamiento",
+            "talle": "L",
+            "foto": "",
+            "color": "Azul",
+            "stock": "60"
+        },
+        {
+            "id_producto": "P003",
+            "nombre_producto": "Sudadera con Capucha",
+            "talle": "M",
+            "foto": "",
+            "color": "Negro",
+            "stock": "30"
+        },
+        {
+            "id_producto": "P004",
+            "nombre_producto": "Chaqueta Deportiva",
+            "talle": "L",
+            "foto": "",
+            "color": "Gris",
+            "stock": "45"
+        },
+        {
+            "id_producto": "P005",
+            "nombre_producto": "Polo Casual",
+            "talle": "S",
+            "foto": "",
+            "color": "Blanco",
+            "stock": "20"
+        },
+        {
+            "id_producto": "P006",
+            "nombre_producto": "Short Deportivo",
+            "talle": "M",
+            "foto": "",
+            "color": "Azul",
+            "stock": "35"
+        },
+        {
+            "id_producto": "P007",
+            "nombre_producto": "Zapatillas Running",
+            "talle": "L",
+            "foto": "",
+            "color": "Negro",
+            "stock": "15"
+        },
+        {
+            "id_producto": "P008",
+            "nombre_producto": "Camiseta Básica",
+            "talle": "XL",
+            "foto": "",
+            "color": "Gris",
+            "stock": "25"
+        },
+        {
+            "id_producto": "P009",
+            "nombre_producto": "Pantalón Jeans",
+            "talle": "S",
+            "foto": "",
+            "color": "Rojo",
+            "stock": "40"
+        },
+        {
+            "id_producto": "P010",
+            "nombre_producto": "Chaleco Acolchado",
+            "talle": "M",
+            "foto": "foto10.jpg",
+            "color": "Verde",
+            "stock": "55"
+        },
+        {
+            "id_producto": "P011",
+            "nombre_producto": "Camisa Casual",
+            "talle": "S",
+            "foto": "foto11.jpg",
+            "color": "Azul",
+            "stock": "65"
+        },
+        {
+            "id_producto": "P012",
+            "nombre_producto": "Abrigo de Invierno",
+            "talle": "M",
+            "foto": "foto12.jpg",
+            "color": "Negro",
+            "stock": "30"
+        },
+        {
+            "id_producto": "P013",
+            "nombre_producto": "Camiseta Estampada",
+            "talle": "42",
+            "foto": "foto13.jpg",
+            "color": "Blanco",
+            "stock": "80"
+        },
+        {
+            "id_producto": "P014",
+            "nombre_producto": "Pantalón Cargo",
+            "talle": "43",
+            "foto": "foto14.jpg",
+            "color": "Negro",
+            "stock": "70"
+        },
+        {
+            "id_producto": "P015",
+            "nombre_producto": "Sudadera Deportiva",
+            "talle": "M",
+            "foto": "foto15.jpg",
+            "color": "Amarillo",
+            "stock": "50"
+        },
+        {
+            "id_producto": "P016",
+            "nombre_producto": "Chaqueta de Cuero",
+            "talle": "L",
+            "foto": "foto16.jpg",
+            "color": "Rojo",
+            "stock": "60"
+        },
+        {
+            "id_producto": "P017",
+            "nombre_producto": "Sombrero Fedora",
+            "talle": "32",
+            "foto": "foto17.jpg",
+            "color": "Azul",
+            "stock": "40"
+        },
+        {
+            "id_producto": "P018",
+            "nombre_producto": "Bufanda de Lana",
+            "talle": "34",
+            "foto": "foto18.jpg",
+            "color": "Negro",
+            "stock": "35"
+        },
+        {
+            "id_producto": "P019",
+            "nombre_producto": "Gorra Deportiva",
+            "talle": "M",
+            "foto": "foto19.jpg",
+            "color": "Verde",
+            "stock": "25"
+        },
+        {
+            "id_producto": "P020",
+            "nombre_producto": "Camiseta de Tirantes",
+            "talle": "L",
+            "foto": "foto20.jpg",
+            "color": "Gris",
+            "stock": "20"
+        },
+        {
+            "id_producto": "P021",
+            "nombre_producto": "Guantes Deportivos",
+            "talle": "S",
+            "foto": "foto21.jpg",
+            "color": "Blanco",
+            "stock": "40"
+        },
+        {
+            "id_producto": "P022",
+            "nombre_producto": "Pantalón de Vestir",
+            "talle": "M",
+            "foto": "foto22.jpg",
+            "color": "Celeste",
+            "stock": "30"
+        },
+        {
+            "id_producto": "P023",
+            "nombre_producto": "Camiseta Polo",
+            "talle": "L",
+            "foto": "foto23.jpg",
+            "color": "Negro",
+            "stock": "10"
+        },
+        {
+            "id_producto": "P024",
+            "nombre_producto": "Camisa de Vestir",
+            "talle": "XL",
+            "foto": "foto24.jpg",
+            "color": "Azul",
+            "stock": "15"
+        },
+        {
+            "id_producto": "P025",
+            "nombre_producto": "Camiseta Manga Larga",
+            "talle": "S",
+            "foto": "foto25.jpg",
+            "color": "Rojo",
+            "stock": "50"
+        },
+        {
+            "id_producto": "P026",
+            "nombre_producto": "Pantalón Jogger",
+            "talle": "M",
+            "foto": "foto26.jpg",
+            "color": "Amarillo",
+            "stock": "60"
+        },
+        {
+            "id_producto": "P027",
+            "nombre_producto": "Cinturón de Cuero",
+            "talle": "32",
+            "foto": "foto27.jpg",
+            "color": "Verde",
+            "stock": "30"
+        },
+        {
+            "id_producto": "P028",
+            "nombre_producto": "Zapatos Formales",
+            "talle": "34",
+            "foto": "foto28.jpg",
+            "color": "Marrón",
+            "stock": "35"
+        },
+        {
+            "id_producto": "P029",
+            "nombre_producto": "Abrigo de Lana",
+            "talle": "L",
+            "foto": "foto29.jpg",
+            "color": "Negro",
+            "stock": "20"
+        },
+        {
+            "id_producto": "P030",
+            "nombre_producto": "Chaleco Formal",
+            "talle": "M",
+            "foto": "foto30.jpg",
+            "color": "Azul",
+            "stock": "45"
+        },
+        {
+            "id_producto": "P031",
+            "nombre_producto": "Camiseta de Algodón",
+            "talle": "L",
+            "foto": "foto31.jpg",
+            "color": "Negro",
+            "stock": "15"
+        },
+        {
+            "id_producto": "P032",
+            "nombre_producto": "Chaleco Vaquero",
+            "talle": "XL",
+            "foto": "foto32.jpg",
+            "color": "Marrón",
+            "stock": "10"
+        },
+        {
+            "id_producto": "P033",
+            "nombre_producto": "Zapatos Deportivos",
+            "talle": "Único",
+            "foto": "foto33.jpg",
+            "color": "Negro",
+            "stock": "25"
+        },
+        {
+            "id_producto": "P034",
+            "nombre_producto": "Pantalón Chino",
+            "talle": "Único",
+            "foto": "foto34.jpg",
+            "color": "Gris",
+            "stock": "20"
+        },
+        {
+            "id_producto": "P035",
+            "nombre_producto": "Camisa de Manga Corta",
+            "talle": "Único",
+            "foto": "foto35.jpg",
+            "color": "Rojo",
+            "stock": "50"
+        },
+        {
+            "id_producto": "P036",
+            "nombre_producto": "Camiseta Sin Mangas",
+            "talle": "Único",
+            "foto": "foto36.jpg",
+            "color": "Verde",
+            "stock": "60"
+        },
+        {
+            "id_producto": "P037",
+            "nombre_producto": "Gorra Snapback",
+            "talle": "Único",
+            "foto": "foto37.jpg",
+            "color": "Azul",
+            "stock": "40"
+        },
+        {
+            "id_producto": "P038",
+            "nombre_producto": "Chaleco de Plumas",
+            "talle": "Único",
+            "foto": "foto38.jpg",
+            "color": "Negro",
+            "stock": "45"
+        },
+        {
+            "id_producto": "P039",
+            "nombre_producto": "Camiseta Térmica",
+            "talle": "S",
+            "foto": "foto39.jpg",
+            "color": "Blanco",
+            "stock": "55"
+        },
+        {
+            "id_producto": "P040",
+            "nombre_producto": "Zapatillas Casual",
+            "talle": "M",
+            "foto": "foto40.jpg",
+            "color": "Gris",
+            "stock": "30"
+        },
+        {
+            "id_producto": "P041",
+            "nombre_producto": "Bufanda Ligera",
+            "talle": "M",
+            "foto": "foto41.jpg",
+            "color": "Negro",
+            "stock": "50"
+        },
+        {
+            "id_producto": "P042",
+            "nombre_producto": "Camiseta Henley",
+            "talle": "L",
+            "foto": "foto42.jpg",
+            "color": "Azul",
+            "stock": "40"
+        },
+        {
+            "id_producto": "P043",
+            "nombre_producto": "Pantalón Corto de Playa",
+            "talle": "32",
+            "foto": "foto43.jpg",
+            "color": "Negro",
+            "stock": "35"
+        },
+        {
+            "id_producto": "P044",
+            "nombre_producto": "Guantes de Cuero",
+            "talle": "34",
+            "foto": "foto44.jpg",
+            "color": "Gris",
+            "stock": "25"
+        },
+        {
+            "id_producto": "P045",
+            "nombre_producto": "Camiseta V-Neck",
+            "talle": "S",
+            "foto": "foto45.jpg",
+            "color": "Rojo",
+            "stock": "60"
+        },
+        {
+            "id_producto": "P046",
+            "nombre_producto": "Pantalón Slim Fit",
+            "talle": "M",
+            "foto": "foto46.jpg",
+            "color": "Azul",
+            "stock": "70"
+        },
+        {
+            "id_producto": "P047",
+            "nombre_producto": "Zapatillas Skate",
+            "talle": "M",
+            "foto": "foto47.jpg",
+            "color": "Blanco",
+            "stock": "40"
+        },
+        {
+            "id_producto": "P048",
+            "nombre_producto": "Sudadera con Cierre",
+            "talle": "L",
+            "foto": "foto48.jpg",
+            "color": "Negro",
+            "stock": "35"
+        },
+        {
+            "id_producto": "P049",
+            "nombre_producto": "Sombrero de Paja",
+            "talle": "S",
+            "foto": "foto49.jpg",
+            "color": "Verde",
+            "stock": "55"
+        },
+        {
+            "id_producto": "P050",
+            "nombre_producto": "Camiseta Técnica",
+            "talle": "M",
+            "foto": "foto50.jpg",
+            "color": "Azul",
+            "stock": "60"
+        },
+        {
+            "id_producto": "P051",
+            "nombre_producto": "Pantalón de Yoga",
+            "talle": "M",
+            "foto": "foto51.jpg",
+            "color": "Gris",
+            "stock": "30"
+        },
+        {
+            "id_producto": "P052",
+            "nombre_producto": "Chaqueta Cortavientos",
+            "talle": "L",
+            "foto": "foto52.jpg",
+            "color": "Negro",
+            "stock": "25"
+        },
+        {
+            "id_producto": "P053",
+            "nombre_producto": "Camiseta de Compresión",
+            "talle": "Único",
+            "foto": "foto53.jpg",
+            "color": "Negro",
+            "stock": "50"
+        },
+        {
+            "id_producto": "P054",
+            "nombre_producto": "Blazer Casual",
+            "talle": "Único",
+            "foto": "foto54.jpg",
+            "color": "Marrón",
+            "stock": "60"
+        },
+        {
+            "id_producto": "P055",
+            "nombre_producto": "Pantalón de Pana",
+            "talle": "42",
+            "foto": "foto55.jpg",
+            "color": "Negro",
+            "stock": "25"
+        },
+        {
+            "id_producto": "P056",
+            "nombre_producto": "Camiseta Oversize",
+            "talle": "43",
+            "foto": "foto56.jpg",
+            "color": "Marrón",
+            "stock": "30"
+        },
+        {
+            "id_producto": "P057",
+            "nombre_producto": "Zapatillas de Lona",
+            "talle": "M",
+            "foto": "foto57.jpg",
+            "color": "Rojo",
+            "stock": "15"
+        },
+        {
+            "id_producto": "P058",
+            "nombre_producto": "Chaqueta Bomber",
+            "talle": "L",
+            "foto": "foto58.jpg",
+            "color": "Gris",
+            "stock": "20"
+        },
+        {
+            "id_producto": "P059",
+            "nombre_producto": "Pantalón de Pinzas",
+            "talle": "M",
+            "foto": "foto59.jpg",
+            "color": "Verde",
+            "stock": "45"
+        },
+        {
+            "id_producto": "P060",
+            "nombre_producto": "Camiseta Crop Top",
+            "talle": "L",
+            "foto": "foto60.jpg",
+            "color": "Negro",
+            "stock": "50"
+        },
+        {
+            "id_producto": "P061",
+            "nombre_producto": "Botas de Senderismo",
+            "talle": "S",
+            "foto": "foto61.jpg",
+            "color": "Blanco",
+            "stock": "60"
+        },
+        {
+            "id_producto": "P062",
+            "nombre_producto": "Gabardina Clásica",
+            "talle": "M",
+            "foto": "foto62.jpg",
+            "color": "Azul",
+            "stock": "65"
+        },
+        {
+            "id_producto": "P063",
+            "nombre_producto": "Pantalón Pitillo",
+            "talle": "M",
+            "foto": "foto63.jpg",
+            "color": "Negro",
+            "stock": "30"
+        },
+        {
+            "id_producto": "P064",
+            "nombre_producto": "Camiseta Tie-Dye",
+            "talle": "L",
+            "foto": "foto64.jpg",
+            "color": "Gris",
+            "stock": "35"
+        },
+        {
+            "id_producto": "P065",
+            "nombre_producto": "Zapatillas de Baloncesto",
+            "talle": "42",
+            "foto": "foto65.jpg",
+            "color": "Blanco",
+            "stock": "50"
+        },
+        {
+            "id_producto": "P066",
+            "nombre_producto": "Chaqueta Vaquera",
+            "talle": "43",
+            "foto": "foto66.jpg",
+            "color": "Negro",
+            "stock": "55"
+        },
+        {
+            "id_producto": "P067",
+            "nombre_producto": "Pantalón Palazzo",
+            "talle": "32",
+            "foto": "foto67.jpg",
+            "color": "Beige",
+            "stock": "25"
+        },
+        {
+            "id_producto": "P068",
+            "nombre_producto": "Camiseta Raglán",
+            "talle": "34",
+            "foto": "foto68.jpg",
+            "color": "Verde",
+            "stock": "30"
+        },
+        {
+            "id_producto": "P069",
+            "nombre_producto": "Mocasines de Cuero",
+            "talle": "S",
+            "foto": "foto69.jpg",
+            "color": "Azul",
+            "stock": "50"
+        },
+        {
+            "id_producto": "P070",
+            "nombre_producto": "Parka con Capucha",
+            "talle": "M",
+            "foto": "foto70.jpg",
+            "color": "Verde",
+            "stock": "55"
+        },
+        {
+            "id_producto": "P071",
+            "nombre_producto": "Pantalón Culotte",
+            "talle": "S",
+            "foto": "foto71.jpg",
+            "color": "Blanco",
+            "stock": "20"
+        },
+        {
+            "id_producto": "P072",
+            "nombre_producto": "Camiseta de Malla",
+            "talle": "M",
+            "foto": "foto72.jpg",
+            "color": "Negro",
+            "stock": "30"
+        },
+        {
+            "id_producto": "P073",
+            "nombre_producto": "Botines Chelsea",
+            "talle": "Único",
+            "foto": "foto73.jpg",
+            "color": "Gris",
+            "stock": "50"
+        },
+        {
+            "id_producto": "P074",
+            "nombre_producto": "Chaqueta de Punto",
+            "talle": "Único",
+            "foto": "foto74.jpg",
+            "color": "Negro",
+            "stock": "40"
+        },
+        {
+            "id_producto": "P075",
+            "nombre_producto": "Pantalón Capri",
+            "talle": "M",
+            "foto": "foto75.jpg",
+            "color": "Azul",
+            "stock": "20"
+        },
+        {
+            "id_producto": "P076",
+            "nombre_producto": "Camiseta Ringer",
+            "talle": "L",
+            "foto": "foto76.jpg",
+            "color": "Gris",
+            "stock": "15"
+        },
+        {
+            "id_producto": "P077",
+            "nombre_producto": "Sandalias Deportivas",
+            "talle": "S",
+            "foto": "foto77.jpg",
+            "color": "Rojo",
+            "stock": "45"
+        },
+        {
+            "id_producto": "P078",
+            "nombre_producto": "Poncho de Lana",
+            "talle": "M",
+            "foto": "foto78.jpg",
+            "color": "Amarillo",
+            "stock": "50"
+        },
+        {
+            "id_producto": "P079",
+            "nombre_producto": "Pantalón Harem",
+            "talle": "42",
+            "foto": "foto79.jpg",
+            "color": "Blanco",
+            "stock": "35"
+        },
+        {
+            "id_producto": "P080",
+            "nombre_producto": "Camiseta de Bolsillo",
+            "talle": "43",
+            "foto": "foto80.jpg",
+            "color": "Azul",
+            "stock": "40"
+        },
+        {
+            "id_producto": "P081",
+            "nombre_producto": "Zapatos Oxford",
+            "talle": "Único",
+            "foto": "foto81.jpg",
+            "color": "Negro",
+            "stock": "50"
+        },
+        {
+            "id_producto": "P082",
+            "nombre_producto": "Chaqueta de Plumas",
+            "talle": "Único",
+            "foto": "foto82.jpg",
+            "color": "Rojo",
+            "stock": "40"
+        },
+        {
+            "id_producto": "P083",
+            "nombre_producto": "Pantalón de Campana",
+            "talle": "S",
+            "foto": "foto83.jpg",
+            "color": "Blanco",
+            "stock": "60"
+        },
+        {
+            "id_producto": "P084",
+            "nombre_producto": "Camiseta de Cuello Alto",
+            "talle": "M",
+            "foto": "foto84.jpg",
+            "color": "Azul",
+            "stock": "45"
+        },
+        {
+            "id_producto": "P085",
+            "nombre_producto": "Alpargatas Clásicas",
+            "talle": "M",
+            "foto": "foto85.jpg",
+            "color": "Gris",
+            "stock": "50"
+        },
+        {
+            "id_producto": "P086",
+            "nombre_producto": "Cárdigan Largo",
+            "talle": "L",
+            "foto": "foto86.jpg",
+            "color": "Negro",
+            "stock": "40"
+        },
+        {
+            "id_producto": "P087",
+            "nombre_producto": "Pantalón de Lino",
+            "talle": "M",
+            "foto": "foto87.jpg",
+            "color": "Marrón",
+            "stock": "20"
+        },
+        {
+            "id_producto": "P088",
+            "nombre_producto": "Camiseta de Tirantes Anchos",
+            "talle": "L",
+            "foto": "foto88.jpg",
+            "color": "Negro",
+            "stock": "15"
+        },
+        {
+            "id_producto": "P089",
+            "nombre_producto": "Botas de Combate",
+            "talle": "S",
+            "foto": "foto89.jpg",
+            "color": "Rojo",
+            "stock": "55"
+        },
+        {
+            "id_producto": "P090",
+            "nombre_producto": "Kimono Ligero",
+            "talle": "M",
+            "foto": "foto90.jpg",
+            "color": "Verde",
+            "stock": "60"
+        },
+        {
+            "id_producto": "P091",
+            "nombre_producto": "Pantalón de Cuero",
+            "talle": "32",
+            "foto": "foto91.jpg",
+            "color": "Negro",
+            "stock": "30"
+        },
+        {
+            "id_producto": "P092",
+            "nombre_producto": "Camiseta con Parche",
+            "talle": "34",
+            "foto": "foto92.jpg",
+            "color": "Azul",
+            "stock": "25"
+        },
+        {
+            "id_producto": "P093",
+            "nombre_producto": "Zapatillas de Tenis",
+            "talle": "42",
+            "foto": "foto93.jpg",
+            "color": "Gris",
+            "stock": "40"
+        },
+        {
+            "id_producto": "P094",
+            "nombre_producto": "Chaqueta Safari",
+            "talle": "43",
+            "foto": "foto94.jpg",
+            "color": "Negro",
+            "stock": "45"
+        },
+        {
+            "id_producto": "P095",
+            "nombre_producto": "Pantalón Boyfriend",
+            "talle": "S",
+            "foto": "foto95.jpg",
+            "color": "Azul",
+            "stock": "50"
+        },
+        {
+            "id_producto": "P096",
+            "nombre_producto": "Camiseta de Rejilla",
+            "talle": "M",
+            "foto": "foto96.jpg",
+            "color": "Negro",
+            "stock": "35"
+        },
+        {
+            "id_producto": "P097",
+            "nombre_producto": "Mocasines Penny",
+            "talle": "Único",
+            "foto": "foto97.jpg",
+            "color": "Blanco",
+            "stock": "20"
+        },
+        {
+            "id_producto": "P098",
+            "nombre_producto": "Trench Coat",
+            "talle": "Único",
+            "foto": "foto98.jpg",
+            "color": "Beige",
+            "stock": "25"
+        },
+        {
+            "id_producto": "P099",
+            "nombre_producto": "Pantalón Paper Bag",
+            "talle": "S",
+            "foto": "fot099.jpg",
+            "color": "Rojo",
+            "stock": "50"
+        },
+        {
+            "id_producto": "P100",
+            "nombre_producto": "Camiseta con Cuello de Tortuga",
+            "talle": "M",
+            "foto": "foto100.jpg",
+            "color": "Gris",
+            "stock": "60"
+        }
+    ],
+    "producto_tienda": [
+        {
+            "id_tienda": "T001",
+            "id_producto": "P001",
+            "stock": "10"
+        },
+        {
+            "id_tienda": "T001",
+            "id_producto": "P002",
+            "stock": "15"
+        },
+        {
+            "id_tienda": "T001",
+            "id_producto": "P003",
+            "stock": "20"
+        },
+        {
+            "id_tienda": "T002",
+            "id_producto": "P004",
+            "stock": "25"
+        },
+        {
+            "id_tienda": "T002",
+            "id_producto": "P005",
+            "stock": "30"
+        },
+        {
+            "id_tienda": "T002",
+            "id_producto": "P006",
+            "stock": "35"
+        },
+        {
+            "id_tienda": "T003",
+            "id_producto": "P007",
+            "stock": "40"
+        },
+        {
+            "id_tienda": "T003",
+            "id_producto": "P008",
+            "stock": "45"
+        },
+        {
+            "id_tienda": "T003",
+            "id_producto": "P009",
+            "stock": "50"
+        },
+        {
+            "id_tienda": "T004",
+            "id_producto": "P010",
+            "stock": "55"
+        },
+        {
+            "id_tienda": "T004",
+            "id_producto": "P011",
+            "stock": "60"
+        },
+        {
+            "id_tienda": "T004",
+            "id_producto": "P012",
+            "stock": "65"
+        },
+        {
+            "id_tienda": "T005",
+            "id_producto": "P013",
+            "stock": "70"
+        },
+        {
+            "id_tienda": "T005",
+            "id_producto": "P014",
+            "stock": "75"
+        },
+        {
+            "id_tienda": "T005",
+            "id_producto": "P015",
+            "stock": "80"
+        },
+        {
+            "id_tienda": "T006",
+            "id_producto": "P016",
+            "stock": "85"
+        },
+        {
+            "id_tienda": "T006",
+            "id_producto": "P017",
+            "stock": "90"
+        },
+        {
+            "id_tienda": "T006",
+            "id_producto": "P018",
+            "stock": "95"
+        },
+        {
+            "id_tienda": "T007",
+            "id_producto": "P019",
+            "stock": "100"
+        },
+        {
+            "id_tienda": "T007",
+            "id_producto": "P020",
+            "stock": "105"
+        },
+        {
+            "id_tienda": "T007",
+            "id_producto": "P021",
+            "stock": "110"
+        },
+        {
+            "id_tienda": "T008",
+            "id_producto": "P022",
+            "stock": "115"
+        },
+        {
+            "id_tienda": "T008",
+            "id_producto": "P023",
+            "stock": "120"
+        },
+        {
+            "id_tienda": "T008",
+            "id_producto": "P024",
+            "stock": "125"
+        },
+        {
+            "id_tienda": "T009",
+            "id_producto": "P025",
+            "stock": "130"
+        },
+        {
+            "id_tienda": "T009",
+            "id_producto": "P026",
+            "stock": "135"
+        },
+        {
+            "id_tienda": "T009",
+            "id_producto": "P027",
+            "stock": "140"
+        },
+        {
+            "id_tienda": "T010",
+            "id_producto": "P028",
+            "stock": "145"
+        },
+        {
+            "id_tienda": "T010",
+            "id_producto": "P029",
+            "stock": "150"
+        },
+        {
+            "id_tienda": "T010",
+            "id_producto": "P030",
+            "stock": "155"
+        },
+        {
+            "id_tienda": "T011",
+            "id_producto": "P031",
+            "stock": "160"
+        },
+        {
+            "id_tienda": "T011",
+            "id_producto": "P032",
+            "stock": "165"
+        },
+        {
+            "id_tienda": "T011",
+            "id_producto": "P033",
+            "stock": "170"
+        },
+        {
+            "id_tienda": "T012",
+            "id_producto": "P034",
+            "stock": "175"
+        },
+        {
+            "id_tienda": "T012",
+            "id_producto": "P035",
+            "stock": "180"
+        },
+        {
+            "id_tienda": "T012",
+            "id_producto": "P036",
+            "stock": "185"
+        },
+        {
+            "id_tienda": "T013",
+            "id_producto": "P037",
+            "stock": "190"
+        },
+        {
+            "id_tienda": "T013",
+            "id_producto": "P038",
+            "stock": "195"
+        },
+        {
+            "id_tienda": "T013",
+            "id_producto": "P039",
+            "stock": "200"
+        },
+        {
+            "id_tienda": "T014",
+            "id_producto": "P040",
+            "stock": "205"
+        },
+        {
+            "id_tienda": "T014",
+            "id_producto": "P041",
+            "stock": "210"
+        },
+        {
+            "id_tienda": "T014",
+            "id_producto": "P042",
+            "stock": "215"
+        },
+        {
+            "id_tienda": "T015",
+            "id_producto": "P043",
+            "stock": "220"
+        },
+        {
+            "id_tienda": "T015",
+            "id_producto": "P044",
+            "stock": "225"
+        },
+        {
+            "id_tienda": "T015",
+            "id_producto": "P045",
+            "stock": "230"
+        },
+        {
+            "id_tienda": "T016",
+            "id_producto": "P046",
+            "stock": "235"
+        },
+        {
+            "id_tienda": "T016",
+            "id_producto": "P047",
+            "stock": "240"
+        },
+        {
+            "id_tienda": "T016",
+            "id_producto": "P048",
+            "stock": "245"
+        },
+        {
+            "id_tienda": "T017",
+            "id_producto": "P049",
+            "stock": "250"
+        },
+        {
+            "id_tienda": "T017",
+            "id_producto": "P050",
+            "stock": "255"
+        },
+        {
+            "id_tienda": "T017",
+            "id_producto": "P051",
+            "stock": "260"
+        },
+        {
+            "id_tienda": "T018",
+            "id_producto": "P052",
+            "stock": "265"
+        },
+        {
+            "id_tienda": "T018",
+            "id_producto": "P053",
+            "stock": "270"
+        },
+        {
+            "id_tienda": "T018",
+            "id_producto": "P054",
+            "stock": "275"
+        },
+        {
+            "id_tienda": "T019",
+            "id_producto": "P055",
+            "stock": "280"
+        },
+        {
+            "id_tienda": "T019",
+            "id_producto": "P056",
+            "stock": "285"
+        },
+        {
+            "id_tienda": "T019",
+            "id_producto": "P057",
+            "stock": "290"
+        },
+        {
+            "id_tienda": "T020",
+            "id_producto": "P058",
+            "stock": "295"
+        },
+        {
+            "id_tienda": "T020",
+            "id_producto": "P059",
+            "stock": "300"
+        },
+        {
+            "id_tienda": "T020",
+            "id_producto": "P060",
+            "stock": "305"
+        },
+        {
+            "id_tienda": "T021",
+            "id_producto": "P061",
+            "stock": "310"
+        },
+        {
+            "id_tienda": "T021",
+            "id_producto": "P062",
+            "stock": "315"
+        },
+        {
+            "id_tienda": "T021",
+            "id_producto": "P063",
+            "stock": "320"
+        },
+        {
+            "id_tienda": "T022",
+            "id_producto": "P064",
+            "stock": "325"
+        },
+        {
+            "id_tienda": "T022",
+            "id_producto": "P065",
+            "stock": "330"
+        },
+        {
+            "id_tienda": "T022",
+            "id_producto": "P066",
+            "stock": "335"
+        },
+        {
+            "id_tienda": "T023",
+            "id_producto": "P067",
+            "stock": "340"
+        },
+        {
+            "id_tienda": "T023",
+            "id_producto": "P068",
+            "stock": "345"
+        },
+        {
+            "id_tienda": "T023",
+            "id_producto": "P069",
+            "stock": "350"
+        },
+        {
+            "id_tienda": "T024",
+            "id_producto": "P070",
+            "stock": "355"
+        },
+        {
+            "id_tienda": "T024",
+            "id_producto": "P071",
+            "stock": "360"
+        },
+        {
+            "id_tienda": "T024",
+            "id_producto": "P072",
+            "stock": "365"
+        },
+        {
+            "id_tienda": "T025",
+            "id_producto": "P073",
+            "stock": "370"
+        },
+        {
+            "id_tienda": "T025",
+            "id_producto": "P074",
+            "stock": "375"
+        },
+        {
+            "id_tienda": "T025",
+            "id_producto": "P075",
+            "stock": "380"
+        },
+        {
+            "id_tienda": "T026",
+            "id_producto": "P076",
+            "stock": "385"
+        },
+        {
+            "id_tienda": "T026",
+            "id_producto": "P077",
+            "stock": "390"
+        },
+        {
+            "id_tienda": "T026",
+            "id_producto": "P078",
+            "stock": "395"
+        },
+        {
+            "id_tienda": "T027",
+            "id_producto": "P079",
+            "stock": "400"
+        },
+        {
+            "id_tienda": "T027",
+            "id_producto": "P080",
+            "stock": "405"
+        },
+        {
+            "id_tienda": "T027",
+            "id_producto": "P081",
+            "stock": "410"
+        },
+        {
+            "id_tienda": "T028",
+            "id_producto": "P082",
+            "stock": "415"
+        },
+        {
+            "id_tienda": "T028",
+            "id_producto": "P083",
+            "stock": "420"
+        },
+        {
+            "id_tienda": "T028",
+            "id_producto": "P084",
+            "stock": "425"
+        },
+        {
+            "id_tienda": "T029",
+            "id_producto": "P085",
+            "stock": "430"
+        },
+        {
+            "id_tienda": "T029",
+            "id_producto": "P086",
+            "stock": "435"
+        },
+        {
+            "id_tienda": "T029",
+            "id_producto": "P087",
+            "stock": "440"
+        },
+        {
+            "id_tienda": "T030",
+            "id_producto": "P088",
+            "stock": "445"
+        },
+        {
+            "id_tienda": "T030",
+            "id_producto": "P089",
+            "stock": "450"
+        },
+        {
+            "id_tienda": "T030",
+            "id_producto": "P090",
+            "stock": "455"
+        },
+        {
+            "id_tienda": "T031",
+            "id_producto": "P091",
+            "stock": "460"
+        },
+        {
+            "id_tienda": "T031",
+            "id_producto": "P092",
+            "stock": "465"
+        },
+        {
+            "id_tienda": "T031",
+            "id_producto": "P093",
+            "stock": "470"
+        },
+        {
+            "id_tienda": "T032",
+            "id_producto": "P094",
+            "stock": "475"
+        },
+        {
+            "id_tienda": "T032",
+            "id_producto": "P095",
+            "stock": "480"
+        },
+        {
+            "id_tienda": "T032",
+            "id_producto": "P096",
+            "stock": "485"
+        },
+        {
+            "id_tienda": "T033",
+            "id_producto": "P097",
+            "stock": "490"
+        },
+        {
+            "id_tienda": "T033",
+            "id_producto": "P098",
+            "stock": "495"
+        },
+        {
+            "id_tienda": "T033",
+            "id_producto": "P099",
+            "stock": "500"
+        },
+        {
+            "id_tienda": "T034",
+            "id_producto": "P100",
+            "stock": "505"
+        },
+        {
+            "id_tienda": "T034",
+            "id_producto": "P101",
+            "stock": "510"
+        },
+        {
+            "id_tienda": "T034",
+            "id_producto": "P102",
+            "stock": "515"
+        },
+        {
+            "id_tienda": "T035",
+            "id_producto": "P103",
+            "stock": "520"
+        },
+        {
+            "id_tienda": "T035",
+            "id_producto": "P104",
+            "stock": "525"
+        },
+        {
+            "id_tienda": "T035",
+            "id_producto": "P105",
+            "stock": "530"
+        },
+        {
+            "id_tienda": "T036",
+            "id_producto": "P106",
+            "stock": "535"
+        },
+        {
+            "id_tienda": "T036",
+            "id_producto": "P107",
+            "stock": "540"
+        },
+        {
+            "id_tienda": "T036",
+            "id_producto": "P108",
+            "stock": "545"
+        },
+        {
+            "id_tienda": "T037",
+            "id_producto": "P109",
+            "stock": "550"
+        },
+        {
+            "id_tienda": "T037",
+            "id_producto": "P110",
+            "stock": "555"
+        },
+        {
+            "id_tienda": "T037",
+            "id_producto": "P111",
+            "stock": "560"
+        },
+        {
+            "id_tienda": "T038",
+            "id_producto": "P112",
+            "stock": "565"
+        },
+        {
+            "id_tienda": "T038",
+            "id_producto": "P113",
+            "stock": "570"
+        },
+        {
+            "id_tienda": "T038",
+            "id_producto": "P114",
+            "stock": "575"
+        },
+        {
+            "id_tienda": "T039",
+            "id_producto": "P115",
+            "stock": "580"
+        },
+        {
+            "id_tienda": "T039",
+            "id_producto": "P116",
+            "stock": "585"
+        },
+        {
+            "id_tienda": "T039",
+            "id_producto": "P117",
+            "stock": "590"
+        },
+        {
+            "id_tienda": "T040",
+            "id_producto": "P118",
+            "stock": "595"
+        },
+        {
+            "id_tienda": "T040",
+            "id_producto": "P119",
+            "stock": "600"
+        },
+        {
+            "id_tienda": "T040",
+            "id_producto": "P120",
+            "stock": "605"
+        },
+        {
+            "id_tienda": "T041",
+            "id_producto": "P121",
+            "stock": "610"
+        },
+        {
+            "id_tienda": "T041",
+            "id_producto": "P122",
+            "stock": "615"
+        },
+        {
+            "id_tienda": "T041",
+            "id_producto": "P123",
+            "stock": "620"
+        },
+        {
+            "id_tienda": "T042",
+            "id_producto": "P124",
+            "stock": "625"
+        },
+        {
+            "id_tienda": "T042",
+            "id_producto": "P125",
+            "stock": "630"
+        },
+        {
+            "id_tienda": "T042",
+            "id_producto": "P126",
+            "stock": "635"
+        },
+        {
+            "id_tienda": "T043",
+            "id_producto": "P127",
+            "stock": "640"
+        },
+        {
+            "id_tienda": "T043",
+            "id_producto": "P128",
+            "stock": "645"
+        },
+        {
+            "id_tienda": "T043",
+            "id_producto": "P129",
+            "stock": "650"
+        },
+        {
+            "id_tienda": "T044",
+            "id_producto": "P130",
+            "stock": "655"
+        },
+        {
+            "id_tienda": "T044",
+            "id_producto": "P131",
+            "stock": "660"
+        },
+        {
+            "id_tienda": "T044",
+            "id_producto": "P132",
+            "stock": "665"
+        },
+        {
+            "id_tienda": "T045",
+            "id_producto": "P133",
+            "stock": "670"
+        },
+        {
+            "id_tienda": "T045",
+            "id_producto": "P134",
+            "stock": "675"
+        },
+        {
+            "id_tienda": "T045",
+            "id_producto": "P135",
+            "stock": "680"
+        },
+        {
+            "id_tienda": "T046",
+            "id_producto": "P136",
+            "stock": "685"
+        },
+        {
+            "id_tienda": "T046",
+            "id_producto": "P137",
+            "stock": "690"
+        },
+        {
+            "id_tienda": "T046",
+            "id_producto": "P138",
+            "stock": "695"
+        },
+        {
+            "id_tienda": "T047",
+            "id_producto": "P139",
+            "stock": "700"
+        },
+        {
+            "id_tienda": "T047",
+            "id_producto": "P140",
+            "stock": "705"
+        },
+        {
+            "id_tienda": "T047",
+            "id_producto": "P141",
+            "stock": "710"
+        },
+        {
+            "id_tienda": "T048",
+            "id_producto": "P142",
+            "stock": "715"
+        },
+        {
+            "id_tienda": "T048",
+            "id_producto": "P143",
+            "stock": "720"
+        },
+        {
+            "id_tienda": "T048",
+            "id_producto": "P144",
+            "stock": "725"
+        },
+        {
+            "id_tienda": "T049",
+            "id_producto": "P145",
+            "stock": "730"
+        },
+        {
+            "id_tienda": "T049",
+            "id_producto": "P146",
+            "stock": "735"
+        },
+        {
+            "id_tienda": "T049",
+            "id_producto": "P147",
+            "stock": "740"
+        },
+        {
+            "id_tienda": "T050",
+            "id_producto": "P148",
+            "stock": "745"
+        },
+        {
+            "id_tienda": "T050",
+            "id_producto": "P149",
+            "stock": "750"
+        },
+        {
+            "id_tienda": "T050",
+            "id_producto": "P150",
+            "stock": "755"
+        }
+    ]
+}

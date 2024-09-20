@@ -1,0 +1,85 @@
+{
+    "rol": [
+        {
+            "id_rol": "1",
+            "nombre_rol": "Casa Central"
+        },
+        {
+            "id_rol": "2",
+            "nombre_rol": "Tienda"
+        }
+    ],
+    "tienda": [
+        {
+            "id_tienda": "T001",
+            "direccion": "Av. Santa Fe 1234",
+            "ciudad": "Buenos Aires",
+            "provincia": "Buenos Aires",
+            "habilitada": "true"
+        },
+        {
+            "id_tienda": "T002",
+            "direccion": "Calle Corrientes 456",
+            "ciudad": "Buenos Aires",
+            "provincia": "Buenos Aires",
+            "habilitada": "false"
+        },
+        {
+            "id_tienda": "T003",
+            "direccion": "Av. Rivadavia 789",
+            "ciudad": "Buenos Aires",
+            "provincia": "Buenos Aires",
+            "habilitada": "false"
+        }
+    ],
+    "usuario": [
+        {
+            "nombre_usuario": "usuario1",
+            "clave": "abc123defg",
+            "nombre": "Juan",
+            "apellido": "Pérez",
+            "habilitado": "TRUE",
+            "id_rol": "1",
+            "id_tienda": "T002"
+        },
+        {
+            "nombre_usuario": "usuario2",
+            "clave": "def456ghi7",
+            "nombre": "Ana",
+            "apellido": "Gómez",
+            "habilitado": "TRUE",
+            "id_rol": "2",
+            "id_tienda": "T001"
+        }
+    ],
+    "producto": [
+        {
+            "id_producto": "P001",
+            "nombre_producto": "Camiseta Deportiva",
+            "talle": "M",
+            "foto": "foto1.jpg",
+            "color": "Rojo",
+            "stock": "50"
+        },
+        {
+            "id_producto": "P002",
+            "nombre_producto": "Camiseta Deportiva",
+            "talle": "L",
+            "foto": "foto2.jpg",
+            "color": "Azul",
+            "stock": "60"
+        }
+    ],
+    "producto_tienda": [
+        {
+            "id_tienda": "T001",
+            "id_producto": "P001",
+            "stock": "750"
+        },
+        {
+            "id_tienda": "T002",
+            "id_producto": "P002",
+            "stock": "755"
+        }
+    ]
+}
