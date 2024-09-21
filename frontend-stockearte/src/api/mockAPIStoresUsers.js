@@ -44,6 +44,7 @@ export const fetchUserById = (userId) => {
     setTimeout(() => {
       const user = MOCK_DATA.usuario.find(user => user.nombre_usuario === userId);
       if (user) {
+        const role = MOCK_DATA.rol.find(rol => rol.id_rol === user.id_rol)?.nombre_rol || 'Unknown';
         resolve({
           id: user.nombre_usuario,
           username: user.nombre_usuario,
@@ -52,7 +53,7 @@ export const fetchUserById = (userId) => {
           name: user.nombre,
           surname: user.apellido,
           enabled: user.habilitado === "TRUE",
-          role: MOCK_DATA.rol.find(rol => rol.id_rol === user.id_rol)?.nombre_rol || 'Unknown'
+          role: role
         });
       } else {
         reject(new Error('User not found'));

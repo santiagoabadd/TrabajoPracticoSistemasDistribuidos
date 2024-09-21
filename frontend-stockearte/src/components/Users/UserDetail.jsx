@@ -15,7 +15,6 @@ export const UserDetail = ({ user, stores, onClose, onUpdate, isAdding }) => {
     role: 'Tienda'
   });
 
-  console.log(user);
 
 
   useEffect(() => {

@@ -25,7 +25,6 @@ export const ProductDetail = ({ product, onClose, onUpdate, userRole, userStoreI
         if (userRole === 'Casa Central' || userRole === 'central') {
           const storesResponse = await mockFetchProducts('/api/stores');
           const storesData = await storesResponse.json();
-          console.log('Stores loaded:', storesData);
           setStores(storesData || []);
         }
 
@@ -115,14 +114,9 @@ export const ProductDetail = ({ product, onClose, onUpdate, userRole, userStoreI
 
   const handleStoreSelection = (e) => {
     const selectedStores = Array.from(e.target.selectedOptions, option => option.value);
-    console.log(selectedStores);
     setProductData(prevData => ({
       ...prevData,
       assignedStores: selectedStores,
-      // stock: selectedStores.reduce((acc, storeId) => {
-      //   acc[storeId] = prevData.stock[storeId] || 0;
-      //   return acc;
-      // }, {}),
     }));
   };
 

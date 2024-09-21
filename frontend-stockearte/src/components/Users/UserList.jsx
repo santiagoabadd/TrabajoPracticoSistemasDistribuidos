@@ -16,7 +16,7 @@ export const UserList = () => {
     useEffect(() => {
             fetchUsers().then(data => setUsers(data));
             fetchStores().then(data => setStores(data));
-    }, [])
+    }, []) 
 
 
 
@@ -37,22 +37,22 @@ export const UserList = () => {
     const handleDeleteUser = async (userId) => {
         try {
           const result = await Swal.fire({
-            title: '¿Estás seguro?',
-            text: "No podrás revertir esta acción!",
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Sí, eliminar!'
+            confirmButtonText: 'Yes, delete it!'
           });
     
           if (result.isConfirmed) {
             await deleteUser(userId);
             setUsers(users.filter(user => user.id !== userId));
-            Swal.fire('Eliminado!', 'El usuario ha sido eliminado.', 'success');
+            Swal.fire('Deleted!', 'The user has been deleted.', 'success');
           }
         } catch (error) {
-          Swal.fire('Error!', 'Hubo un error al eliminar el usuario.', 'error');
+          Swal.fire('Error!', 'There was an error deleting the user.', 'error');
           console.error('Error deleting user:', error);
         }
       };

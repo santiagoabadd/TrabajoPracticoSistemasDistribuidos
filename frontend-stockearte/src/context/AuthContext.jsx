@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 import { mockFetch } from '../api/mockAPIContext';
+import { fetchUserById } from '../api/mockAPIStoresUsers'; 
 
 export const AuthContext = createContext();
 
@@ -21,11 +22,12 @@ export const AuthProvider = ({children}) => {
             });
             const data = await response.json();
             if (response.ok) {
+              const userDetails = await fetchUserById(data.email);
               setUser({
                 email: data.email,
                 logged: true,
                 role: data.role,
-                idTienda: data.role === 'Tienda' ? data.idTienda : null
+                idTienda: data.role === 'Tienda' ? userDetails.store : null
               });
             } else {
               throw new Error(data.message);

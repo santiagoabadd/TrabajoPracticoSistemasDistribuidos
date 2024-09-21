@@ -12,11 +12,11 @@ export const ProductList = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isAddingProduct, setIsAddingProduct] = useState(false);
   const [stores, setStores] = useState([]);
-  
+   
 
   useEffect(() => {
-    fetchProducts()
-    if (user.role === 'Casa Central' || user.role === 'central') {
+    if (user.logged) {
+      fetchProducts();
       fetchStores();
     }
   }, [user.idTienda, user.role])
@@ -49,7 +49,6 @@ export const ProductList = () => {
         assignedStores: Object.keys(product.stock || {})
       }));
       setProducts(processedData);
-      // setProducts(data);
     } catch (error) {
       console.error('Error fetching products:', error);
     } finally {
@@ -129,7 +128,9 @@ export const ProductList = () => {
   };
 
 
-  const handleUpdateProduct = (updatedProduct) => {
+  const handleUpdateProduct = async (updatedProduct) => {
+
+    
     if (isAddingProduct) {
       setProducts(prevProducts => [...prevProducts, {
         ...updatedProduct,
