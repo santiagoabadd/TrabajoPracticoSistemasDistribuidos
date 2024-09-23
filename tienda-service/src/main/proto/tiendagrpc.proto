@@ -12,6 +12,12 @@ service TiendaService {
     rpc DeleteTienda(DeleteTiendaRequest) returns (DeleteTiendaResponse);
 }
 
+service TiendaProductService {
+    rpc AddTiendaProduct(AddTiendaProductRequest) returns (AddTiendaProductResponse);
+    rpc GetTiendaProduct(GetTiendaProductRequest) returns (GetTiendaProductResponse);
+    rpc DeleteTiendaProduct(DeleteTiendaProductRequest) returns (DeleteTiendaProductResponse);
+}
+
 message RegistrarTiendaRequest{
     string codigo=1;
     bool estado=2;
@@ -82,3 +88,37 @@ message GetTiendaByEstadoRequest {
 }
 
 message EmptyTienda {}
+
+message AddTiendaProductRequest {
+    int64 tiendaId = 1;
+    int64 productId = 2;
+    int32 stock = 3;
+    string color = 4;
+    string talle = 5;
+}
+
+message AddTiendaProductResponse {
+    string message = 1;
+    bool success = 2;
+}
+
+message GetTiendaProductRequest {
+    int64 id = 1;
+}
+
+message GetTiendaProductResponse {
+    int64 tiendaId = 1;
+    int64 productId = 2;
+    int32 stock = 3;
+    string color = 4;
+    string talle = 5;
+}
+
+message DeleteTiendaProductRequest {
+    int64 id = 1;
+}
+
+message DeleteTiendaProductResponse {
+    string message = 1;
+    bool success = 2;
+}

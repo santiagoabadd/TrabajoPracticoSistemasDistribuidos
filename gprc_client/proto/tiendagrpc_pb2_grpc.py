@@ -310,3 +310,161 @@ class TiendaService(object):
             timeout,
             metadata,
             _registered_method=True)
+
+
+class TiendaProductServiceStub(object):
+    """Missing associated documentation comment in .proto file."""
+
+    def __init__(self, channel):
+        """Constructor.
+
+        Args:
+            channel: A grpc.Channel.
+        """
+        self.AddTiendaProduct = channel.unary_unary(
+                '/TiendaProductService/AddTiendaProduct',
+                request_serializer=tiendagrpc__pb2.AddTiendaProductRequest.SerializeToString,
+                response_deserializer=tiendagrpc__pb2.AddTiendaProductResponse.FromString,
+                _registered_method=True)
+        self.GetTiendaProduct = channel.unary_unary(
+                '/TiendaProductService/GetTiendaProduct',
+                request_serializer=tiendagrpc__pb2.GetTiendaProductRequest.SerializeToString,
+                response_deserializer=tiendagrpc__pb2.GetTiendaProductResponse.FromString,
+                _registered_method=True)
+        self.DeleteTiendaProduct = channel.unary_unary(
+                '/TiendaProductService/DeleteTiendaProduct',
+                request_serializer=tiendagrpc__pb2.DeleteTiendaProductRequest.SerializeToString,
+                response_deserializer=tiendagrpc__pb2.DeleteTiendaProductResponse.FromString,
+                _registered_method=True)
+
+
+class TiendaProductServiceServicer(object):
+    """Missing associated documentation comment in .proto file."""
+
+    def AddTiendaProduct(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetTiendaProduct(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def DeleteTiendaProduct(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+
+def add_TiendaProductServiceServicer_to_server(servicer, server):
+    rpc_method_handlers = {
+            'AddTiendaProduct': grpc.unary_unary_rpc_method_handler(
+                    servicer.AddTiendaProduct,
+                    request_deserializer=tiendagrpc__pb2.AddTiendaProductRequest.FromString,
+                    response_serializer=tiendagrpc__pb2.AddTiendaProductResponse.SerializeToString,
+            ),
+            'GetTiendaProduct': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetTiendaProduct,
+                    request_deserializer=tiendagrpc__pb2.GetTiendaProductRequest.FromString,
+                    response_serializer=tiendagrpc__pb2.GetTiendaProductResponse.SerializeToString,
+            ),
+            'DeleteTiendaProduct': grpc.unary_unary_rpc_method_handler(
+                    servicer.DeleteTiendaProduct,
+                    request_deserializer=tiendagrpc__pb2.DeleteTiendaProductRequest.FromString,
+                    response_serializer=tiendagrpc__pb2.DeleteTiendaProductResponse.SerializeToString,
+            ),
+    }
+    generic_handler = grpc.method_handlers_generic_handler(
+            'TiendaProductService', rpc_method_handlers)
+    server.add_generic_rpc_handlers((generic_handler,))
+    server.add_registered_method_handlers('TiendaProductService', rpc_method_handlers)
+
+
+ # This class is part of an EXPERIMENTAL API.
+class TiendaProductService(object):
+    """Missing associated documentation comment in .proto file."""
+
+    @staticmethod
+    def AddTiendaProduct(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/TiendaProductService/AddTiendaProduct',
+            tiendagrpc__pb2.AddTiendaProductRequest.SerializeToString,
+            tiendagrpc__pb2.AddTiendaProductResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def GetTiendaProduct(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/TiendaProductService/GetTiendaProduct',
+            tiendagrpc__pb2.GetTiendaProductRequest.SerializeToString,
+            tiendagrpc__pb2.GetTiendaProductResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def DeleteTiendaProduct(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/TiendaProductService/DeleteTiendaProduct',
+            tiendagrpc__pb2.DeleteTiendaProductRequest.SerializeToString,
+            tiendagrpc__pb2.DeleteTiendaProductResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)

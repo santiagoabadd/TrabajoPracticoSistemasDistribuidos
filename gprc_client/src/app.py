@@ -7,50 +7,6 @@ from flask_cors import CORS, cross_origin
 from google.protobuf.json_format import MessageToJson
 from src.grpcClient import GrpcClient
 
-test_user = {
-        'username': 'santiagoabad321',
-        'firstName': 'Santiaggo',
-        'lastName': 'Abagd',
-        'email': 'santiagog@example.com',
-        'rol': 'admin',
-        'codigoTienda': '12345',
-		'activo':True,
-		'password':'password'
-
-    }
-
-test_user_update = {
-        'username': 'santiagoabad21',
-        'firstName': 'Santiaggosasfaajgfgjffgjfs',
-        'lastName': 'Abagd',
-        'email': 'santiagog@example.com',
-        'rol': 'admin',
-        'codigoTienda': '12345',
-		'activo':False,
-		'password':'password'
-    }
-
-test_tienda = {
-        'codigo': 'as1234',
-        'estado': True,
-		'direccion': 'Arna 30',
-        'ciudad': 'Lanus',
-        'provincia': 'Buenos Aires',
-        
-        
-
-    }
-
-test_tienda_update = {
-        'codigo': 'as1234',
-        'estado': True,
-		'direccion': 'pintos 30',
-        'ciudad': 'Banfield',
-        'provincia': 'Buenos Aires',
-        
-        
-
-    }
 
 app = Flask(__name__)
 
@@ -58,93 +14,157 @@ app = Flask(__name__)
 def hello():
     return "Hello, World!"
 
-#Rutas del servicio Usuario
+# Rutas del servicio Usuario
 
-@app.route("/getUser", methods=["GET"])
+@app.route("/getUser/<string:username>", methods=["GET"])
 @cross_origin()
-def getUser():
-	client = GrpcClient()
-	result = client.GetUser()
-	return MessageToJson(result)
+def getUser(username):
+    client = GrpcClient()
+    result = client.GetUser(username)
+    return MessageToJson(result)
 
-@app.route("/getUsersByTienda", methods=["GET"])
+@app.route("/getUsersByTienda/<string:codigoTienda>", methods=["GET"])
 @cross_origin()
-def getUsersByTienda():
-	client = GrpcClient()
-	result = client.GetUserByTienda()
-	return MessageToJson(result)
+def getUsersByTienda(codigoTienda):
+    client = GrpcClient()
+    result = client.GetUserByTienda(codigoTienda)
+    return MessageToJson(result)
 
 @app.route("/getUsers", methods=["GET"])
 @cross_origin()
 def getAllUsers():
-	client = GrpcClient()
-	result = client.GetAllUsers()
-	return MessageToJson(result)
+    client = GrpcClient()
+    result = client.GetAllUsers()
+    return MessageToJson(result)
 
-
-@app.route("/registerUser", methods=["GET"])
+@app.route("/registerUser", methods=["POST"])
 @cross_origin()
 def registerUser():
-	client = GrpcClient()
-	result = client.RegisterUser(test_user)
-	return make_response("ok")
+    data = request.get_json()
+    client = GrpcClient()
+    result = client.RegisterUser(data)
+    return make_response("ok")
 
-@app.route("/updateUser", methods=["GET"])
+@app.route("/updateUser", methods=["PUT"])
 @cross_origin()
 def updateUser():
-	client = GrpcClient()
-	result = client.UpdateUser(test_user_update)
-	return make_response("ok")  
+    data = request.get_json()
+    client = GrpcClient()
+    result = client.UpdateUser(data)
+    return make_response("ok")
 
-@app.route("/deleteUser", methods=["GET"])
+@app.route("/deleteUser/<string:username>", methods=["DELETE"])
 @cross_origin()
-def deleteUser():
-	client = GrpcClient()
-	result = client.DeleteUser()
-	return MessageToJson(result)
+def deleteUser(username):
+    client = GrpcClient()
+    result = client.DeleteUser(username)
+    return MessageToJson(result)
 
+# Rutas del servicio Tienda
 
-#Rutas del servicio Tienda
-
-@app.route("/getTienda", methods=["GET"])
+@app.route("/getTienda/<string:codigo>", methods=["GET"])
 @cross_origin()
-def getTienda():
-	client = GrpcClient()
-	result = client.GetTienda()
-	return MessageToJson(result)
+def getTienda(codigo):
+    client = GrpcClient()
+    result = client.GetTienda(codigo)
+    return MessageToJson(result)
 
-@app.route("/getTiendasByEstado", methods=["GET"])
+@app.route("/getTiendasByEstado/<string:estado>", methods=["GET"])
 @cross_origin()
-def getTiendasByEstado():
-	client = GrpcClient()
-	result = client.GetTiendasByEstado()
-	return MessageToJson(result)
+def getTiendasByEstado(estado):
+    client = GrpcClient()
+    result = client.GetTiendasByEstado(estado)
+    return MessageToJson(result)
 
 @app.route("/getTiendas", methods=["GET"])
 @cross_origin()
 def getAllTiendas():
-	client = GrpcClient()
-	result = client.ListarTiendas()
-	return MessageToJson(result)
+    client = GrpcClient()
+    result = client.ListarTiendas()
+    return MessageToJson(result)
 
-
-@app.route("/registerTienda", methods=["GET"])
+@app.route("/registerTienda", methods=["POST"])
 @cross_origin()
 def registerTienda():
-	client = GrpcClient()
-	result = client.RegistrarTienda(test_tienda)
-	return make_response("ok")
+    data = request.get_json() 
+    client = GrpcClient()
+    result = client.RegistrarTienda(data)
+    return make_response("ok")
 
-@app.route("/updateTienda", methods=["GET"])
+@app.route("/updateTienda", methods=["PUT"])
 @cross_origin()
 def updateTienda():
-	client = GrpcClient()
-	result = client.UpdateTienda(test_tienda_update)
-	return make_response("ok")  
+    data = request.get_json() 
+    client = GrpcClient()
+    result = client.UpdateTienda(data)
+    return make_response("ok")
 
-@app.route("/deleteTienda", methods=["GET"])
+@app.route("/deleteTienda/<string:codigo>", methods=["DELETE"])
 @cross_origin()
-def deleteTienda():
-	client = GrpcClient()
-	result = client.DeleteTienda()
-	return MessageToJson(result)
+def deleteTienda(codigo):
+    client = GrpcClient()
+    result = client.DeleteTienda(codigo)
+    return MessageToJson(result)
+
+@app.route("/registerTienda", methods=["POST"])
+@cross_origin()
+def registerTienda():
+    data = request.get_json() 
+    client = GrpcClient()
+    result = client.RegistrarTienda(data)
+    return make_response("ok")
+
+
+# Rutas del servicio Producto
+
+@app.route("/getProduct/<string:codigo>", methods=["GET"])
+@cross_origin()
+def getProduct(codigo):
+    client = GrpcClient()
+    result = client.GetProduct(codigo)
+    return MessageToJson(result)
+
+@app.route("/getProductByNombre/<string:nombre>", methods=["GET"])
+@cross_origin()
+def getProductByNombre(nombre):
+    client = GrpcClient()
+    result = client.GetProductByNombre(nombre)
+    return MessageToJson(result)
+
+@app.route("/getProducts", methods=["GET"])
+@cross_origin()
+def getAllProducts():
+    client = GrpcClient()
+    result = client.GetAllProducts()
+    return MessageToJson(result)
+
+@app.route("/registerProduct", methods=["POST"])
+@cross_origin()
+def registerProduct():
+    data = request.get_json()
+    client = GrpcClient()
+    result = client.CreateProduct(data)
+    return make_response("ok")
+
+@app.route("/updateProduct", methods=["PUT"])
+@cross_origin()
+def updateProduct():
+    data = request.get_json() 
+    client = GrpcClient()
+    result = client.UpdateProduct(data)
+    return make_response("ok")
+
+@app.route("/deleteProduct/<string:codigo>", methods=["DELETE"])
+@cross_origin()
+def deleteProduct(codigo):
+    client = GrpcClient()
+    result = client.DeleteProduct(codigo)
+    return MessageToJson(result)
+
+@app.route("/registerTiendaProducto", methods=["POST"])
+@cross_origin()
+def registerTiendaProducto():
+    data = request.get_json() 
+    client = GrpcClient()
+    result = client.AddTiendaProduct(data)
+    return make_response("ok")

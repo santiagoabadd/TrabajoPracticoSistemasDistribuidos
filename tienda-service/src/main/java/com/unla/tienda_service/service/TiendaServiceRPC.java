@@ -17,12 +17,13 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class TiendaServiceRPC extends TiendaServiceGrpc.TiendaServiceImplBase {
 
-    private final TiendaService tiendaService;
+
     private final TiendaRepository tiendaRepository;
 
     @Override
     public void getTienda(GetTiendaRequest request, StreamObserver<GetTiendaResponse> responseObserver) {
-        TiendaResponse tienda = tiendaService.findByCodigo(request.getCodigo());
+        Tienda tienda = tiendaRepository.findByCodigo(request.getCodigo())
+                .orElseThrow(() -> new RuntimeException("Tienda no encontrada"));;
 
         GetTiendaResponse response = GetTiendaResponse.newBuilder()
                 .setCodigo(tienda.getCodigo())
