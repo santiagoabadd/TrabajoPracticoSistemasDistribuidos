@@ -60,6 +60,15 @@ def deleteUser(username):
     result = client.DeleteUser(username)
     return MessageToJson(result)
 
+
+@app.route("/authorize", methods=["POST"])
+@cross_origin()
+def authorize():
+    data = request.get_json()
+    client = GrpcClient()
+    result = client.authorize(data)
+    return make_response("ok")    
+
 # Rutas del servicio Tienda
 
 @app.route("/getTienda/<string:codigo>", methods=["GET"])
@@ -105,14 +114,6 @@ def deleteTienda(codigo):
     client = GrpcClient()
     result = client.DeleteTienda(codigo)
     return MessageToJson(result)
-
-@app.route("/registerTienda", methods=["POST"])
-@cross_origin()
-def registerTienda():
-    data = request.get_json() 
-    client = GrpcClient()
-    result = client.RegistrarTienda(data)
-    return make_response("ok")
 
 
 # Rutas del servicio Producto
