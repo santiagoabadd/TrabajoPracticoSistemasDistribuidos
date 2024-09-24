@@ -61,6 +61,15 @@ def deleteUser(id):
     result = client.DeleteUser(id)
     return MessageToJson(result)
 
+
+@app.route("/authorize", methods=["POST"])
+@cross_origin()
+def authorize():
+    data = request.get_json()
+    client = GrpcClient()
+    result = client.authorize(data)
+    return make_response("ok")    
+
 # Rutas del servicio Tienda
 
 @app.route("/getTienda/<string:codigo>", methods=["GET"])

@@ -28,6 +28,9 @@ class GrpcClient(object):
 		self.channel = grpc.insecure_channel('{}:{}'.format(self.host, self.serveruser_port))
 		self.stub = usergrpc_grpc.UserServiceStub(self.channel)
 
+		self.channel = grpc.insecure_channel('{}:{}'.format(self.host, self.serveruser_port))
+		self.auth_stub = usergrpc_grpc.AuthServiceStub(self.channel)
+
 		self.tienda_channel = grpc.insecure_channel('{}:{}'.format(self.host, self.servertienda_port))
 		self.tienda_stub = tiendagrpc_grpc.TiendaServiceStub(self.tienda_channel)
 
@@ -83,6 +86,14 @@ class GrpcClient(object):
 		return self.stub.DeleteUser(request)
 	
 	
+
+	def authorize(self, auth):
+		pAuth = usergrpc_pb2.JwtRequest(
+			userName=auth['userName'],
+			password=auth['password']
+
+		)
+		return self.auth_stub.authorize(pAuth)
 
 	
 
