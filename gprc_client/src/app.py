@@ -71,11 +71,11 @@ def authorize():
     return MessageToJson(result)
 # Rutas del servicio Tienda
 
-@app.route("/getTienda/<string:codigo>", methods=["GET"])
+@app.route("/getTienda/<int:id>", methods=["GET"])
 @cross_origin()
-def getTienda(codigo):
+def getTienda(id):
     client = GrpcClient()
-    result = client.GetTienda(codigo)
+    result = client.GetTienda(id)
     return MessageToJson(result)
 
 @app.route("/getTiendasByEstado/<string:estado>", methods=["GET"])
@@ -121,11 +121,11 @@ def deleteTienda(codigo):
 
 # Rutas del servicio Producto
 
-@app.route("/getProduct/<string:codigo>", methods=["GET"])
+@app.route("/getProduct/<int:id>", methods=["GET"])
 @cross_origin()
-def getProduct(codigo):
+def getProduct(id):
     client = GrpcClient()
-    result = client.GetProduct(codigo)
+    result = client.GetProduct(id)
     return MessageToJson(result)
 
 @app.route("/getProductByNombre/<string:nombre>", methods=["GET"])

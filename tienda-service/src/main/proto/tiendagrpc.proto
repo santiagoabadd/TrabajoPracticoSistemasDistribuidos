@@ -16,7 +16,12 @@ service TiendaProductService {
     rpc AddTiendaProduct(AddTiendaProductRequest) returns (AddTiendaProductResponse);
     rpc GetTiendaProduct(GetTiendaProductRequest) returns (GetTiendaProductResponse);
     rpc DeleteTiendaProduct(DeleteTiendaProductRequest) returns (DeleteTiendaProductResponse);
+    rpc ObtenerProductosPorTienda(TiendaProductsRequest) returns (TiendaProductsResponse);
+    rpc ObtenerProductos(EmptyTienda) returns (TiendaProductsResponse);
 }
+
+
+
 
 message RegistrarTiendaRequest{
     string codigo=1;
@@ -36,7 +41,7 @@ message RegistrarTiendaResponse{
 
 
 message GetTiendaRequest {
-    string codigo = 1;
+    int64 id = 1;
 }
 
 message GetTiendaResponse {
@@ -88,14 +93,12 @@ message GetTiendaByEstadoRequest {
     bool estado = 1;
 }
 
-message EmptyTienda {}
 
 message AddTiendaProductRequest {
     int64 tiendaId = 1;
     int64 productId = 2;
     int32 stock = 3;
-    string color = 4;
-    string talle = 5;
+
 }
 
 message AddTiendaProductResponse {
@@ -111,8 +114,7 @@ message GetTiendaProductResponse {
     int64 tiendaId = 1;
     int64 productId = 2;
     int32 stock = 3;
-    string color = 4;
-    string talle = 5;
+
 }
 
 message DeleteTiendaProductRequest {
@@ -123,3 +125,27 @@ message DeleteTiendaProductResponse {
     string message = 1;
     bool success = 2;
 }
+
+message TiendaProductResponse {
+    int64 tiendaId = 1;
+    int64 productoId = 2;
+    string nombre = 3;
+    string codigo = 4;
+    string foto = 5;
+    string color = 6;
+    string talle = 7;
+    int32 stock = 8;
+}
+
+message TiendaProductsRequest {
+    int64 tiendaId = 1;
+}
+
+
+
+message TiendaProductsResponse {
+    repeated TiendaProductResponse productos = 1;
+}
+
+message EmptyTienda{}
+

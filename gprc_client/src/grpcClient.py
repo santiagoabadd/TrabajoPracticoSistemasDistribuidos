@@ -103,8 +103,8 @@ class GrpcClient(object):
 		request = tiendagrpc_pb2.EmptyTienda()
 		return self.tienda_stub.ListarTiendas(request)
     
-	def GetTienda(self, codigo):
-		request = tiendagrpc_pb2.GetTiendaRequest(codigo=codigo)
+	def GetTienda(self, id):
+		request = tiendagrpc_pb2.GetTiendaRequest(id=id)
 		return self.tienda_stub.GetTienda(request)
     
 	def GetTiendasByEstado(self, estado):
@@ -160,8 +160,8 @@ class GrpcClient(object):
 		request = productgrpc_pb2.EmptyProduct()
 		return self.product_stub.GetAllProducts(request)
     
-	def GetProduct(self, codigo):
-		request = productgrpc_pb2.GetProductRequest(codigo=codigo)
+	def GetProduct(self, id):
+		request = productgrpc_pb2.GetProductRequest(id=id)
 		return self.product_stub.GetProduct(request)
     
 	def GetProductByNombre(self, nombre):

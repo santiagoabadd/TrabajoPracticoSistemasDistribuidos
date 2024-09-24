@@ -1,0 +1,87 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.productoservice.grpc";
+
+
+service ProductService {
+    rpc GetAllProducts(EmptyProduct ) returns (GetAllProductsResponse);
+    rpc GetProduct(GetProductRequest) returns (GetProductResponse);
+    rpc GetProductByNombre(GetProductByNombreRequest) returns (GetProductResponse);
+    rpc CreateProduct(CreateProductRequest) returns (ProductResponse);
+    rpc UpdateProduct(UpdateProductRequest) returns (ProductResponse);
+    rpc DeleteProduct(DeleteProductRequest) returns (DeleteProductResponse);
+}
+
+
+message ProductInfo {
+    int64 id = 1;
+    string codigo = 2;
+    string nombre = 3;
+    string foto = 4;
+    string color = 5;
+    string talle = 6;
+}
+
+message EmptyProduct {}
+
+message GetProductRequest {
+    int64 id = 1;
+
+}
+
+message GetProductByNombreRequest {
+    string nombre = 1;
+}
+
+message CreateProductRequest {
+    string codigo = 1;
+    string nombre = 2;
+    string foto = 3;
+    string color = 4;
+    string talle = 5;
+}
+
+
+message UpdateProductRequest {
+    string codigo = 1;
+    string nombre = 2;
+    string foto = 3;
+    string color = 4;
+    string talle = 5;
+}
+
+
+message DeleteProductRequest {
+    int64 id = 1;
+}
+
+
+message GetProductResponse {
+    int64 id= 1;
+    string codigo = 2;
+    string nombre = 3;
+    string foto = 4;
+    string color = 5;
+    string talle = 6;
+}
+
+
+message GetAllProductsResponse {
+    repeated ProductInfo productsInfo = 1;
+}
+
+message ProductResponse {
+    int64 id= 1;
+    string codigo = 2;
+    string nombre = 3;
+    string foto = 4;
+    string color = 5;
+    string talle = 6;
+}
+
+
+message DeleteProductResponse {
+    bool success = 1;
+    string message = 2;
+}

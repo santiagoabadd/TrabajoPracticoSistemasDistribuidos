@@ -22,7 +22,7 @@ public class TiendaServiceRPC extends TiendaServiceGrpc.TiendaServiceImplBase {
 
     @Override
     public void getTienda(GetTiendaRequest request, StreamObserver<GetTiendaResponse> responseObserver) {
-        Tienda tienda = tiendaRepository.findByCodigo(request.getCodigo())
+        Tienda tienda = tiendaRepository.findById(request.getId())
                 .orElseThrow(() -> new RuntimeException("Tienda no encontrada"));;
 
         GetTiendaResponse response = GetTiendaResponse.newBuilder()
@@ -154,8 +154,8 @@ public class TiendaServiceRPC extends TiendaServiceGrpc.TiendaServiceImplBase {
                         .setCodigo(tienda.getCodigo())
                         .setCiudad(tienda.getCiudad())
                         .setDireccion(tienda.getDireccion())
-                        .setEstado(tienda.getEstado())
                         .setProvincia(tienda.getProvincia())
+                        .setEstado(tienda.getEstado())
                         .build())
                 .collect(Collectors.toList());
 

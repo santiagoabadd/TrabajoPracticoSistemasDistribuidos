@@ -21,8 +21,7 @@ public class TiendaProduct {
 
 
     private Integer stock;
-    private String color;
-    private String talle;
+
 
 
 }
