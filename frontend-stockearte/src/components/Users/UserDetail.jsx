@@ -1,44 +1,49 @@
-import React, { useState, useEffect } from 'react';
-import { updateUser, createUser, fetchStores } from '../../api/mockAPIStoresUsers';
+import React, { useState, useEffect } from "react";
+import {
+  updateUser,
+  createUser,
+  fetchStores,
+} from "../../api/mockAPIStoresUsers";
 
 export const UserDetail = ({ user, onClose, onUpdate, isAdding }) => {
   const [userData, setUserData] = useState({
-    username: '',
-    password: '',
-    store: '',
-    name: '',
-    surname: '',
+    username: "",
+    password: "",
+    store: "",
+    name: "",
+    surname: "",
     enabled: true,
-    role: 'Tienda'
+    role: "Tienda",
   });
 
-  const [stores, setStores] = useState([]); 
-  const [loading, setLoading] = useState(true); 
+  const [stores, setStores] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const loadStores = async () => {
       try {
-        const storesData = await fetchStores(); 
-        setStores(storesData); 
+        const storesData = await fetchStores();
+        setStores(storesData);
       } catch (error) {
-        console.error('Error fetching stores:', error);
+        console.error("Error fetching stores:", error);
       } finally {
-        setLoading(false); 
+        setLoading(false);
       }
     };
 
     loadStores();
 
     if (user) {
-      setUserData(user); 
+      setUserData(user);
     }
+    console.log(userData);
   }, [user]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setUserData(prevData => ({
+    setUserData((prevData) => ({
       ...prevData,
-      [name]: type === 'checkbox' ? checked : value
+      [name]: type === "checkbox" ? checked : value,
     }));
   };
 
@@ -54,7 +59,7 @@ export const UserDetail = ({ user, onClose, onUpdate, isAdding }) => {
       onUpdate(updatedUser);
       onClose();
     } catch (error) {
-      console.error('Error saving user:', error);
+      console.error("Error saving user:", error);
     }
   };
 
@@ -69,10 +74,17 @@ export const UserDetail = ({ user, onClose, onUpdate, isAdding }) => {
   return (
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex justify-center items-center">
       <div className="relative p-8 border w-full max-w-md shadow-lg rounded-md bg-white">
-        <h3 className="text-2xl font-bold mb-6">{isAdding ? 'Add User' : 'Edit User'}</h3>
+        <h3 className="text-2xl font-bold mb-6">
+          {isAdding ? "Add User" : "Edit User"}
+        </h3>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-1">Username</label>
+            <label
+              htmlFor="username"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Username
+            </label>
             <input
               id="username"
               name="username"
@@ -84,7 +96,12 @@ export const UserDetail = ({ user, onClose, onUpdate, isAdding }) => {
             />
           </div>
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">Password</label>
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Password
+            </label>
             <input
               id="password"
               name="password"
@@ -96,7 +113,12 @@ export const UserDetail = ({ user, onClose, onUpdate, isAdding }) => {
             />
           </div>
           <div>
-            <label htmlFor="store" className="block text-sm font-medium text-gray-700 mb-1">Store</label>
+            <label
+              htmlFor="store"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Store
+            </label>
             <select
               id="store"
               name="store"
@@ -106,10 +128,10 @@ export const UserDetail = ({ user, onClose, onUpdate, isAdding }) => {
               required
             >
               <option value="">Select Store</option>
-              {stores.map(store => (
-              
-                <option key={store.id} value={store.id}>{store.codigo}</option>
-               
+              {stores.map((store) => (
+                <option key={store.id} value={store.id}>
+                  {store.codigo}
+                </option>
               ))}
             </select>
           </div>
@@ -118,7 +140,7 @@ export const UserDetail = ({ user, onClose, onUpdate, isAdding }) => {
             type="submit"
             className="w-full py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700"
           >
-            {isAdding ? 'Add User' : 'Update User'}
+            {isAdding ? "Add User" : "Update User"}
           </button>
         </form>
       </div>

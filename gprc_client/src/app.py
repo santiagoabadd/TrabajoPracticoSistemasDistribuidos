@@ -68,8 +68,7 @@ def authorize():
     data = request.get_json()
     client = GrpcClient()
     result = client.authorize(data)
-    return make_response("ok")    
-
+    return MessageToJson(result)
 # Rutas del servicio Tienda
 
 @app.route("/getTienda/<string:codigo>", methods=["GET"])
