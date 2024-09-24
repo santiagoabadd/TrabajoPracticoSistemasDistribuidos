@@ -76,6 +76,19 @@ export const RegisterScreen = () => {
                   onChange={handleChange}
                 />
               </div>
+              <div>
+                <label className="block" htmlFor="username">
+                  email
+                </label>
+                <input
+                  type="text"
+                  placeholder="Email"
+                  className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                />
+              </div>
               <div className="mt-4">
                 <label className="block">Password</label>
                 <input
@@ -120,6 +133,19 @@ export const RegisterScreen = () => {
                   <option value="Tienda">Tienda</option>
                   <option value="Casa Central">Central</option>
                 </select>
+              </div>
+              <div>
+                <label className="block" htmlFor="username">
+                  codigo tienda
+                </label>
+                <input
+                  type="text"
+                  placeholder="Codigo Tienda"
+                  className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
+                  name="codigoTienda"
+                  value={formData.codigoTienda}
+                  onChange={handleChange}
+                />
               </div>
               <label className="flex items-center">
                 <input

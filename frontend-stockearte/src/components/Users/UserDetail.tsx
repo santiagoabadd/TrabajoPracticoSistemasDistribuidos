@@ -4,39 +4,60 @@ import {
   createUser,
   fetchStores,
 } from "../../api/mockAPIStoresUsers";
+import axios from "axios";
+
+interface Store {
+  id: string;
+  codigo: string;
+  estado: boolean;
+  direccion: string;
+  ciudad: string;
+  provincia: string;
+}
+
+interface UserEdit {
+  username: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  rol: string;
+  codigoTienda: string;
+  activo: boolean;
+  password: string;
+}
 
 export const UserDetail = ({ user, onClose, onUpdate, isAdding }) => {
-  const [userData, setUserData] = useState({
+  const [userData, setUserData] = useState<UserEdit>({
     username: "",
+    firstName: "",
+    lastName: "",
+    email: "",
+    rol: "Tienda",
+    codigoTienda: "",
+    activo: true,
     password: "",
-    store: "",
-    name: "",
-    surname: "",
-    enabled: true,
-    role: "Tienda",
   });
 
-  const [stores, setStores] = useState([]);
+  const [stores, setStores] = useState<Store[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const loadStores = async () => {
+    const fetchStores = async () => {
       try {
-        const storesData = await fetchStores();
-        setStores(storesData);
+        const response = await axios.get("http://localhost:5000/getTiendas");
+        const data = response.data;
+        setStores(Array.isArray(data.tiendasInfo) ? data.tiendasInfo : []);
       } catch (error) {
         console.error("Error fetching stores:", error);
-      } finally {
-        setLoading(false);
       }
     };
 
-    loadStores();
-
+    fetchStores();
     if (user) {
       setUserData(user);
     }
     console.log(userData);
+    console.log(stores);
   }, [user]);
 
   const handleChange = (e) => {
@@ -45,8 +66,9 @@ export const UserDetail = ({ user, onClose, onUpdate, isAdding }) => {
       ...prevData,
       [name]: type === "checkbox" ? checked : value,
     }));
+    console.log("EDITING--->::", userData);
   };
-
+  /*
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -61,15 +83,24 @@ export const UserDetail = ({ user, onClose, onUpdate, isAdding }) => {
     } catch (error) {
       console.error("Error saving user:", error);
     }
+  };*/
+
+  const updateUser = async (userData) => {
+    try {
+      const response = await axios.put(
+        "http://localhost:5000/updateUser",
+        userData
+      );
+      console.log("Usuario actualizado:", response.data);
+    } catch (error) {
+      console.error("Error al actualizar el usuario:", error);
+    }
   };
 
-  if (loading) {
-    return (
-      <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-blue-500"></div>
-      </div>
-    );
-  }
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    updateUser(userData);
+  };
 
   return (
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex justify-center items-center">
@@ -120,16 +151,16 @@ export const UserDetail = ({ user, onClose, onUpdate, isAdding }) => {
               Store
             </label>
             <select
-              id="store"
-              name="store"
-              value={userData.store}
+              id="codigoTienda"
+              name="codigoTienda"
+              value={userData.codigoTienda}
               onChange={handleChange}
               className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             >
               <option value="">Select Store</option>
               {stores.map((store) => (
-                <option key={store.id} value={store.id}>
+                <option key={store.id} value={store.codigo}>
                   {store.codigo}
                 </option>
               ))}
