@@ -16,6 +16,7 @@ interface Store {
 }
 
 interface UserEdit {
+  id: number;
   username: string;
   firstName: string;
   lastName: string;
@@ -28,6 +29,7 @@ interface UserEdit {
 
 export const UserDetail = ({ user, onClose, onUpdate, isAdding }) => {
   const [userData, setUserData] = useState<UserEdit>({
+    id: 0,
     username: "",
     firstName: "",
     lastName: "",

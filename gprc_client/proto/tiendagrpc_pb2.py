@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x10tiendagrpc.proto\"n\n\x16RegistrarTiendaRequest\x12\x0e\n\x06\x63odigo\x18\x01 \x01(\t\x12\x0e\n\x06\x65stado\x18\x02 \x01(\x08\x12\x11\n\tdireccion\x18\x03 \x01(\t\x12\x0e\n\x06\x63iudad\x18\x04 \x01(\t\x12\x11\n\tprovincia\x18\x05 \x01(\t\"o\n\x17RegistrarTiendaResponse\x12\x0e\n\x06\x63odigo\x18\x01 \x01(\t\x12\x0e\n\x06\x65stado\x18\x02 \x01(\x08\x12\x11\n\tdireccion\x18\x03 \x01(\t\x12\x0e\n\x06\x63iudad\x18\x04 \x01(\t\x12\x11\n\tprovincia\x18\x05 \x01(\t\"\x1e\n\x10GetTiendaRequest\x12\n\n\x02id\x18\x01 \x01(\x03\"3\n\x11GetTiendaResponse\x12\x0e\n\x06\x63odigo\x18\x01 \x01(\t\x12\x0e\n\x06\x65stado\x18\x02 \x01(\x08\"w\n\x13UpdateTiendaRequest\x12\n\n\x02id\x18\x01 \x01(\x03\x12\x0e\n\x06\x63odigo\x18\x02 \x01(\t\x12\x0e\n\x06\x65stado\x18\x03 \x01(\x08\x12\x11\n\tdireccion\x18\x04 \x01(\t\x12\x0e\n\x06\x63iudad\x18\x05 \x01(\t\x12\x11\n\tprovincia\x18\x06 \x01(\t\"l\n\x14UpdateTiendaResponse\x12\x0e\n\x06\x63odigo\x18\x01 \x01(\t\x12\x0e\n\x06\x65stado\x18\x02 \x01(\x08\x12\x11\n\tdireccion\x18\x03 \x01(\t\x12\x0e\n\x06\x63iudad\x18\x04 \x01(\t\x12\x11\n\tprovincia\x18\x05 \x01(\t\"9\n\x15ListarTiendasResponse\x12 \n\x0btiendasInfo\x18\x01 \x03(\x0b\x32\x0b.TiendaInfo\"n\n\nTiendaInfo\x12\n\n\x02id\x18\x01 \x01(\x03\x12\x0e\n\x06\x63odigo\x18\x02 \x01(\t\x12\x0e\n\x06\x65stado\x18\x03 \x01(\x08\x12\x11\n\tdireccion\x18\x04 \x01(\t\x12\x0e\n\x06\x63iudad\x18\x05 \x01(\t\x12\x11\n\tprovincia\x18\x06 \x01(\t\"!\n\x13\x44\x65leteTiendaRequest\x12\n\n\x02id\x18\x01 \x01(\x03\"8\n\x14\x44\x65leteTiendaResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\"*\n\x18GetTiendaByEstadoRequest\x12\x0e\n\x06\x65stado\x18\x01 \x01(\x08\"\r\n\x0b\x45mptyTienda\"M\n\x17\x41\x64\x64TiendaProductRequest\x12\x10\n\x08tiendaId\x18\x01 \x01(\x03\x12\x11\n\tproductId\x18\x02 \x01(\x03\x12\r\n\x05stock\x18\x03 \x01(\x05\"<\n\x18\x41\x64\x64TiendaProductResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x0f\n\x07success\x18\x02 \x01(\x08\"%\n\x17GetTiendaProductRequest\x12\n\n\x02id\x18\x01 \x01(\x03\"N\n\x18GetTiendaProductResponse\x12\x10\n\x08tiendaId\x18\x01 \x01(\x03\x12\x11\n\tproductId\x18\x02 \x01(\x03\x12\r\n\x05stock\x18\x03 \x01(\x05\"(\n\x1a\x44\x65leteTiendaProductRequest\x12\n\n\x02id\x18\x01 \x01(\x03\"?\n\x1b\x44\x65leteTiendaProductResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x0f\n\x07success\x18\x02 \x01(\x08\"\x98\x01\n\x15TiendaProductResponse\x12\x10\n\x08tiendaId\x18\x01 \x01(\x03\x12\x12\n\nproductoId\x18\x02 \x01(\x03\x12\x0e\n\x06nombre\x18\x03 \x01(\t\x12\x0e\n\x06\x63odigo\x18\x04 \x01(\t\x12\x0c\n\x04\x66oto\x18\x05 \x01(\t\x12\r\n\x05\x63olor\x18\x06 \x01(\t\x12\r\n\x05talle\x18\x07 \x01(\t\x12\r\n\x05stock\x18\x08 \x01(\x05\")\n\x15TiendaProductsRequest\x12\x10\n\x08tiendaId\x18\x01 \x01(\x03\"C\n\x16TiendaProductsResponse\x12)\n\tproductos\x18\x01 \x03(\x0b\x32\x16.TiendaProductResponse2\x83\x03\n\rTiendaService\x12\x32\n\tGetTienda\x12\x11.GetTiendaRequest\x1a\x12.GetTiendaResponse\x12\x44\n\x0fRegistrarTienda\x12\x17.RegistrarTiendaRequest\x1a\x18.RegistrarTiendaResponse\x12;\n\x0cUpdateTienda\x12\x14.UpdateTiendaRequest\x1a\x15.UpdateTiendaResponse\x12\x35\n\rListarTiendas\x12\x0c.EmptyTienda\x1a\x16.ListarTiendasResponse\x12G\n\x12GetTiendasByEstado\x12\x19.GetTiendaByEstadoRequest\x1a\x16.ListarTiendasResponse\x12;\n\x0c\x44\x65leteTienda\x12\x14.DeleteTiendaRequest\x1a\x15.DeleteTiendaResponse2\xc8\x02\n\x14TiendaProductService\x12G\n\x10\x41\x64\x64TiendaProduct\x12\x18.AddTiendaProductRequest\x1a\x19.AddTiendaProductResponse\x12G\n\x10GetTiendaProduct\x12\x18.GetTiendaProductRequest\x1a\x19.GetTiendaProductResponse\x12P\n\x13\x44\x65leteTiendaProduct\x12\x1b.DeleteTiendaProductRequest\x1a\x1c.DeleteTiendaProductResponse\x12L\n\x19ObtenerProductosPorTienda\x12\x16.TiendaProductsRequest\x1a\x17.TiendaProductsResponseB\x1a\n\x16\x63om.tiendaservice.grpcP\x01\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x10tiendagrpc.proto\"n\n\x16RegistrarTiendaRequest\x12\x0e\n\x06\x63odigo\x18\x01 \x01(\t\x12\x0e\n\x06\x65stado\x18\x02 \x01(\x08\x12\x11\n\tdireccion\x18\x03 \x01(\t\x12\x0e\n\x06\x63iudad\x18\x04 \x01(\t\x12\x11\n\tprovincia\x18\x05 \x01(\t\"o\n\x17RegistrarTiendaResponse\x12\x0e\n\x06\x63odigo\x18\x01 \x01(\t\x12\x0e\n\x06\x65stado\x18\x02 \x01(\x08\x12\x11\n\tdireccion\x18\x03 \x01(\t\x12\x0e\n\x06\x63iudad\x18\x04 \x01(\t\x12\x11\n\tprovincia\x18\x05 \x01(\t\"\x1e\n\x10GetTiendaRequest\x12\n\n\x02id\x18\x01 \x01(\x03\"3\n\x11GetTiendaResponse\x12\x0e\n\x06\x63odigo\x18\x01 \x01(\t\x12\x0e\n\x06\x65stado\x18\x02 \x01(\x08\"w\n\x13UpdateTiendaRequest\x12\n\n\x02id\x18\x01 \x01(\x03\x12\x0e\n\x06\x63odigo\x18\x02 \x01(\t\x12\x0e\n\x06\x65stado\x18\x03 \x01(\x08\x12\x11\n\tdireccion\x18\x04 \x01(\t\x12\x0e\n\x06\x63iudad\x18\x05 \x01(\t\x12\x11\n\tprovincia\x18\x06 \x01(\t\"l\n\x14UpdateTiendaResponse\x12\x0e\n\x06\x63odigo\x18\x01 \x01(\t\x12\x0e\n\x06\x65stado\x18\x02 \x01(\x08\x12\x11\n\tdireccion\x18\x03 \x01(\t\x12\x0e\n\x06\x63iudad\x18\x04 \x01(\t\x12\x11\n\tprovincia\x18\x05 \x01(\t\"9\n\x15ListarTiendasResponse\x12 \n\x0btiendasInfo\x18\x01 \x03(\x0b\x32\x0b.TiendaInfo\"n\n\nTiendaInfo\x12\n\n\x02id\x18\x01 \x01(\x03\x12\x0e\n\x06\x63odigo\x18\x02 \x01(\t\x12\x0e\n\x06\x65stado\x18\x03 \x01(\x08\x12\x11\n\tdireccion\x18\x04 \x01(\t\x12\x0e\n\x06\x63iudad\x18\x05 \x01(\t\x12\x11\n\tprovincia\x18\x06 \x01(\t\"!\n\x13\x44\x65leteTiendaRequest\x12\n\n\x02id\x18\x01 \x01(\x03\"8\n\x14\x44\x65leteTiendaResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\"*\n\x18GetTiendaByEstadoRequest\x12\x0e\n\x06\x65stado\x18\x01 \x01(\x08\"M\n\x17\x41\x64\x64TiendaProductRequest\x12\x10\n\x08tiendaId\x18\x01 \x01(\x03\x12\x11\n\tproductId\x18\x02 \x01(\x03\x12\r\n\x05stock\x18\x03 \x01(\x05\"<\n\x18\x41\x64\x64TiendaProductResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x0f\n\x07success\x18\x02 \x01(\x08\"%\n\x17GetTiendaProductRequest\x12\n\n\x02id\x18\x01 \x01(\x03\"N\n\x18GetTiendaProductResponse\x12\x10\n\x08tiendaId\x18\x01 \x01(\x03\x12\x11\n\tproductId\x18\x02 \x01(\x03\x12\r\n\x05stock\x18\x03 \x01(\x05\"(\n\x1a\x44\x65leteTiendaProductRequest\x12\n\n\x02id\x18\x01 \x01(\x03\"?\n\x1b\x44\x65leteTiendaProductResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x0f\n\x07success\x18\x02 \x01(\x08\"\x98\x01\n\x15TiendaProductResponse\x12\x10\n\x08tiendaId\x18\x01 \x01(\x03\x12\x12\n\nproductoId\x18\x02 \x01(\x03\x12\x0e\n\x06nombre\x18\x03 \x01(\t\x12\x0e\n\x06\x63odigo\x18\x04 \x01(\t\x12\x0c\n\x04\x66oto\x18\x05 \x01(\t\x12\r\n\x05\x63olor\x18\x06 \x01(\t\x12\r\n\x05talle\x18\x07 \x01(\t\x12\r\n\x05stock\x18\x08 \x01(\x05\")\n\x15TiendaProductsRequest\x12\x10\n\x08tiendaId\x18\x01 \x01(\x03\"C\n\x16TiendaProductsResponse\x12)\n\tproductos\x18\x01 \x03(\x0b\x32\x16.TiendaProductResponse\"\r\n\x0b\x45mptyTienda2\x83\x03\n\rTiendaService\x12\x32\n\tGetTienda\x12\x11.GetTiendaRequest\x1a\x12.GetTiendaResponse\x12\x44\n\x0fRegistrarTienda\x12\x17.RegistrarTiendaRequest\x1a\x18.RegistrarTiendaResponse\x12;\n\x0cUpdateTienda\x12\x14.UpdateTiendaRequest\x1a\x15.UpdateTiendaResponse\x12\x35\n\rListarTiendas\x12\x0c.EmptyTienda\x1a\x16.ListarTiendasResponse\x12G\n\x12GetTiendasByEstado\x12\x19.GetTiendaByEstadoRequest\x1a\x16.ListarTiendasResponse\x12;\n\x0c\x44\x65leteTienda\x12\x14.DeleteTiendaRequest\x1a\x15.DeleteTiendaResponse2\x83\x03\n\x14TiendaProductService\x12G\n\x10\x41\x64\x64TiendaProduct\x12\x18.AddTiendaProductRequest\x1a\x19.AddTiendaProductResponse\x12G\n\x10GetTiendaProduct\x12\x18.GetTiendaProductRequest\x1a\x19.GetTiendaProductResponse\x12P\n\x13\x44\x65leteTiendaProduct\x12\x1b.DeleteTiendaProductRequest\x1a\x1c.DeleteTiendaProductResponse\x12L\n\x19ObtenerProductosPorTienda\x12\x16.TiendaProductsRequest\x1a\x17.TiendaProductsResponse\x12\x39\n\x10ObtenerProductos\x12\x0c.EmptyTienda\x1a\x17.TiendaProductsResponseB\x1a\n\x16\x63om.tiendaservice.grpcP\x01\x62\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -54,28 +54,28 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_DELETETIENDARESPONSE']._serialized_end=823
   _globals['_GETTIENDABYESTADOREQUEST']._serialized_start=825
   _globals['_GETTIENDABYESTADOREQUEST']._serialized_end=867
-  _globals['_EMPTYTIENDA']._serialized_start=869
-  _globals['_EMPTYTIENDA']._serialized_end=882
-  _globals['_ADDTIENDAPRODUCTREQUEST']._serialized_start=884
-  _globals['_ADDTIENDAPRODUCTREQUEST']._serialized_end=961
-  _globals['_ADDTIENDAPRODUCTRESPONSE']._serialized_start=963
-  _globals['_ADDTIENDAPRODUCTRESPONSE']._serialized_end=1023
-  _globals['_GETTIENDAPRODUCTREQUEST']._serialized_start=1025
-  _globals['_GETTIENDAPRODUCTREQUEST']._serialized_end=1062
-  _globals['_GETTIENDAPRODUCTRESPONSE']._serialized_start=1064
-  _globals['_GETTIENDAPRODUCTRESPONSE']._serialized_end=1142
-  _globals['_DELETETIENDAPRODUCTREQUEST']._serialized_start=1144
-  _globals['_DELETETIENDAPRODUCTREQUEST']._serialized_end=1184
-  _globals['_DELETETIENDAPRODUCTRESPONSE']._serialized_start=1186
-  _globals['_DELETETIENDAPRODUCTRESPONSE']._serialized_end=1249
-  _globals['_TIENDAPRODUCTRESPONSE']._serialized_start=1252
-  _globals['_TIENDAPRODUCTRESPONSE']._serialized_end=1404
-  _globals['_TIENDAPRODUCTSREQUEST']._serialized_start=1406
-  _globals['_TIENDAPRODUCTSREQUEST']._serialized_end=1447
-  _globals['_TIENDAPRODUCTSRESPONSE']._serialized_start=1449
-  _globals['_TIENDAPRODUCTSRESPONSE']._serialized_end=1516
+  _globals['_ADDTIENDAPRODUCTREQUEST']._serialized_start=869
+  _globals['_ADDTIENDAPRODUCTREQUEST']._serialized_end=946
+  _globals['_ADDTIENDAPRODUCTRESPONSE']._serialized_start=948
+  _globals['_ADDTIENDAPRODUCTRESPONSE']._serialized_end=1008
+  _globals['_GETTIENDAPRODUCTREQUEST']._serialized_start=1010
+  _globals['_GETTIENDAPRODUCTREQUEST']._serialized_end=1047
+  _globals['_GETTIENDAPRODUCTRESPONSE']._serialized_start=1049
+  _globals['_GETTIENDAPRODUCTRESPONSE']._serialized_end=1127
+  _globals['_DELETETIENDAPRODUCTREQUEST']._serialized_start=1129
+  _globals['_DELETETIENDAPRODUCTREQUEST']._serialized_end=1169
+  _globals['_DELETETIENDAPRODUCTRESPONSE']._serialized_start=1171
+  _globals['_DELETETIENDAPRODUCTRESPONSE']._serialized_end=1234
+  _globals['_TIENDAPRODUCTRESPONSE']._serialized_start=1237
+  _globals['_TIENDAPRODUCTRESPONSE']._serialized_end=1389
+  _globals['_TIENDAPRODUCTSREQUEST']._serialized_start=1391
+  _globals['_TIENDAPRODUCTSREQUEST']._serialized_end=1432
+  _globals['_TIENDAPRODUCTSRESPONSE']._serialized_start=1434
+  _globals['_TIENDAPRODUCTSRESPONSE']._serialized_end=1501
+  _globals['_EMPTYTIENDA']._serialized_start=1503
+  _globals['_EMPTYTIENDA']._serialized_end=1516
   _globals['_TIENDASERVICE']._serialized_start=1519
   _globals['_TIENDASERVICE']._serialized_end=1906
   _globals['_TIENDAPRODUCTSERVICE']._serialized_start=1909
-  _globals['_TIENDAPRODUCTSERVICE']._serialized_end=2237
+  _globals['_TIENDAPRODUCTSERVICE']._serialized_end=2296
 # @@protoc_insertion_point(module_scope)

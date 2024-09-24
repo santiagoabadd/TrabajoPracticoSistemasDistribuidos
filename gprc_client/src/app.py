@@ -116,6 +116,19 @@ def deleteTienda(codigo):
     result = client.DeleteTienda(codigo)
     return MessageToJson(result)
 
+@app.route("/getTiendaProductosByTienda/<int:idTienda>", methods=["GET"])
+@cross_origin()
+def getTiendaProductosByTienda(idTienda):
+    client = GrpcClient()
+    result = client.ObtenerProductosPorTienda(idTienda)
+    return MessageToJson(result)
+
+@app.route("/obtenerProductosTienda", methods=["GET"])
+@cross_origin()
+def getAllTiendas():
+    client = GrpcClient()
+    result = client.ObtenerProductos()
+    return MessageToJson(result)
 
 
 

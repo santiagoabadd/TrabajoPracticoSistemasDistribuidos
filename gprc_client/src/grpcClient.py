@@ -70,6 +70,7 @@ class GrpcClient(object):
     
 	def UpdateUser(self, user):
 		pUser = usergrpc_pb2.UpdateUserRequest(
+			id=int(user['id']),
             username=user['username'],
             firstName=user['firstName'],
             lastName=user['lastName'],
@@ -153,6 +154,13 @@ class GrpcClient(object):
 		request = tiendagrpc_pb2.DeleteTiendaProductRequest(id=id)
 		return self.tiendaProduct_stub.DeleteTiendaProduct(request)
     
+	def ObtenerProductosPorTienda(self, tiendaId):
+		request = tiendagrpc_pb2.TiendaProductsRequest(tiendaId=tiendaId)
+		return self.tiendaProduct_stub.ObtenerProductosPorTienda(request)
+	
+	def ObtenerProductos(self):
+		request = tiendagrpc_pb2.EmptyTienda()
+		return self.tienda_stub.ObtenerProductos(request)
 	
 	## Metodos Product ///////////////////
 

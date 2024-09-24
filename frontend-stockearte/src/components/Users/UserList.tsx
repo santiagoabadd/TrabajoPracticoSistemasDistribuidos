@@ -4,7 +4,6 @@ import Swal from "sweetalert2";
 import { UserDetail } from "./UserDetail";
 import { AuthContext } from "../../context/AuthContext";
 
-
 interface User {
   id: number;
   username: string;
@@ -16,6 +15,7 @@ interface User {
 }
 
 interface UserEdit {
+  id: number;
   username: string;
   firstName: string;
   lastName: string;
@@ -39,8 +39,8 @@ interface Store {
 }
 
 interface Filter {
-    username: string;
-    codigoTienda: string;
+  username: string;
+  codigoTienda: string;
 }
 
 export const UserList: React.FC = () => {
@@ -91,11 +91,11 @@ export const UserList: React.FC = () => {
   );
 
   const handleEditUser = (user: User) => {
-    const { id, ...userWhitoutId } = user;
+    
     setSelectedUser({
-      ...userWhitoutId,
+      ...user,
       password: "",
-      email: "",
+      email: "asfasf",
     });
     setIsAddingUser(false);
   };

@@ -341,6 +341,11 @@ class TiendaProductServiceStub(object):
                 request_serializer=tiendagrpc__pb2.TiendaProductsRequest.SerializeToString,
                 response_deserializer=tiendagrpc__pb2.TiendaProductsResponse.FromString,
                 _registered_method=True)
+        self.ObtenerProductos = channel.unary_unary(
+                '/TiendaProductService/ObtenerProductos',
+                request_serializer=tiendagrpc__pb2.EmptyTienda.SerializeToString,
+                response_deserializer=tiendagrpc__pb2.TiendaProductsResponse.FromString,
+                _registered_method=True)
 
 
 class TiendaProductServiceServicer(object):
@@ -370,6 +375,12 @@ class TiendaProductServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def ObtenerProductos(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_TiendaProductServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -391,6 +402,11 @@ def add_TiendaProductServiceServicer_to_server(servicer, server):
             'ObtenerProductosPorTienda': grpc.unary_unary_rpc_method_handler(
                     servicer.ObtenerProductosPorTienda,
                     request_deserializer=tiendagrpc__pb2.TiendaProductsRequest.FromString,
+                    response_serializer=tiendagrpc__pb2.TiendaProductsResponse.SerializeToString,
+            ),
+            'ObtenerProductos': grpc.unary_unary_rpc_method_handler(
+                    servicer.ObtenerProductos,
+                    request_deserializer=tiendagrpc__pb2.EmptyTienda.FromString,
                     response_serializer=tiendagrpc__pb2.TiendaProductsResponse.SerializeToString,
             ),
     }
@@ -501,6 +517,33 @@ class TiendaProductService(object):
             target,
             '/TiendaProductService/ObtenerProductosPorTienda',
             tiendagrpc__pb2.TiendaProductsRequest.SerializeToString,
+            tiendagrpc__pb2.TiendaProductsResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def ObtenerProductos(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/TiendaProductService/ObtenerProductos',
+            tiendagrpc__pb2.EmptyTienda.SerializeToString,
             tiendagrpc__pb2.TiendaProductsResponse.FromString,
             options,
             channel_credentials,

@@ -70,14 +70,15 @@ message GetAllUsersResponse {
 }
 
 message UpdateUserRequest {
-    string username = 1;
-    string firstName = 2;
-    string lastName = 3;
-    string email = 4;
-    string rol = 5;
-    string codigoTienda = 6;
-    bool activo=7;
-    string password=8;
+    int64 id = 1;
+    string username = 2;
+    string firstName = 3;
+    string lastName = 4;
+    string email = 5;
+    string rol = 6;
+    string codigoTienda = 7;
+    bool activo=8;
+    string password=9;
 }
 
 
