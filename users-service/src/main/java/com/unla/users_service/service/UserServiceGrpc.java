@@ -88,9 +88,13 @@ public class UserServiceGrpc extends UserServiceImplBase {
 
         List<UserInfo> userInfos = users.stream()
                 .map(user -> UserInfo.newBuilder()
+                        .setId(user.getId())
                         .setUsername(user.getUserName())
                         .setFirstName(user.getFirstName())
                         .setLastName(user.getLastName())
+                        .setCodigoTienda(user.getCodigoTienda())
+                        .setActivo(user.isActivo())
+                        .setRol(user.getRol())
                         .build())
                 .collect(Collectors.toList());
 
@@ -133,12 +137,12 @@ public class UserServiceGrpc extends UserServiceImplBase {
     @Override
     @Transactional
     public void deleteUser(DeleteUserRequest request, StreamObserver<DeleteUserResponse> responseObserver) {
-        String username = request.getUsername();
+        long id = request.getId();
         boolean success;
         String message;
 
         try {
-            userRepository.deleteByUserName(username);
+            userRepository.deleteById(id);
             success = true;
             message = "Usuario eliminado con éxito";
         } catch (Exception e) {
@@ -161,9 +165,13 @@ public class UserServiceGrpc extends UserServiceImplBase {
 
         List<UserInfo> userInfos = users.stream()
                 .map(user -> UserInfo.newBuilder()
+                        .setId(user.getId())
                         .setUsername(user.getUserName())
                         .setFirstName(user.getFirstName())
                         .setLastName(user.getLastName())
+                        .setCodigoTienda(user.getCodigoTienda())
+                        .setActivo(user.isActivo())
+                        .setRol(user.getRol())
                         .build())
                 .collect(Collectors.toList());
 

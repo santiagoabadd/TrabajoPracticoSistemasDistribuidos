@@ -128,6 +128,7 @@ public class TiendaServiceRPC extends TiendaServiceGrpc.TiendaServiceImplBase {
 
         List<TiendaInfo> tiendasInfo= tiendas.stream()
                 .map(tienda -> TiendaInfo.newBuilder()
+                        .setId(tienda.getId())
                         .setCodigo(tienda.getCodigo())
                         .setCiudad(tienda.getCiudad())
                         .setDireccion(tienda.getDireccion())

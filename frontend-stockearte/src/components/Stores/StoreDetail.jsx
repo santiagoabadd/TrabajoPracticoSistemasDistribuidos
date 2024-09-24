@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react'
+import axios from "axios"
 
 export const StoreDetail = ({ store, onClose, onUpdate, isAdding }) => {
 
   const [storeData, setStoreData] = useState({
-    code: '',
-    address: '',
-    city: '',
-    province: '',
-    enabled: 'enabled',
+    codigo: '',
+    direccion: '',
+    ciudad: '',
+    provincia: '',
+    estado: 'enabled',
   });
   
 
@@ -16,12 +17,11 @@ export const StoreDetail = ({ store, onClose, onUpdate, isAdding }) => {
       setStoreData(store);
     }else {
       setStoreData({
-        id: '',
-        code: '',
-        address: '',
-        city: '',
-        province: '',
-        status: 'enabled',
+        codigo: '',
+        direccion: '',
+        ciudad: '',
+        provincia: '',
+        estado: true
       });
     }
   }, [store]);
@@ -29,16 +29,21 @@ export const StoreDetail = ({ store, onClose, onUpdate, isAdding }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+  
     try {
-      // Simulación de una llamada a un cliente gRPC para agregar o actualizar la tienda
-      await new Promise(resolve => setTimeout(resolve, 500));
-
-      const updatedStore = {
+      const apiUrl = isAdding
+        ? "http://localhost:5000/registerTienda"
+        : "http://localhost:5000/updateTienda";
+  
+      const tiendaData = {
         ...storeData,
-        id: isAdding ? `T${Math.floor(Math.random() * 1000)}` : storeData.id,
+        enabled: storeData.estado === 'enabled',
       };
+  
+      const response = await axios.post(apiUrl, tiendaData);
+  
 
-      onUpdate(updatedStore);
+      onUpdate(tiendaData);
     } catch (error) {
       console.error('Error updating store:', error);
     }
@@ -55,59 +60,59 @@ export const StoreDetail = ({ store, onClose, onUpdate, isAdding }) => {
             <h3 className="text-xl font-bold mb-4">{isAdding ? 'Add New Store' : 'Edit Store'}</h3>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label htmlFor="code" className="block text-sm font-medium text-gray-700">Code</label>
+                <label htmlFor="codigo" className="block text-sm font-medium text-gray-700">Codigo</label>
                 <input
-                  id="code"
+                  id="codigo"
                   type="text"
-                  value={storeData.code}
-                  onChange={(e) => setStoreData({...storeData, code: e.target.value})}
+                  value={storeData.codigo}
+                  onChange={(e) => setStoreData({...storeData, codigo: e.target.value})}
                   className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                  placeholder="Code"
+                  placeholder="Codigo"
                   required
                 />
               </div>
               <div>
-                <label htmlFor="address" className="block text-sm font-medium text-gray-700">Address</label>
+                <label htmlFor="direccion" className="block text-sm font-medium text-gray-700">Direccion</label>
                 <input
-                  id="address"
+                  id="direccion"
                   type="text"
-                  value={storeData.address}
-                  onChange={(e) => setStoreData({...storeData, address: e.target.value})}
+                  value={storeData.direccion}
+                  onChange={(e) => setStoreData({...storeData, direccion: e.target.value})}
                   className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                  placeholder="Address"
+                  placeholder="Direccion"
                   required
                 />
               </div>
               <div>
-                <label htmlFor="city" className="block text-sm font-medium text-gray-700">City</label>
+                <label htmlFor="ciudad" className="block text-sm font-medium text-gray-700">ciudad</label>
                 <input
-                  id="city"
+                  id="ciudad"
                   type="text"
-                  value={storeData.city}
-                  onChange={(e) => setStoreData({...storeData, city: e.target.value})}
+                  value={storeData.ciudad}
+                  onChange={(e) => setStoreData({...storeData, ciudad: e.target.value})}
                   className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                  placeholder="City"
+                  placeholder="ciudad"
                   required
                 />
               </div>
               <div>
-                <label htmlFor="province" className="block text-sm font-medium text-gray-700">Province</label>
+                <label htmlFor="provincia" className="block text-sm font-medium text-gray-700">provincia</label>
                 <input
-                  id="province"
+                  id="provincia"
                   type="text"
-                  value={storeData.province}
-                  onChange={(e) => setStoreData({...storeData, province: e.target.value})}
+                  value={storeData.provincia}
+                  onChange={(e) => setStoreData({...storeData, provincia: e.target.value})}
                   className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                  placeholder="Province"
+                  placeholder="provincia"
                   required
                 />
               </div>
               <div>
-                <label htmlFor="status" className="block text-sm font-medium text-gray-700">Status</label>
+                <label htmlFor="estados" className="block text-sm font-medium text-gray-700">estados</label>
                 <select
-                  id="status"
-                  value={storeData.status}
-                  onChange={(e) => setStoreData({...storeData, status: e.target.value})}
+                  id="estados"
+                  value={storeData.estados}
+                  onChange={(e) => setStoreData({...storeData, estados: e.target.value})}
                   className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                 >
                   <option value="enabled">Enabled</option>

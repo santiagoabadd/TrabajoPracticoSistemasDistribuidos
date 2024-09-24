@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x11productgrpc.proto\"G\n\x0bProductInfo\x12\n\n\x02id\x18\x01 \x01(\x03\x12\x0e\n\x06\x63odigo\x18\x02 \x01(\t\x12\x0e\n\x06nombre\x18\x03 \x01(\t\x12\x0c\n\x04\x66oto\x18\x04 \x01(\t\"\x0e\n\x0c\x45mptyProduct\"#\n\x11GetProductRequest\x12\x0e\n\x06\x63odigo\x18\x01 \x01(\t\"+\n\x19GetProductByNombreRequest\x12\x0e\n\x06nombre\x18\x01 \x01(\t\"D\n\x14\x43reateProductRequest\x12\x0e\n\x06\x63odigo\x18\x01 \x01(\t\x12\x0e\n\x06nombre\x18\x02 \x01(\t\x12\x0c\n\x04\x66oto\x18\x03 \x01(\t\"D\n\x14UpdateProductRequest\x12\x0e\n\x06\x63odigo\x18\x01 \x01(\t\x12\x0e\n\x06nombre\x18\x02 \x01(\t\x12\x0c\n\x04\x66oto\x18\x03 \x01(\t\"&\n\x14\x44\x65leteProductRequest\x12\x0e\n\x06\x63odigo\x18\x01 \x01(\t\"B\n\x12GetProductResponse\x12\x0e\n\x06\x63odigo\x18\x01 \x01(\t\x12\x0e\n\x06nombre\x18\x02 \x01(\t\x12\x0c\n\x04\x66oto\x18\x03 \x01(\t\"<\n\x16GetAllProductsResponse\x12\"\n\x0cproductsInfo\x18\x01 \x03(\x0b\x32\x0c.ProductInfo\"?\n\x0fProductResponse\x12\x0e\n\x06\x63odigo\x18\x01 \x01(\t\x12\x0e\n\x06nombre\x18\x02 \x01(\t\x12\x0c\n\x04\x66oto\x18\x03 \x01(\t\"9\n\x15\x44\x65leteProductResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t2\xfc\x02\n\x0eProductService\x12\x38\n\x0eGetAllProducts\x12\r.EmptyProduct\x1a\x17.GetAllProductsResponse\x12\x35\n\nGetProduct\x12\x12.GetProductRequest\x1a\x13.GetProductResponse\x12\x45\n\x12GetProductByNombre\x12\x1a.GetProductByNombreRequest\x1a\x13.GetProductResponse\x12\x38\n\rCreateProduct\x12\x15.CreateProductRequest\x1a\x10.ProductResponse\x12\x38\n\rUpdateProduct\x12\x15.UpdateProductRequest\x1a\x10.ProductResponse\x12>\n\rDeleteProduct\x12\x15.DeleteProductRequest\x1a\x16.DeleteProductResponseB\x1c\n\x18\x63om.productoservice.grpcP\x01\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x11productgrpc.proto\"G\n\x0bProductInfo\x12\n\n\x02id\x18\x01 \x01(\x03\x12\x0e\n\x06\x63odigo\x18\x02 \x01(\t\x12\x0e\n\x06nombre\x18\x03 \x01(\t\x12\x0c\n\x04\x66oto\x18\x04 \x01(\t\"\x0e\n\x0c\x45mptyProduct\"#\n\x11GetProductRequest\x12\x0e\n\x06\x63odigo\x18\x01 \x01(\t\"+\n\x19GetProductByNombreRequest\x12\x0e\n\x06nombre\x18\x01 \x01(\t\"D\n\x14\x43reateProductRequest\x12\x0e\n\x06\x63odigo\x18\x01 \x01(\t\x12\x0e\n\x06nombre\x18\x02 \x01(\t\x12\x0c\n\x04\x66oto\x18\x03 \x01(\t\"D\n\x14UpdateProductRequest\x12\x0e\n\x06\x63odigo\x18\x01 \x01(\t\x12\x0e\n\x06nombre\x18\x02 \x01(\t\x12\x0c\n\x04\x66oto\x18\x03 \x01(\t\"&\n\x14\x44\x65leteProductRequest\x12\x0e\n\x06\x63odigo\x18\x01 \x01(\t\"N\n\x12GetProductResponse\x12\n\n\x02id\x18\x01 \x01(\x03\x12\x0e\n\x06\x63odigo\x18\x02 \x01(\t\x12\x0e\n\x06nombre\x18\x03 \x01(\t\x12\x0c\n\x04\x66oto\x18\x04 \x01(\t\"<\n\x16GetAllProductsResponse\x12\"\n\x0cproductsInfo\x18\x01 \x03(\x0b\x32\x0c.ProductInfo\"?\n\x0fProductResponse\x12\x0e\n\x06\x63odigo\x18\x01 \x01(\t\x12\x0e\n\x06nombre\x18\x02 \x01(\t\x12\x0c\n\x04\x66oto\x18\x03 \x01(\t\"9\n\x15\x44\x65leteProductResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t2\xfc\x02\n\x0eProductService\x12\x38\n\x0eGetAllProducts\x12\r.EmptyProduct\x1a\x17.GetAllProductsResponse\x12\x35\n\nGetProduct\x12\x12.GetProductRequest\x1a\x13.GetProductResponse\x12\x45\n\x12GetProductByNombre\x12\x1a.GetProductByNombreRequest\x1a\x13.GetProductResponse\x12\x38\n\rCreateProduct\x12\x15.CreateProductRequest\x1a\x10.ProductResponse\x12\x38\n\rUpdateProduct\x12\x15.UpdateProductRequest\x1a\x10.ProductResponse\x12>\n\rDeleteProduct\x12\x15.DeleteProductRequest\x1a\x16.DeleteProductResponseB\x1c\n\x18\x63om.productoservice.grpcP\x01\x62\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -47,13 +47,13 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_DELETEPRODUCTREQUEST']._serialized_start=332
   _globals['_DELETEPRODUCTREQUEST']._serialized_end=370
   _globals['_GETPRODUCTRESPONSE']._serialized_start=372
-  _globals['_GETPRODUCTRESPONSE']._serialized_end=438
-  _globals['_GETALLPRODUCTSRESPONSE']._serialized_start=440
-  _globals['_GETALLPRODUCTSRESPONSE']._serialized_end=500
-  _globals['_PRODUCTRESPONSE']._serialized_start=502
-  _globals['_PRODUCTRESPONSE']._serialized_end=565
-  _globals['_DELETEPRODUCTRESPONSE']._serialized_start=567
-  _globals['_DELETEPRODUCTRESPONSE']._serialized_end=624
-  _globals['_PRODUCTSERVICE']._serialized_start=627
-  _globals['_PRODUCTSERVICE']._serialized_end=1007
+  _globals['_GETPRODUCTRESPONSE']._serialized_end=450
+  _globals['_GETALLPRODUCTSRESPONSE']._serialized_start=452
+  _globals['_GETALLPRODUCTSRESPONSE']._serialized_end=512
+  _globals['_PRODUCTRESPONSE']._serialized_start=514
+  _globals['_PRODUCTRESPONSE']._serialized_end=577
+  _globals['_DELETEPRODUCTRESPONSE']._serialized_start=579
+  _globals['_DELETEPRODUCTRESPONSE']._serialized_end=636
+  _globals['_PRODUCTSERVICE']._serialized_start=639
+  _globals['_PRODUCTSERVICE']._serialized_end=1019
 # @@protoc_insertion_point(module_scope)

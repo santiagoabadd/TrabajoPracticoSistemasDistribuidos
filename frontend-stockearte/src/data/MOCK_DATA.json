@@ -363,8 +363,8 @@
     ],
     "usuario": [
         {
-            "nombre_usuario": "usuario1",
-            "clave": "abc123defg",
+            "nombre_usuario": "1234",
+            "clave": "1234",
             "nombre": "Juan",
             "apellido": "Pérez",
             "habilitado": "TRUE",

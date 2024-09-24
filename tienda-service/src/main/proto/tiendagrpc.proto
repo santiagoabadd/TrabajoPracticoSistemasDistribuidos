@@ -66,11 +66,12 @@ message ListarTiendasResponse {
 }
 
 message TiendaInfo {
-    string codigo = 1;
-    bool estado = 2;
-    string direccion = 3;
-    string ciudad = 4;
-    string provincia = 5;
+    int64 id = 1;
+    string codigo = 2;
+    bool estado = 3;
+    string direccion = 4;
+    string ciudad = 5;
+    string provincia = 6;
 }
 
 message DeleteTiendaRequest {

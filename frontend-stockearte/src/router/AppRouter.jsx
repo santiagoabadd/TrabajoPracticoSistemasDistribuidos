@@ -23,7 +23,6 @@ export const AppRouter = () => {
             ? <>
                 <NavBar/>
                 <Routes>
-                    {/* rutas privadas */}
                     <Route path='/' element={<DashBoard/>} />
                     <Route path='/products' element={<ProductList/>} />
                     {(user.role === 'Casa Central' || user.role === 'central') && (
@@ -36,8 +35,7 @@ export const AppRouter = () => {
                 </Routes>
                 <Footer/> 
               </>
-              : <Routes>
-                    {/* rutas públicas */}
+              : <Routes>                  
                   <Route path='/login' element={<LoginScreen />} />
                   <Route path='/register' element={<RegisterScreen />} />
                   <Route path='*' element={<Navigate to="/login" />} />

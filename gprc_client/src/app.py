@@ -9,6 +9,7 @@ from src.grpcClient import GrpcClient
 
 
 app = Flask(__name__)
+CORS(app) 
 
 @app.route("/")
 def hello():
@@ -53,11 +54,11 @@ def updateUser():
     result = client.UpdateUser(data)
     return make_response("ok")
 
-@app.route("/deleteUser/<string:username>", methods=["DELETE"])
+@app.route("/deleteUser/<int:id>", methods=["DELETE"])
 @cross_origin()
-def deleteUser(username):
+def deleteUser(id):
     client = GrpcClient()
-    result = client.DeleteUser(username)
+    result = client.DeleteUser(id)
     return MessageToJson(result)
 
 # Rutas del servicio Tienda
@@ -87,6 +88,7 @@ def getAllTiendas():
 @cross_origin()
 def registerTienda():
     data = request.get_json() 
+    print(data) 
     client = GrpcClient()
     result = client.RegistrarTienda(data)
     return make_response("ok")
@@ -106,13 +108,7 @@ def deleteTienda(codigo):
     result = client.DeleteTienda(codigo)
     return MessageToJson(result)
 
-@app.route("/registerTienda", methods=["POST"])
-@cross_origin()
-def registerTienda():
-    data = request.get_json() 
-    client = GrpcClient()
-    result = client.RegistrarTienda(data)
-    return make_response("ok")
+
 
 
 # Rutas del servicio Producto
@@ -144,7 +140,7 @@ def registerProduct():
     data = request.get_json()
     client = GrpcClient()
     result = client.CreateProduct(data)
-    return make_response("ok")
+    return jsonify({"message": "Product created successfully"}), 200
 
 @app.route("/updateProduct", methods=["PUT"])
 @cross_origin()
@@ -152,7 +148,7 @@ def updateProduct():
     data = request.get_json() 
     client = GrpcClient()
     result = client.UpdateProduct(data)
-    return make_response("ok")
+    return jsonify({"message": "Product updated successfully"}), 200
 
 @app.route("/deleteProduct/<string:codigo>", methods=["DELETE"])
 @cross_origin()
@@ -167,4 +163,5 @@ def registerTiendaProducto():
     data = request.get_json() 
     client = GrpcClient()
     result = client.AddTiendaProduct(data)
-    return make_response("ok")
+    
+    return jsonify({"message": "Relation product store created successfully"}), 200

@@ -3,7 +3,7 @@ CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.dirname(CURRENT_DIR))
 
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
-PROTO_DIR = os.path.join(CURRENT_DIR, '../proto')  # Ajusta la ruta según tu estructura de carpetas
+PROTO_DIR = os.path.join(CURRENT_DIR, '../proto') 
 sys.path.append(PROTO_DIR)
 
 
@@ -25,7 +25,7 @@ class GrpcClient(object):
 		self.servertienda_port = 9091
 		self.serveruser_port = 9092
 
-		self.channel = grpc.insecure_channel('{}:{}'.format(self.host, self.serverproduct_port))
+		self.channel = grpc.insecure_channel('{}:{}'.format(self.host, self.serveruser_port))
 		self.stub = usergrpc_grpc.UserServiceStub(self.channel)
 
 		self.tienda_channel = grpc.insecure_channel('{}:{}'.format(self.host, self.servertienda_port))
@@ -34,7 +34,7 @@ class GrpcClient(object):
 		self.tiendaProduct_channel = grpc.insecure_channel('{}:{}'.format(self.host, self.servertienda_port))
 		self.tiendaProduct_stub = tiendagrpc_grpc.TiendaProductServiceStub(self.tiendaProduct_channel)
 
-		self.product_channel = grpc.insecure_channel('{}:{}'.format(self.host, self.serveruser_port))
+		self.product_channel = grpc.insecure_channel('{}:{}'.format(self.host, self.serverproduct_port))
 		self.product_stub = productgrpc_grpc.ProductServiceStub(self.product_channel)
 
 	## Metodos User///////////////////
@@ -78,9 +78,11 @@ class GrpcClient(object):
         )
 		return self.stub.UpdateUser(pUser)
 
-	def DeleteUser(self, username):
-		request = usergrpc_pb2.DeleteUserRequest(username=username)
+	def DeleteUser(self, user_id):
+		request = usergrpc_pb2.DeleteUserRequest(id=user_id)
 		return self.stub.DeleteUser(request)
+	
+	
 
 	
 

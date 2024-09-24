@@ -1,67 +1,100 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { fetchUsers, deleteUser, fetchStores } from '../../api/mockAPIStoresUsers';
+import React, { useContext, useEffect, useState } from 'react';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 import { UserDetail } from './UserDetail';
 import { AuthContext } from '../../context/AuthContext';
-import Swal from 'sweetalert2';
 
-export const UserList = () => {
+ 
+interface User {
+    id: number;
+    username: string;
+    firstName: string;
+    LastName: string;
+    codigoTienda: string;
+    rol: string;
+    activo:boolean;
+}
 
-    const [users, setUsers] = useState([]);
-    const [stores, setStores] = useState([]);
-    const [filter, setFilter] = useState({ username: '', store: '' });
-    const [selectedUser, setSelectedUser] = useState(null);
-    const [isAddingUser, setIsAddingUser] = useState(false);
+interface Store {
+    codigo: string;
+    estado: boolean;
+    direccion: string;
+    ciudad: string;
+    provincia: string;
+}
+
+interface Filter {
+    username: string;
+    codigoTienda: string;
+}
+
+export const UserList: React.FC = () => {
+    const [users, setUsers] = useState<User[]>([]);
+    const [stores, setStores] = useState<Store[]>([]);
+    const [filter, setFilter] = useState<Filter>({ username: '', codigoTienda: '' });
+    const [selectedUser, setSelectedUser] = useState<User | null>(null);
+    const [isAddingUser, setIsAddingUser] = useState<boolean>(false);
     const { user } = useContext(AuthContext);
 
     useEffect(() => {
-            fetchUsers().then(data => setUsers(data));
-            fetchStores().then(data => setStores(data));
-    }, []) 
+        const fetchUsers = async () => {
+            const response = await axios.get("http://localhost:5000/getUsers");
+            const data = response.data; 
+            setUsers(Array.isArray(data.user) ? data.user : []);
+        };
 
+        const fetchStores = async () => {
+            const response = await  axios.get("http://localhost:5000/getTiendas");
+            const data = response.data; 
+            setStores(Array.isArray(data.tiendasInfo) ? data.tiendasInfo : []);
+        };
 
+        fetchUsers();
+        fetchStores();
+    }, []);
 
-    const handleFilterChange = (e) => {
-        setFilter({ ...filter, [e.target.name]: e.target.value })
-    }
+    const handleFilterChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setFilter({ ...filter, [e.target.name]: e.target.value });
+    };
 
     const filteredUsers = users.filter(user =>
         user.username.toLowerCase().includes(filter.username.toLowerCase()) &&
-        user.store.toLowerCase().includes(filter.store.toLowerCase())
-    )
+        user.codigoTienda.toLowerCase().includes(filter.codigoTienda.toLowerCase())
+    );
 
-    const handleEditUser = (user) => {
+    const handleEditUser = (user: User) => {
         setSelectedUser(user);
         setIsAddingUser(false);
     };
 
-    const handleDeleteUser = async (userId) => {
+    const handleDeleteUser = async (userId: number) => {
         try {
-          const result = await Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-          });
-    
-          if (result.isConfirmed) {
-            await deleteUser(userId);
-            setUsers(users.filter(user => user.id !== userId));
-            Swal.fire('Deleted!', 'The user has been deleted.', 'success');
-          }
-        } catch (error) {
-          Swal.fire('Error!', 'There was an error deleting the user.', 'error');
-          console.error('Error deleting user:', error);
-        }
-      };
+            const result = await Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!',
+            });
 
-    const handleUpdateUser = (updatedUser) => {
+            if (result.isConfirmed) {
+                await axios.delete(`http://localhost:5000/deleteUser/${userId}`);
+                setUsers(users.filter(user => user.id !== userId));
+                Swal.fire('Deleted!', 'The user has been deleted.', 'success');
+            }
+        } catch (error) {
+            Swal.fire('Error!', 'There was an error deleting the user.', 'error');
+            console.error('Error deleting user:', error);
+        }
+    };
+
+    const handleUpdateUser = (updatedUser: User) => {
         if (isAddingUser) {
-          setUsers([...users, updatedUser]);
+            setUsers([...users, updatedUser]);
         } else {
-          setUsers(users.map(u => u.id === updatedUser.id ? updatedUser : u));
+            setUsers(users.map(u => u.id === updatedUser.id ? updatedUser : u));
         }
         setSelectedUser(null);
         setIsAddingUser(false);
@@ -72,12 +105,11 @@ export const UserList = () => {
         setIsAddingUser(true);
     };
 
-
     return (
         <>
             <div className="container mx-auto px-4 py-8">
                 <h2 className="text-2xl font-bold mb-4">Users</h2>
-                {user.role === 'Casa Central' && (
+                {user.rol === 'Casa Central' && (
                     <button
                         onClick={handleAddUser}
                         className="mb-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
@@ -97,8 +129,8 @@ export const UserList = () => {
                     <input
                         type="text"
                         placeholder="Filter by store"
-                        name="store"
-                        value={filter.store}
+                        name="codigoTienda"
+                        value={filter.codigoTienda}
                         onChange={handleFilterChange}
                         className="border rounded px-2 py-1"
                     />
@@ -116,8 +148,8 @@ export const UserList = () => {
                         {filteredUsers.map(user => (
                             <tr key={user.id}>
                                 <td className="py-2 px-4 border-b">{user.username}</td>
-                                <td className="py-2 px-4 border-b">{user.store}</td>
-                                <td className="py-2 px-4 border-b">{user.status}</td>
+                                <td className="py-2 px-4 border-b">{user.codigoTienda}</td>
+                                <td className="py-2 px-4 border-b">{user.activo}</td>
                                 <td className="py-2 px-4 border-b">
                                     <button 
                                         onClick={() => handleEditUser(user)}
@@ -130,9 +162,8 @@ export const UserList = () => {
                                         onClick={() => handleDeleteUser(user.id)}
                                         className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded"
                                     >
-                                        Eliminar
+                                        Delete
                                     </button>
-                                    
                                 </td>
                             </tr>
                         ))}
@@ -141,13 +172,13 @@ export const UserList = () => {
             </div>
             {(selectedUser || isAddingUser) && (
                 <UserDetail
-                user={selectedUser}
-                stores={stores}
-                onClose={() => { setSelectedUser(null); setIsAddingUser(false); }}
-                onUpdate={handleUpdateUser}
-                isAdding={isAddingUser}
+                    user={selectedUser}
+            
+                    onClose={() => { setSelectedUser(null); setIsAddingUser(false); }}
+                    onUpdate={handleUpdateUser}
+                    isAdding={isAddingUser}
                 />
             )}
         </>
-    )
-}
+    );
+};

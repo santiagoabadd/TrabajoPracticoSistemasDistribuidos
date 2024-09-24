@@ -19,7 +19,7 @@ public class TiendaProductServiceRPC extends TiendaProductServiceGrpc.TiendaProd
     @Transactional
     public void addTiendaProduct(AddTiendaProductRequest request, StreamObserver<AddTiendaProductResponse> responseObserver) {
 
-
+        System.out.println(request);
         TiendaProduct tiendaProduct = TiendaProduct.builder()
                 .tiendaId(request.getTiendaId())
                 .productId(request.getProductId())

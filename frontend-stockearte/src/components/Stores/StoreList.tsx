@@ -1,61 +1,57 @@
-import React, { useEffect, useState } from 'react'
-import mockData from '../../data/MOCK_DATA.json';
+import React, { useEffect, useState } from 'react';
 import { StoreDetail } from './StoreDetail';
 import Swal from 'sweetalert2';
+import axios from "axios";
+
+interface Store {
+    codigo: string;
+    estado: boolean;
+    direccion: string;
+    ciudad: string;
+    provincia: string;
+}
 
 export const StoreList = () => {
-
-    const [stores, setStores] = useState([]);
-    const [filter, setFilter] = useState({ code: '', status: '' });
+    const [stores, setStores] = useState<Store[]>([]);
+    const [filter, setFilter] = useState({ codigo: '', estado: '' });
     const [isAddingStore, setIsAddingStore] = useState(false);
-    const [selectedStore, setSelectedStore] = useState(null);
-
+    const [selectedStore, setSelectedStore] = useState<Store | null>(null);
 
     useEffect(() => {
         fetchStores();
-      }, []);
+    }, []);
 
-      const fetchStores = async () => {
-        // Asumiendo que mockData.tienda es el array de tiendas
-        const storesData = mockData.tienda || [];
-        const formattedStores = storesData.map(store => ({
-            id: store.id_tienda,
-            code: store.id_tienda,
-            status: store.habilitada === "true" ? "enabled" : "disabled",
-            address: store.direccion,
-            city: store.ciudad,
-            province: store.provincia
-        }));
-        setStores(formattedStores);
+    const fetchStores = async () => {
+        try {
+            const response = await axios.get("http://localhost:5000/getTiendas");
+            const data = response.data; 
+            setStores(Array.isArray(data.tiendasInfo) ? data.tiendasInfo : []);
+        } catch (error) {
+            console.error('Error fetching stores:', error);
+        }
     };
 
-
-
-    const handleFilterChange = (e) => {
-        setFilter({ ...filter, [e.target.name]: e.target.value })
-    }
-
+    const handleFilterChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+        setFilter({ ...filter, [e.target.name]: e.target.value });
+    };
 
     const filteredStores = stores.filter(store =>
-        store.code.toLowerCase().includes(filter.code.toLowerCase()) &&
-        (filter.status === '' || store.status === filter.status)
+        store.codigo.toLowerCase().includes(filter.codigo.toLowerCase()) &&
+        (filter.estado === '' || (store.estado ? 'enabled' : 'disabled') === filter.estado)
     );
-
-
 
     const handleAddStore = () => {
         setSelectedStore(null);
         setIsAddingStore(true);
     };
 
-    const handleEditStore = (store) => {
+    const handleEditStore = (store: Store) => {
         setSelectedStore(store);
         setIsAddingStore(false);
     };
 
-    const handleDeleteStore = async (storeId) => {
+    const handleDeleteStore = async (storeId: string) => {
         try {
-            // Mostrar la alerta de confirmación con SweetAlert2
             const result = await Swal.fire({
                 title: 'Are you sure?',
                 text: "You won't be able to revert this!",
@@ -66,43 +62,25 @@ export const StoreList = () => {
                 confirmButtonText: 'Yes, delete it!',
                 cancelButtonText: 'Cancel'
             });
-    
-            // Si el usuario confirma la eliminación
+
             if (result.isConfirmed) {
-                // Aquí iría la llamada a la API para eliminar la tienda
-                // await deleteStore(storeId); // Si es un backend real
-    
-                // Actualizar el estado de las tiendas
-                const updatedStores = stores.filter(store => store.id !== storeId);
+                const updatedStores = stores.filter(store => store.codigo !== storeId);
                 setStores(updatedStores);
-    
-                // Mostrar mensaje de éxito con SweetAlert2
-                Swal.fire(
-                    'Deleted!',
-                    'The store has been deleted.',
-                    'success'
-                );
+                Swal.fire('Deleted!', 'The store has been deleted.', 'success');
             }
         } catch (error) {
-            // Manejo de errores
-            Swal.fire(
-                'Error!',
-                'There was an error deleting the store.',
-                'error'
-            );
+            Swal.fire('Error!', 'There was an error deleting the store.', 'error');
             console.error('Error deleting store:', error);
         }
     };
 
-    const handleStoreUpdate = (updatedStore) => {
+    const handleStoreUpdate = (updatedStore: Store) => {
         if (isAddingStore) {
             setStores([...stores, updatedStore]);
-          } else {
-            setStores(stores.map(store => 
-              store.id === updatedStore.id ? updatedStore : store
-            ));
-          }
-          handleCloseDetail();
+        } else {
+            setStores(stores.map(store => store.codigo === updatedStore.codigo ? updatedStore : store));
+        }
+        handleCloseDetail();
     };
 
     const handleCloseDetail = () => {
@@ -110,9 +88,8 @@ export const StoreList = () => {
         setIsAddingStore(false);
     };
 
-
     return (
-        <> 
+        <>
             <div className="container mx-auto px-4 py-8">
                 <h2 className="text-2xl font-bold mb-4">Stores</h2>
                 <button onClick={handleAddStore} className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mb-4">
@@ -122,14 +99,14 @@ export const StoreList = () => {
                     <input
                         type="text"
                         placeholder="Filter by code"
-                        name="code"
-                        value={filter.code}
+                        name="codigo"
+                        value={filter.codigo}
                         onChange={handleFilterChange}
                         className="border rounded px-2 py-1"
                     />
                     <select
-                        name="status"
-                        value={filter.status}
+                        name="estado"
+                        value={filter.estado}
                         onChange={handleFilterChange}
                         className="border rounded px-2 py-1"
                     >
@@ -151,12 +128,12 @@ export const StoreList = () => {
                     </thead>
                     <tbody>
                         {filteredStores.map(store => (
-                            <tr key={store.id}>
-                                <td className="py-2 px-4 border-b">{store.code}</td>
-                                <td className="py-2 px-4 border-b">{store.address}</td>
-                                <td className="py-2 px-4 border-b">{store.city}</td>
-                                <td className="py-2 px-4 border-b">{store.province}</td>
-                                <td className="py-2 px-4 border-b">{store.status}</td>
+                            <tr key={store.codigo}>
+                                <td className="py-2 px-4 border-b">{store.codigo}</td>
+                                <td className="py-2 px-4 border-b">{store.direccion}</td>
+                                <td className="py-2 px-4 border-b">{store.ciudad}</td>
+                                <td className="py-2 px-4 border-b">{store.provincia}</td>
+                                <td className="py-2 px-4 border-b">{store.estado ? 'Enabled' : 'Disabled'}</td>
                                 <td className="py-2 px-4 border-b">
                                     <button 
                                         onClick={() => handleEditStore(store)}
@@ -164,10 +141,10 @@ export const StoreList = () => {
                                     >
                                         Edit
                                     </button>
-
                                     <button 
-                                        onClick={() => handleDeleteStore(store.id)}
-                                        className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">
+                                        onClick={() => handleDeleteStore(store.codigo)}
+                                        className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded"
+                                    >
                                         Delete
                                     </button>
                                 </td>
@@ -184,13 +161,6 @@ export const StoreList = () => {
                     isAdding={isAddingStore}
                 />
             )}
-            {/* {selectedStore && (
-                <StoreDetail 
-                    storeId={selectedStore.id} 
-                    onClose={handleCloseDetail} 
-                    onUpdate={handleUpdateStore}
-                />
-            )} */}
         </>
-    )
-}
+    );
+};

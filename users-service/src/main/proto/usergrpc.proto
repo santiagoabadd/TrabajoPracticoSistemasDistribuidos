@@ -46,13 +46,17 @@ message GetUsersByTiendaResponse {
 }
 
 message UserInfo {
-    string username = 1;
-    string firstName = 2;
-    string lastName = 3;
+    int64 id=1;
+    string username = 2;
+    string firstName = 3;
+    string lastName = 4;
+    string rol= 5;
+    string codigoTienda = 6;
+    bool activo=7;
 }
 
 message DeleteUserRequest {
-    string username = 1;
+    int64 id = 1;
 }
 
 message DeleteUserResponse {
