@@ -40,7 +40,10 @@ export const StoreDetail = ({ store, onClose, onUpdate, isAdding }) => {
         enabled: storeData.estado === 'enabled',
       };
   
-      const response = await axios.post(apiUrl, tiendaData);
+      
+      const response = isAdding 
+        ? await axios.post(apiUrl, storeData)
+        : await axios.put(apiUrl, storeData); 
   
 
       onUpdate(tiendaData);

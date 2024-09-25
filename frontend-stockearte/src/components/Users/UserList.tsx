@@ -76,7 +76,7 @@ export const UserList: React.FC = () => {
     fetchUsers();
     fetchStores();
     console.log("------->", users);
-  }, []);
+  }, [selectedUser]);
 
   const handleFilterChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFilter({ ...filter, [e.target.name]: e.target.value });
@@ -91,7 +91,6 @@ export const UserList: React.FC = () => {
   );
 
   const handleEditUser = (user: User) => {
-    
     setSelectedUser({
       ...user,
       password: "",

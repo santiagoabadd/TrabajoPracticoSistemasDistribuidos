@@ -5,6 +5,7 @@ import {
   fetchStores,
 } from "../../api/mockAPIStoresUsers";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 interface Store {
   id: string;
@@ -39,6 +40,7 @@ export const UserDetail = ({ user, onClose, onUpdate, isAdding }) => {
     activo: true,
     password: "",
   });
+  const navigate = useNavigate();
 
   const [stores, setStores] = useState<Store[]>([]);
   const [loading, setLoading] = useState(true);
@@ -94,6 +96,7 @@ export const UserDetail = ({ user, onClose, onUpdate, isAdding }) => {
         userData
       );
       console.log("Usuario actualizado:", response.data);
+      onClose();
     } catch (error) {
       console.error("Error al actualizar el usuario:", error);
     }
@@ -103,7 +106,6 @@ export const UserDetail = ({ user, onClose, onUpdate, isAdding }) => {
     e.preventDefault();
     updateUser(userData);
   };
-
   return (
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex justify-center items-center">
       <div className="relative p-8 border w-full max-w-md shadow-lg rounded-md bg-white">
@@ -130,6 +132,57 @@ export const UserDetail = ({ user, onClose, onUpdate, isAdding }) => {
           </div>
           <div>
             <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Email
+            </label>
+            <input
+              id="email"
+              name="email"
+              type="text"
+              value={userData.email}
+              onChange={handleChange}
+              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="firstName"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
+              First Name
+            </label>
+            <input
+              id="firstName"
+              name="firstName"
+              type="text"
+              value={userData.firstName}
+              onChange={handleChange}
+              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="lastName"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Last Name
+            </label>
+            <input
+              id="lastName"
+              name="lastName"
+              type="text"
+              value={userData.lastName}
+              onChange={handleChange}
+              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            />
+          </div>
+          <div>
+            <label
               htmlFor="password"
               className="block text-sm font-medium text-gray-700 mb-1"
             >
@@ -145,6 +198,7 @@ export const UserDetail = ({ user, onClose, onUpdate, isAdding }) => {
               required
             />
           </div>
+          
           <div>
             <label
               htmlFor="store"

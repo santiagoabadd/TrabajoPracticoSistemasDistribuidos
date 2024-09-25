@@ -41,6 +41,8 @@ public class ProductService {
                 .nombre(product.getNombre())
                 .codigo(product.getCodigo())
                 .foto(product.getFoto())
+                .talle(product.getTalle())
+                .color(product.getColor())
                 .build();
     }
 }

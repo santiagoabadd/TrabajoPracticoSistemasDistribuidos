@@ -19,12 +19,15 @@ message ProductInfo {
     string codigo = 2;
     string nombre = 3;
     string foto = 4;
+    string color = 5;
+    string talle = 6;
 }
 
 message EmptyProduct {}
 
 message GetProductRequest {
-     string codigo = 1;
+    int64 id = 1;
+
 }
 
 message GetProductByNombreRequest {
@@ -35,6 +38,8 @@ message CreateProductRequest {
     string codigo = 1;
     string nombre = 2;
     string foto = 3;
+    string color = 4;
+    string talle = 5;
 }
 
 
@@ -42,18 +47,23 @@ message UpdateProductRequest {
     string codigo = 1;
     string nombre = 2;
     string foto = 3;
+    string color = 4;
+    string talle = 5;
 }
 
 
 message DeleteProductRequest {
-     string codigo = 1;
+    int64 id = 1;
 }
 
 
 message GetProductResponse {
-    string codigo = 1;
-    string nombre = 2;
-    string foto = 3;
+    int64 id= 1;
+    string codigo = 2;
+    string nombre = 3;
+    string foto = 4;
+    string color = 5;
+    string talle = 6;
 }
 
 
@@ -62,9 +72,12 @@ message GetAllProductsResponse {
 }
 
 message ProductResponse {
-    string codigo = 1;
-    string nombre = 2;
-    string foto = 3;
+    int64 id= 1;
+    string codigo = 2;
+    string nombre = 3;
+    string foto = 4;
+    string color = 5;
+    string talle = 6;
 }
 
 

@@ -109,8 +109,16 @@ public class UserServiceGrpc extends UserServiceImplBase {
     @Override
     public void updateUser(UpdateUserRequest request, StreamObserver<GetUserResponse> responseObserver) {
         Long id = request.getId();
-        User userExist = userRepository.findByUserName(request.getUsername()).orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+
         User user = userRepository.findById(request.getId()).orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+        if(!request.getUsername().equals(user.getUserName())){
+            User userExist = userRepository.findByUserName(request.getUsername()).orElse(null);
+            if(userExist!=null){
+                throw new RuntimeException("Ya existe un usuario con ese username");
+            }
+        }
+
+        user.setUserName(request.getUsername());
         user.setFirstName(request.getFirstName());
         user.setLastName(request.getLastName());
         user.setEmail(request.getEmail());

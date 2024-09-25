@@ -13,5 +13,7 @@ public class ProductResponse {
     private String nombre;
     private String codigo;
     private String foto;
+    private String color;
+    private String talle;
 
 }

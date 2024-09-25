@@ -125,7 +125,7 @@ def getTiendaProductosByTienda(idTienda):
 
 @app.route("/obtenerProductosTienda", methods=["GET"])
 @cross_origin()
-def getAllTiendas():
+def obtenerProductosTienda():
     client = GrpcClient()
     result = client.ObtenerProductos()
     return MessageToJson(result)

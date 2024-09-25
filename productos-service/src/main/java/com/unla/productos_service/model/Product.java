@@ -20,6 +20,8 @@ public class Product {
     private String nombre;
     private String codigo;
     private String foto;
+    private String color;
+    private String talle;
 
 
 

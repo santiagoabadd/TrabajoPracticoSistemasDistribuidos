@@ -24,9 +24,12 @@ public class ProductServiceRPC extends ProductServiceGrpc.ProductServiceImplBase
 
         List<ProductInfo> productInfoList = products.stream()
                 .map(product -> ProductInfo.newBuilder()
+                        .setId(product.getId())
                         .setCodigo(product.getCodigo())
                         .setNombre(product.getNombre())
                         .setFoto(product.getFoto())
+                        .setColor(product.getColor())
+                        .setTalle(product.getTalle())
                         .build())
                 .collect(Collectors.toList());
 
@@ -40,13 +43,16 @@ public class ProductServiceRPC extends ProductServiceGrpc.ProductServiceImplBase
 
     @Override
     public void getProduct(GetProductRequest request, StreamObserver<GetProductResponse> responseObserver) {
-        Product product = productRepository.findByCodigo(request.getCodigo())
+        Product product = productRepository.findById(request.getId())
                 .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
 
         GetProductResponse response = GetProductResponse.newBuilder()
+                .setId(product.getId())
                 .setCodigo(product.getCodigo())
                 .setNombre(product.getNombre())
                 .setFoto(product.getFoto())
+                .setColor(product.getColor())
+                .setTalle(product.getTalle())
                 .build();
 
         responseObserver.onNext(response);
@@ -59,9 +65,12 @@ public class ProductServiceRPC extends ProductServiceGrpc.ProductServiceImplBase
                 .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
 
         GetProductResponse response = GetProductResponse.newBuilder()
+                .setId(product.getId())
                 .setCodigo(product.getCodigo())
                 .setNombre(product.getNombre())
                 .setFoto(product.getFoto())
+                .setColor(product.getColor())
+                .setTalle(product.getTalle())
                 .build();
 
         responseObserver.onNext(response);
@@ -75,13 +84,19 @@ public class ProductServiceRPC extends ProductServiceGrpc.ProductServiceImplBase
         product.setCodigo(request.getCodigo());
         product.setNombre(request.getNombre());
         product.setFoto(request.getFoto());
+        product.setTalle(request.getTalle());
+        product.setColor(request.getTalle());
+
 
         productRepository.save(product);
 
         ProductResponse response = ProductResponse.newBuilder()
+                .setId(product.getId())
                 .setCodigo(product.getCodigo())
                 .setNombre(product.getNombre())
                 .setFoto(product.getFoto())
+                .setColor(product.getColor())
+                .setTalle(product.getTalle())
                 .build();
 
         responseObserver.onNext(response);
@@ -93,16 +108,20 @@ public class ProductServiceRPC extends ProductServiceGrpc.ProductServiceImplBase
     public void updateProduct(UpdateProductRequest request, StreamObserver<ProductResponse> responseObserver) {
         Product product = productRepository.findByCodigo(request.getCodigo())
                 .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
-
         product.setNombre(request.getNombre());
         product.setFoto(request.getFoto());
+        product.setTalle(request.getTalle());
+        product.setColor(request.getTalle());
 
         productRepository.save(product);
 
         ProductResponse response = ProductResponse.newBuilder()
+                .setId(product.getId())
                 .setCodigo(product.getCodigo())
                 .setNombre(product.getNombre())
                 .setFoto(product.getFoto())
+                .setColor(product.getColor())
+                .setTalle(product.getTalle())
                 .build();
 
         responseObserver.onNext(response);
@@ -116,7 +135,7 @@ public class ProductServiceRPC extends ProductServiceGrpc.ProductServiceImplBase
         String message;
 
         try {
-            productRepository.deleteByCodigo(request.getCodigo());
+            productRepository.deleteById(request.getId());
             success = true;
             message = "Producto eliminado con éxito";
         } catch (Exception e) {

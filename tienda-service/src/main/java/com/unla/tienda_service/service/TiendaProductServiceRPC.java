@@ -124,6 +124,9 @@ public class TiendaProductServiceRPC extends TiendaProductServiceGrpc.TiendaProd
                     .setId(tiendaProduct.getProductId())
                     .build();
 
+            System.out.println(productRequest);
+
+
             GetProductResponse productResponse = productServiceStub.getProduct(productRequest);
 
 
