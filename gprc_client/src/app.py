@@ -130,6 +130,15 @@ def obtenerProductosTienda():
     result = client.ObtenerProductos()
     return MessageToJson(result)
 
+@app.route("/asociarProductos", methods=["POST"])
+@cross_origin()
+def asociarProductos():
+    data = request.get_json() 
+    client = GrpcClient()
+    result = client.AsociarProductos(data)
+    return MessageToJson(result)
+
+
 
 
 # Rutas del servicio Producto

@@ -160,8 +160,24 @@ class GrpcClient(object):
 	
 	def ObtenerProductos(self):
 		request = tiendagrpc_pb2.EmptyTienda()
-		return self.tienda_stub.ObtenerProductos(request)
+		return self.tiendaProduct_stub.ObtenerProductos(request)
 	
+	def AsociarProductos(self, tiendaProducts):
+    	# Crear una lista de IDs de tiendas
+		tiendaIds = list(map(int, tiendaProducts['tiendaIds']))
+    
+    # Crear el objeto para enviar, usando la lista de IDs y el productId
+		request_data = tiendagrpc_pb2.AsociarProductosRequest(
+			tiendaIds=tiendaIds,
+			productId=int(tiendaProducts['productId']) 
+    	)
+    
+		# Imprimir el objeto que se va a enviar
+		print(f"Enviando datos: {request_data}")
+
+		# Llamar al stub con el objeto creado
+		return self.tiendaProduct_stub.AsociarProductos(request_data)
+		
 	## Metodos Product ///////////////////
 
 	def GetAllProducts(self):
@@ -180,7 +196,9 @@ class GrpcClient(object):
 		pProduct = productgrpc_pb2.CreateProductRequest(
             codigo=product['codigo'],
             nombre=product['nombre'],
-            foto=product['foto']
+            foto=product['foto'],
+			color=product['color'],
+			talle=product['talle']
         )
 		return self.product_stub.CreateProduct(pProduct)
     
@@ -188,7 +206,9 @@ class GrpcClient(object):
 		pProduct = productgrpc_pb2.UpdateProductRequest(
             codigo=product['codigo'],
             nombre=product['nombre'],
-            foto=product['foto']
+            foto=product['foto'],
+			color=product['color'],
+			talle=product['talle']
         )
 		return self.product_stub.UpdateProduct(pProduct)
 

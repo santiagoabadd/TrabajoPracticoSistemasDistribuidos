@@ -18,10 +18,19 @@ service TiendaProductService {
     rpc DeleteTiendaProduct(DeleteTiendaProductRequest) returns (DeleteTiendaProductResponse);
     rpc ObtenerProductosPorTienda(TiendaProductsRequest) returns (TiendaProductsResponse);
     rpc ObtenerProductos(EmptyTienda) returns (TiendaProductsResponse);
+    rpc AsociarProductos(AsociarProductosRequest) returns (AsociarProductosResponse);
 }
 
 
+message AsociarProductosRequest {
+    repeated int64 tiendaIds = 1;
+    int64 productId = 2;
+}
 
+message AsociarProductosResponse {
+    bool success = 1;
+    string message = 2;
+}
 
 message RegistrarTiendaRequest{
     string codigo=1;

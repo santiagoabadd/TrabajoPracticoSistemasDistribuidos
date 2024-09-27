@@ -9,5 +9,9 @@ import java.util.List;
 
 public interface TiendaProductRepository extends JpaRepository<TiendaProduct, Long> {
     List<TiendaProduct > findByTiendaId(Long tiendaId);
+    List<TiendaProduct> findByProductId(Long productId);
+    void deleteByProductId(Long productId);
+    void deleteByProductIdAndTiendaIdNotIn(Long productId, List<Long> tiendaIds);
+    boolean existsByTiendaIdAndProductId(Long tiendaId, Long productId);
 
 }

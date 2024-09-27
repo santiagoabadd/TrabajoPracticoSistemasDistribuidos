@@ -115,7 +115,6 @@ public class TiendaProductServiceRPC extends TiendaProductServiceGrpc.TiendaProd
     public void obtenerProductos(EmptyTienda request, StreamObserver<TiendaProductsResponse> responseObserver) {
 
         List<TiendaProduct> productosEnTienda = tiendaProductRepository.findAll();
-
         TiendaProductsResponse.Builder responseBuilder = TiendaProductsResponse.newBuilder();
 
         for (TiendaProduct tiendaProduct : productosEnTienda) {
@@ -124,11 +123,7 @@ public class TiendaProductServiceRPC extends TiendaProductServiceGrpc.TiendaProd
                     .setId(tiendaProduct.getProductId())
                     .build();
 
-            System.out.println(productRequest);
-
-
             GetProductResponse productResponse = productServiceStub.getProduct(productRequest);
-
 
             TiendaProductResponse tiendaProductResponse = TiendaProductResponse.newBuilder()
                     .setTiendaId(tiendaProduct.getTiendaId())
@@ -146,6 +141,41 @@ public class TiendaProductServiceRPC extends TiendaProductServiceGrpc.TiendaProd
         }
 
         responseObserver.onNext(responseBuilder.build());
+        responseObserver.onCompleted();
+    }
+
+    @Override
+    @Transactional
+    public void asociarProductos(AsociarProductosRequest request, StreamObserver<AsociarProductosResponse> responseObserver) {
+        long productId = request.getProductId();
+        List<Long> tiendaIds = request.getTiendaIdsList();
+
+        tiendaProductRepository.deleteByProductIdAndTiendaIdNotIn(productId, tiendaIds);
+
+        if (tiendaIds.isEmpty()) {
+            tiendaProductRepository.deleteByProductId(productId);
+        } else {
+            for (Long tiendaId : tiendaIds) {
+
+                boolean exists = tiendaProductRepository.existsByTiendaIdAndProductId(tiendaId, productId);
+
+                if (!exists) {
+                    TiendaProduct tiendaProduct = TiendaProduct.builder()
+                            .tiendaId(tiendaId)
+                            .productId(productId)
+                            .stock(0)
+                            .build();
+                    tiendaProductRepository.save(tiendaProduct);
+                }
+            }
+        }
+
+        AsociarProductosResponse response = AsociarProductosResponse.newBuilder()
+                .setSuccess(true)
+                .setMessage("Asociación de productos realizada correctamente")
+                .build();
+
+        responseObserver.onNext(response);
         responseObserver.onCompleted();
     }
 

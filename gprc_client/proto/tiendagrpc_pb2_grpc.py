@@ -346,6 +346,11 @@ class TiendaProductServiceStub(object):
                 request_serializer=tiendagrpc__pb2.EmptyTienda.SerializeToString,
                 response_deserializer=tiendagrpc__pb2.TiendaProductsResponse.FromString,
                 _registered_method=True)
+        self.AsociarProductos = channel.unary_unary(
+                '/TiendaProductService/AsociarProductos',
+                request_serializer=tiendagrpc__pb2.AsociarProductosRequest.SerializeToString,
+                response_deserializer=tiendagrpc__pb2.AsociarProductosResponse.FromString,
+                _registered_method=True)
 
 
 class TiendaProductServiceServicer(object):
@@ -381,6 +386,12 @@ class TiendaProductServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def AsociarProductos(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_TiendaProductServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -408,6 +419,11 @@ def add_TiendaProductServiceServicer_to_server(servicer, server):
                     servicer.ObtenerProductos,
                     request_deserializer=tiendagrpc__pb2.EmptyTienda.FromString,
                     response_serializer=tiendagrpc__pb2.TiendaProductsResponse.SerializeToString,
+            ),
+            'AsociarProductos': grpc.unary_unary_rpc_method_handler(
+                    servicer.AsociarProductos,
+                    request_deserializer=tiendagrpc__pb2.AsociarProductosRequest.FromString,
+                    response_serializer=tiendagrpc__pb2.AsociarProductosResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -545,6 +561,33 @@ class TiendaProductService(object):
             '/TiendaProductService/ObtenerProductos',
             tiendagrpc__pb2.EmptyTienda.SerializeToString,
             tiendagrpc__pb2.TiendaProductsResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def AsociarProductos(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/TiendaProductService/AsociarProductos',
+            tiendagrpc__pb2.AsociarProductosRequest.SerializeToString,
+            tiendagrpc__pb2.AsociarProductosResponse.FromString,
             options,
             channel_credentials,
             insecure,
