@@ -11,12 +11,13 @@ interface Product {
   foto: string;
   color: string;
   talle: string;
-  associatedStores?: number[]; // State for associated store IDs
+  stock?: number;
+  associatedStores?: number[]; 
 }
 
 interface Store {
-  id: number; // Store ID
-  codigo: string; // Store code
+  id: number; 
+  codigo: string; 
 }
 
 export const ProductList: React.FC = () => {
@@ -26,12 +27,18 @@ export const ProductList: React.FC = () => {
     codigo: '',
   });
   const { user } = useContext(AuthContext);
-  const [stores, setStores] = useState<Store[]>([]); // State for stores
+  const [stores, setStores] = useState<Store[]>([]);
 
   useEffect(() => {
     if (user.logged) {
-      fetchProducts();
-      fetchStores(); // Fetch stores on user login
+      if(user.role==="Tienda"){
+        fetchProductsWithStock();
+      fetchStores(); 
+      }else{
+        fetchProducts();
+      fetchStores(); 
+      }
+      
     }
   }, [user.idTienda, user.role]);
 
@@ -46,6 +53,18 @@ export const ProductList: React.FC = () => {
     }
   };
 
+  const fetchProductsWithStock = async () => {
+    try {
+      const options = user.role === 'Tienda' ? { params: { idTienda: user.idTienda } } : {};
+      const response = await axios.get("http://localhost:5000/obtenerProductosTienda", options);
+      const data = response.data;
+      setProducts(Array.isArray(data.products) ? data.products : []);
+      console.log(products)
+    } catch (error) {
+      console.error('Error fetching products:', error);
+    }
+  };
+
   const fetchStores = async () => {
     try {
       const response = await axios.get("http://localhost:5000/getTiendas");
@@ -55,6 +74,8 @@ export const ProductList: React.FC = () => {
       console.error('Error fetching stores:', error);
     }
   };
+
+  
 
   const handleFilterChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFilter({ ...filter, [e.target.name]: e.target.value });
@@ -106,6 +127,7 @@ export const ProductList: React.FC = () => {
             className="border rounded px-2 py-1"
           />
         </div>
+        {user.role === 'Casa Central' && (
         <table className="min-w-full bg-white">
           <thead>
             <tr>
@@ -127,7 +149,7 @@ export const ProductList: React.FC = () => {
                 <td className="py-2 px-4 border-b">
                   <select
                     multiple
-                    value={product.associatedStores?.map(String) || []} // Convert numbers to strings
+                    value={product.associatedStores?.map(String) || []} 
                     onChange={e => handleStoreChange(product.id!, Array.from(e.target.selectedOptions, option => Number(option.value)))}
                     className="border rounded px-2 py-1"
                   >
@@ -150,6 +172,53 @@ export const ProductList: React.FC = () => {
             ))}
           </tbody>
         </table>
+        )}
+        {user.role === 'Tienda' && (
+        <table className="min-w-full bg-white">
+          <thead>
+            <tr>
+              <th className="py-2 px-4 border-b">Nombre</th>
+              <th className="py-2 px-4 border-b">Codigo</th>
+              <th className="py-2 px-4 border-b">Color</th>
+              <th className="py-2 px-4 border-b">Talle</th>
+              <th className="py-2 px-4 border-b">Tiendas Asociadas</th>
+              <th className="py-2 px-4 border-b">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredProducts.map(product => (
+              <tr key={product.id}>
+                <td className="py-2 px-4 border-b">{product.nombre}</td>
+                <td className="py-2 px-4 border-b">{product.codigo}</td>
+                <td className="py-2 px-4 border-b">{product.color}</td>
+                <td className="py-2 px-4 border-b">{product.talle}</td>
+                <td className="py-2 px-4 border-b">
+                  <select
+                    multiple
+                    value={product.associatedStores?.map(String) || []} 
+                    onChange={e => handleStoreChange(product.id!, Array.from(e.target.selectedOptions, option => Number(option.value)))}
+                    className="border rounded px-2 py-1"
+                  >
+                    {stores.map(store => (
+                      <option key={store.id} value={store.id}>
+                        {store.codigo}
+                      </option>
+                    ))}
+                  </select>
+                </td>
+                <td className="py-2 px-4 border-b">
+                  <button
+                    onClick={() => handleSaveAssociations(product.id!, product.associatedStores || [])}
+                    className="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded"
+                  >
+                    Guardar Asociaciones
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        )}
       </div>
     </>
   );

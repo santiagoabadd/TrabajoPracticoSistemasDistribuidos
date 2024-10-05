@@ -59,7 +59,7 @@ public class AuthGrpcService extends AuthServiceGrpc.AuthServiceImplBase {
                 .setIssuedAt(Date.from(now))
                 .setExpiration(Date.from(expiration))
                 .signWith(SignatureAlgorithm.HS512, jwtSecretKey)
-                .compact()).setUser(UserInfo.newBuilder().setUsername(user.getUserName()).setFirstName(user.getFirstName()).setLastName(user.getLastName()).setActivo(user.isActivo()).setCodigoTienda(user.getCodigoTienda()).setId(user.getId()).setRol(user.getRol()).build()).build());
+                .compact()).setUser(UserInfo.newBuilder().setUsername(user.getUserName()).setFirstName(user.getFirstName()).setLastName(user.getLastName()).setActivo(user.isActivo()).setIdTienda(user.getIdTienda()).setId(user.getId()).setRol(user.getRol()).build()).build());
 
         responseObserver.onCompleted();
     }

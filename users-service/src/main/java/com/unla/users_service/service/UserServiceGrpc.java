@@ -33,7 +33,7 @@ public class UserServiceGrpc extends UserServiceImplBase {
                 .setFirstName(user.getFirstName())
                 .setLastName(user.getLastName())
                 .setRol(user.getRol())
-                .setCodigoTienda(user.getCodigoTienda())
+                .setIdTienda(user.getIdTienda())
                 .setActivo(user.isActivo())
                 .build();
 
@@ -50,7 +50,7 @@ public class UserServiceGrpc extends UserServiceImplBase {
         user.setLastName(request.getLastName());
         user.setRol(request.getRol());
         user.setEmail(request.getEmail());
-        user.setCodigoTienda(request.getCodigoTienda());
+        user.setIdTienda(user.getIdTienda());
         user.setPassword(request.getPassword());
         user.setActivo(request.getActivo());
 
@@ -68,7 +68,7 @@ public class UserServiceGrpc extends UserServiceImplBase {
                 .setFirstName(user.getFirstName())
                 .setLastName(user.getLastName())
                 .setRol(user.getRol())
-                .setCodigoTienda(user.getCodigoTienda())
+                .setIdTienda(user.getIdTienda())
                 .build();
 
         responseObserver.onNext(response);
@@ -83,8 +83,8 @@ public class UserServiceGrpc extends UserServiceImplBase {
 
     @Override
     public void getUserByTienda(GetUsersByTiendaRequest request, StreamObserver<GetUsersByTiendaResponse> responseObserver) {
-        String codigoTienda = request.getCodigoTienda();
-        List<User> users = userRepository.findByCodigoTienda(codigoTienda);
+        long idTienda = request.getIdTienda();
+        List<User> users = userRepository.findByIdTienda(idTienda);
 
         List<UserInfo> userInfos = users.stream()
                 .map(user -> UserInfo.newBuilder()
@@ -92,7 +92,7 @@ public class UserServiceGrpc extends UserServiceImplBase {
                         .setUsername(user.getUserName())
                         .setFirstName(user.getFirstName())
                         .setLastName(user.getLastName())
-                        .setCodigoTienda(user.getCodigoTienda())
+                        .setIdTienda(user.getIdTienda())
                         .setActivo(user.isActivo())
                         .setRol(user.getRol())
                         .build())
@@ -123,7 +123,7 @@ public class UserServiceGrpc extends UserServiceImplBase {
         user.setLastName(request.getLastName());
         user.setEmail(request.getEmail());
         user.setRol(request.getRol());
-        user.setCodigoTienda(request.getCodigoTienda());
+        user.setIdTienda(user.getIdTienda());
         user.setPassword(request.getPassword());
         user.setActivo(request.getActivo());
 
@@ -134,7 +134,7 @@ public class UserServiceGrpc extends UserServiceImplBase {
                 .setFirstName(user.getFirstName())
                 .setLastName(user.getLastName())
                 .setRol(user.getRol())
-                .setCodigoTienda(user.getCodigoTienda())
+                .setIdTienda(user.getIdTienda())
                 .setActivo(user.isActivo())
                 .build();
 
@@ -177,7 +177,7 @@ public class UserServiceGrpc extends UserServiceImplBase {
                         .setUsername(user.getUserName())
                         .setFirstName(user.getFirstName())
                         .setLastName(user.getLastName())
-                        .setCodigoTienda(user.getCodigoTienda())
+                        .setIdTienda(user.getIdTienda())
                         .setActivo(user.isActivo())
                         .setRol(user.getRol())
                         .build())

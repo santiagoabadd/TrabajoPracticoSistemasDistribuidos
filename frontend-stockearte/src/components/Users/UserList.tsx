@@ -9,6 +9,7 @@ interface User {
   username: string;
   firstName: string;
   lastName: string;
+  idTienda: string;
   codigoTienda: string;
   rol: string;
   activo: boolean;
@@ -21,6 +22,7 @@ interface UserEdit {
   lastName: string;
   email: string;
   rol: string;
+  idTienda: string;
   codigoTienda: string;
   activo: boolean;
   password: string;
@@ -31,6 +33,7 @@ interface UsersResponse {
 }
 
 interface Store {
+  id:number
   codigo: string;
   estado: boolean;
   direccion: string;
@@ -45,6 +48,7 @@ interface Filter {
 
 export const UserList: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
+  const [usersWithStoreCode, setUsersWithStoreCode] = useState<User[]>([]);
   const [stores, setStores] = useState<Store[]>([]);
   const [filter, setFilter] = useState<Filter>({
     username: "",
@@ -53,6 +57,21 @@ export const UserList: React.FC = () => {
   const [selectedUser, setSelectedUser] = useState<UserEdit | null>(null);
   const [isAddingUser, setIsAddingUser] = useState<boolean>(false);
   const { user } = useContext(AuthContext);
+  
+
+  useEffect(() => {
+    if (users.length > 0 && stores.length > 0) {
+       const usersWithStoreCodeNew = users.map(user => {
+        const store = stores.find(store => store.id === parseInt(user.idTienda));
+        return {
+          ...user,
+          codigoTienda: store ? store.codigo : "N/A",
+        };
+      });
+      setUsersWithStoreCode(usersWithStoreCodeNew);
+      console.log("nuevos----->",usersWithStoreCode)
+    }
+  }, [users, stores]);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -66,6 +85,8 @@ export const UserList: React.FC = () => {
         setUsers([]);
       }
     };
+
+    
 
     const fetchStores = async () => {
       const response = await axios.get("http://localhost:5000/getTiendas");
@@ -84,10 +105,8 @@ export const UserList: React.FC = () => {
 
   const filteredUsers = users.filter(
     (user) =>
-      user.username.toLowerCase().includes(filter.username.toLowerCase()) &&
-      user.codigoTienda
-        .toLowerCase()
-        .includes(filter.codigoTienda.toLowerCase())
+      user.username.toLowerCase().includes(filter.username.toLowerCase())
+      
   );
 
   const handleEditUser = (user: User) => {

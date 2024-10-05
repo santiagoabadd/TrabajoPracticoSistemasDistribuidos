@@ -24,11 +24,11 @@ def getUser(username):
     result = client.GetUser(username)
     return MessageToJson(result)
 
-@app.route("/getUsersByTienda/<string:codigoTienda>", methods=["GET"])
+@app.route("/getUsersByTienda/<int:idTienda>", methods=["GET"])
 @cross_origin()
-def getUsersByTienda(codigoTienda):
+def getUsersByTienda(idTienda):
     client = GrpcClient()
-    result = client.GetUserByTienda(codigoTienda)
+    result = client.GetUserByTienda(idTienda)
     return MessageToJson(result)
 
 @app.route("/getUsers", methods=["GET"])
@@ -116,7 +116,7 @@ def deleteTienda(codigo):
     result = client.DeleteTienda(codigo)
     return MessageToJson(result)
 
-@app.route("/getTiendaProductosByTienda/<int:idTienda>", methods=["GET"])
+@app.route("/obtenerProductosTiendaByTienda/<int:idTienda>", methods=["GET"])
 @cross_origin()
 def getTiendaProductosByTienda(idTienda):
     client = GrpcClient()

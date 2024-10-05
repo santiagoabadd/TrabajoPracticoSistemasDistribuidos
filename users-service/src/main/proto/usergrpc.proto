@@ -18,7 +18,7 @@ message RegisterUserRequest {
     string lastName = 3;
     string email = 4;
     string rol = 5;
-    string codigoTienda = 6;
+    int64 idTienda = 6;
     bool activo=7;
     string password=8;
 }
@@ -32,12 +32,12 @@ message GetUserResponse {
     string firstName = 2;
     string lastName = 3;
     string rol = 4;
-    string codigoTienda = 5;
+    int64 idTienda = 5;
     bool activo=7;
 }
 
 message GetUsersByTiendaRequest {
-    string codigoTienda = 1;
+    int64 idTienda = 1;
 }
 
 message GetUsersByTiendaResponse {
@@ -50,7 +50,7 @@ message UserInfo {
     string firstName = 3;
     string lastName = 4;
     string rol= 5;
-    string codigoTienda = 6;
+    int64 idTienda = 6;
     bool activo=7;
 }
 
@@ -76,7 +76,7 @@ message UpdateUserRequest {
     string lastName = 4;
     string email = 5;
     string rol = 6;
-    string codigoTienda = 7;
+    int64 idTienda = 7;
     bool activo=8;
     string password=9;
 }

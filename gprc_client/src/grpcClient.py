@@ -43,8 +43,8 @@ class GrpcClient(object):
 	## Metodos User///////////////////
 
     
-	def GetUserByTienda(self, codigo_tienda):
-		request = usergrpc_pb2.GetUsersByTiendaRequest(codigoTienda=codigo_tienda)
+	def GetUserByTienda(self, idTienda):
+		request = usergrpc_pb2.GetUsersByTiendaRequest(idTienda=idTienda)
 		return self.stub.GetUserByTienda(request)
     
 	def GetAllUsers(self):
@@ -62,7 +62,7 @@ class GrpcClient(object):
             lastName=user['lastName'],
             email=user['email'],
             rol=user['rol'],
-            codigoTienda=user['codigoTienda'],
+            idTienda=user['idTienda'],
             activo=user['activo'],
             password=user['password']
         )
@@ -76,7 +76,7 @@ class GrpcClient(object):
             lastName=user['lastName'],
             email=user['email'],
             rol=user['rol'],
-            codigoTienda=user['codigoTienda'],
+            idTienda=user['idTienda'],
             activo=user['activo'],
             password=user['password']
         )

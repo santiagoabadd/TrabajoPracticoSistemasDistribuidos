@@ -32,7 +32,6 @@ export const ProductDetail = ({ product, onClose, onUpdate, isAdding, userRole }
     setLoading(false);
   }, [product, isAdding]);
 
-  // Función para generar un código aleatorio
   const generateProductCode = () => {
     return Math.random().toString(36).substring(2, 12).toUpperCase();
   };
@@ -43,7 +42,7 @@ export const ProductDetail = ({ product, onClose, onUpdate, isAdding, userRole }
       const response = await fetch('http://localhost:5000/registerProduct', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(productData), // Mandamos los datos del producto
+        body: JSON.stringify(productData), 
       });
 
       if (response.ok) {
@@ -152,9 +151,7 @@ export const ProductDetail = ({ product, onClose, onUpdate, isAdding, userRole }
             </button>
           </form>
         )}
-
-        {/* Mensaje si el usuario no es admin */}
-        {userRole !== 'admin' && (
+        {userRole !== 'Casa Central' && (
           <p className="text-red-600">No tienes permisos para editar este producto.</p>
         )}
       </div>

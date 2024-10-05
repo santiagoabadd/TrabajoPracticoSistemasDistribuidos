@@ -25,7 +25,7 @@ public class User {
     private boolean activo;
     private String password;
 
-    private String codigoTienda;
+    private long idTienda;
 
 
 }
