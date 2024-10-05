@@ -14,7 +14,7 @@ public class OrdenEstadoConsumer {
     @Autowired
     private OrdenCompraRepository orderRepository;
 
-    @KafkaListener(topics = "/{codigo de tienda}/solicitudes", groupId = "proveedor-group", containerFactory = "kafkaListenerContainerFactory")
+    @KafkaListener(topics = "/{codigo de tienda}/solicitudes", groupId = "tienda-group", containerFactory = "kafkaListenerContainerFactory")
     @Transactional
     public void processResponse(ResponseMessage responseMessage) {
 

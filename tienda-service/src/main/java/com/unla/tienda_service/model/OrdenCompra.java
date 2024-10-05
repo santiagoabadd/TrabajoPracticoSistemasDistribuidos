@@ -1,5 +1,6 @@
 package com.unla.tienda_service.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,6 +22,7 @@ public class OrdenCompra {
 
     private String codigoTienda;
 
+    @JsonManagedReference
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "orden_compra_id")
     private List<ItemOrden> items;

@@ -1,5 +1,6 @@
 package com.unla.tienda_service.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -22,7 +23,8 @@ public class ItemOrden {
     private String talle;
     private Integer cantidadSolicitada;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "orden_compra_id")
+    @JsonBackReference
     private OrdenCompra ordenCompra;
 }

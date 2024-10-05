@@ -32,6 +32,12 @@ public class OrderProcessingService {
     @KafkaListener(topics = "orden-de-compra", groupId = "proveedor-group", containerFactory = "kafkaListenerContainerFactory")
     @Transactional
     public void processOrder(OrdenCompraMessage orderMessage) {
+        System.out.println(orderMessage+"IMSTAAAAAAAAAAAA");
+        System.out.println(orderMessage+"IMSTAAAAAAAAAAAA");
+        System.out.println(orderMessage+"IMSTAAAAAAAAAAAA");
+        System.out.println(orderMessage+"IMSTAAAAAAAAAAAA");
+
+
         List<String> rejectionReasons = new ArrayList<>();
         List<String> stockIssues = new ArrayList<>();
 
