@@ -16,9 +16,11 @@ public class ProductoService {
 
     private final ProductRepository productRepository;
 
+    private final OrdersPausedProcessingService ordersPausedProcessingService;
     @Autowired
-    public ProductoService(ProductRepository productRepository) {
+    public ProductoService(ProductRepository productRepository, OrdersPausedProcessingService ordersPausedProcessingService) {
         this.productRepository = productRepository;
+        this.ordersPausedProcessingService = ordersPausedProcessingService;
     }
 
     public List<ProductResponse> getAllProducts() {
@@ -39,6 +41,7 @@ public class ProductoService {
     private ProductResponse updateStock(Long id, Integer stock){
         Product producto=productRepository.findById(id).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Producto no encontrado con ID: " + id));
         producto.setStock(stock);
+        Integer a=ordersPausedProcessingService.enviarProductosActualizados(producto);
         return mapToProductResponse(productRepository.save(producto));
     }
 

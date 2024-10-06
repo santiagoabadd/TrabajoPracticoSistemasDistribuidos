@@ -32,10 +32,8 @@ public class OrderProcessingService {
     @KafkaListener(topics = "orden-de-comprass", groupId = "proveedor-group", containerFactory = "kafkaListenerContainerFactory")
     @Transactional
     public void processOrder(OrdenCompraMessage orderMessage) {
-        System.out.println(orderMessage.getCodigoTienda()+"IMSTAAAAAAAAAAAA");
-        System.out.println(orderMessage+"IMSTAAAAAAAAAAAA");
-        System.out.println(orderMessage+"IMSTAAAAAAAAAAAA");
-        System.out.println(orderMessage+"IMSTAAAAAAAAAAAA");
+        System.out.println(orderMessage.getCodigoTienda()+"CODIGO DE TIENDA RECIBIDA");
+
 
 
         List<String> rejectionReasons = new ArrayList<>();

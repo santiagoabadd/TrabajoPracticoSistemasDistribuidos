@@ -11,8 +11,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class OrdenCompraService {
@@ -53,5 +52,25 @@ public class OrdenCompraService {
         kafkaTemplate.send("orden-de-comprass", "123",orderMessage);
 
         return ordenCompra;
+    }
+
+
+
+    public List<OrdenCompra> getAllPausedByProduct(String codigoProducto){
+        List<OrdenCompra> ordenes= orderRepository.findAll();
+        List<OrdenCompra> ordenesPausadas=new ArrayList<OrdenCompra>();
+        if(!ordenes.isEmpty()){
+            for(int i=0;i<ordenes.size();i++){
+                if(ordenes.get(i).getIdOrdenDespacho()==null){
+                    for(int j=0;i<ordenes.get(i).getItems().size();j++){
+                        if(ordenes.get(i).getItems().get(j).getCodigoArticulo().equals(codigoProducto)){
+                            ordenesPausadas.add(ordenes.get(i));
+                        }
+                    }
+                }
+            }
+        }
+
+        return ordenesPausadas;
     }
 }
