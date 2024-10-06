@@ -17,11 +17,9 @@ public class OrdenCompraController {
 
     @PostMapping
     public ResponseEntity<OrdenCompra> crearOrden(@RequestBody OrdenCompraRequestDto ordenRequest) {
-        try {
+
             OrdenCompra ordenCompra = ordenCompraService.createOrder(ordenRequest);
             return new ResponseEntity<>(ordenCompra, HttpStatus.CREATED);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+
     }
 }

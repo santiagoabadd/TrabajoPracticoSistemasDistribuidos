@@ -1,4 +1,4 @@
-package com.unla.proveedor_service.dtos;
+package com.unla.tienda_service.messages;
 
 import lombok.*;
 

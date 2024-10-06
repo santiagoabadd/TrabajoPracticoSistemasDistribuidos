@@ -44,13 +44,13 @@ public class OrdenCompraService {
         orderRepository.save(ordenCompra);
 
 
-        OrdenCompraMessage message = new OrdenCompraMessage();
-        message.setCodigoTienda(ordenCompra.getCodigoTienda());
-        message.setId(ordenCompra.getId());
-        message.setItems(ordenRequest.getItems());
-        message.setFechaSolicitud(ordenCompra.getFechaSolicitud());
+        OrdenCompraMessage orderMessage = new OrdenCompraMessage();
+        orderMessage.setCodigoTienda(ordenCompra.getCodigoTienda());
+        orderMessage.setId(ordenCompra.getId());
+        orderMessage.setItems(ordenRequest.getItems());
+        orderMessage.setFechaSolicitud(ordenCompra.getFechaSolicitud());
 
-        kafkaTemplate.send("orden-de-compra", message);
+        kafkaTemplate.send("orden-de-comprass", "123",orderMessage);
 
         return ordenCompra;
     }
