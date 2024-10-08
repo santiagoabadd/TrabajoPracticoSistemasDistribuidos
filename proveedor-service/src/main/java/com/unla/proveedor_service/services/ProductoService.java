@@ -38,7 +38,7 @@ public class ProductoService {
         return mapToProductResponse(productRepository.findByCodigo(codigo).get());
     }
 
-    private ProductResponse updateStock(Long id, Integer stock){
+    public ProductResponse updateStock(Long id, Integer stock){
         Product producto=productRepository.findById(id).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Producto no encontrado con ID: " + id));
         producto.setStock(stock);
         Integer a=ordersPausedProcessingService.enviarProductosActualizados(producto);

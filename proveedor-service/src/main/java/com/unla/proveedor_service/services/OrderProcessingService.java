@@ -29,7 +29,7 @@ public class OrderProcessingService {
     @Autowired
     private KafkaTemplate<String, DispatchOrdenMessage> dispatchKafkaTemplate;
 
-    @KafkaListener(topics = "orden-de-comprass", groupId = "proveedor-group", containerFactory = "kafkaListenerContainerFactory")
+    @KafkaListener(topics = "orden-de-compras", groupId = "proveedor-group", containerFactory = "kafkaListenerContainerFactory")
     @Transactional
     public void processOrder(OrdenCompraMessage orderMessage) {
         System.out.println(orderMessage.getCodigoTienda()+"CODIGO DE TIENDA RECIBIDA");

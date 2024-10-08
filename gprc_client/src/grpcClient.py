@@ -23,7 +23,7 @@ class GrpcClient(object):
 		self.host = 'localhost'
 		self.serverproduct_port = 9090
 		self.servertienda_port = 9091
-		self.serveruser_port = 9092
+		self.serveruser_port = 9093
 
 		self.channel = grpc.insecure_channel('{}:{}'.format(self.host, self.serveruser_port))
 		self.stub = usergrpc_grpc.UserServiceStub(self.channel)

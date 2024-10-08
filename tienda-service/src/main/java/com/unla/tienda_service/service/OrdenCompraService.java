@@ -49,7 +49,7 @@ public class OrdenCompraService {
         orderMessage.setItems(ordenRequest.getItems());
         orderMessage.setFechaSolicitud(ordenCompra.getFechaSolicitud());
 
-        kafkaTemplate.send("orden-de-comprass", "123",orderMessage);
+        kafkaTemplate.send("orden-de-compras",orderMessage);
 
         return ordenCompra;
     }
@@ -61,8 +61,8 @@ public class OrdenCompraService {
         List<OrdenCompra> ordenesPausadas=new ArrayList<OrdenCompra>();
         if(!ordenes.isEmpty()){
             for(int i=0;i<ordenes.size();i++){
-                if(ordenes.get(i).getIdOrdenDespacho()==null){
-                    for(int j=0;i<ordenes.get(i).getItems().size();j++){
+                if(ordenes.get(i).getIdOrdenDespacho()==null && ordenes.get(i).getEstado()== OrdenCompra.EstadoOrden.ACEPTADA){
+                    for(int j=0;j<ordenes.get(i).getItems().size();j++){
                         if(ordenes.get(i).getItems().get(j).getCodigoArticulo().equals(codigoProducto)){
                             ordenesPausadas.add(ordenes.get(i));
                         }
