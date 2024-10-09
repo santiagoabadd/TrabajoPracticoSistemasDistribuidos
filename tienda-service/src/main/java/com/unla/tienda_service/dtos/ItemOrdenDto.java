@@ -10,6 +10,7 @@ import lombok.*;
 @Builder
 public class ItemOrdenDto {
 
+    private long id;
     private String codigoArticulo;
     private String color;
     private String talle;

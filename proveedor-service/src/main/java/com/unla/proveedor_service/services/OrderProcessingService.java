@@ -4,7 +4,10 @@ import com.unla.proveedor_service.dtos.DispatchOrdenMessage;
 import com.unla.proveedor_service.dtos.ItemOrdenDto;
 import com.unla.proveedor_service.dtos.OrdenCompraMessage;
 import com.unla.proveedor_service.dtos.ResponseMessage;
+import com.unla.proveedor_service.models.ItemOrden;
+import com.unla.proveedor_service.models.OrdenCompra;
 import com.unla.proveedor_service.models.Product;
+import com.unla.proveedor_service.repositories.OrdenCompraRepository;
 import com.unla.proveedor_service.repositories.ProductRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +27,9 @@ public class OrderProcessingService {
     private ProductRepository productoRepository;
 
     @Autowired
+    private OrdenCompraRepository ordenCompraRepository;
+
+    @Autowired
     private KafkaTemplate<String, ResponseMessage> kafkaTemplate;
 
     @Autowired
@@ -38,6 +44,12 @@ public class OrderProcessingService {
 
         List<String> rejectionReasons = new ArrayList<>();
         List<String> stockIssues = new ArrayList<>();
+        OrdenCompra ordenCompra=new OrdenCompra();
+        ordenCompra.setId(orderMessage.getId());
+        ordenCompra.setCodigoTienda(orderMessage.getCodigoTienda());
+        ordenCompra.setFechaSolicitud(orderMessage.getFechaSolicitud());
+        ordenCompra.setFechaRecepcion(LocalDate.now());
+        ordenCompra.setItems(new ArrayList<ItemOrden>());
 
         for (ItemOrdenDto item : orderMessage.getItems()) {
             Product producto = productoRepository.findByCodigo(item.getCodigoArticulo()).orElse(null);
@@ -45,7 +57,6 @@ public class OrderProcessingService {
                 rejectionReasons.add("Artículo " + item.getCodigoArticulo() + ": no existe");
                 continue;
             }
-
             if (item.getCantidadSolicitada() == null || item.getCantidadSolicitada() < 1) {
                 rejectionReasons.add("Artículo " + item.getCodigoArticulo() + ": cantidad mal informada");
                 continue;
@@ -62,6 +73,8 @@ public class OrderProcessingService {
             rejectionResponse.setEstado(ResponseMessage.EstadoOrden.RECHAZADA);
             rejectionResponse.setObservaciones(String.join(", ", rejectionReasons));
             rejectionResponse.setFechaRecepcion(LocalDate.now());
+            ordenCompra.setObservaciones(String.join(", ", rejectionReasons));
+            ordenCompra.setEstado(OrdenCompra.EstadoOrden.RECHAZADA);
 
             kafkaTemplate.send(orderMessage.getCodigoTienda() + "-solicitudes", rejectionResponse);
 
@@ -71,6 +84,8 @@ public class OrderProcessingService {
             stockIssueResponse.setEstado(ResponseMessage.EstadoOrden.ACEPTADA);
             stockIssueResponse.setObservaciones(String.join(", ", stockIssues));
             stockIssueResponse.setFechaRecepcion(LocalDate.now());
+            ordenCompra.setObservaciones(String.join(", ", stockIssues));
+            ordenCompra.setEstado(OrdenCompra.EstadoOrden.ACEPTADA);
 
             kafkaTemplate.send(orderMessage.getCodigoTienda() + "-solicitudes", stockIssueResponse);
 
@@ -80,8 +95,11 @@ public class OrderProcessingService {
             acceptanceResponse.setEstado(ResponseMessage.EstadoOrden.ACEPTADA);
             acceptanceResponse.setObservaciones("Orden aceptada sin problemas de stock.");
             acceptanceResponse.setFechaRecepcion(LocalDate.now());
+            ordenCompra.setObservaciones(String.join("Orden aceptada sin problemas de stock."));
+            ordenCompra.setEstado(OrdenCompra.EstadoOrden.ACEPTADA);
 
             kafkaTemplate.send(orderMessage.getCodigoTienda()+ "-solicitudes", acceptanceResponse);
+
 
             DispatchOrdenMessage dispatchOrden = new DispatchOrdenMessage();
             dispatchOrden.setOrdenId(orderMessage.getId());
@@ -94,8 +112,16 @@ public class OrderProcessingService {
                 producto.setStock(producto.getStock() - item.getCantidadSolicitada());
                 productoRepository.save(producto);
             }
+
         }
 
+        if(!ordenCompra.getEstado().equals(OrdenCompra.EstadoOrden.RECHAZADA)){
+            for (ItemOrdenDto item : orderMessage.getItems()) {
+                ordenCompra.getItems().add(new ItemOrden(item.getId(),item.getCodigoArticulo(),item.getColor(),item.getTalle(),item.getCantidadSolicitada(),ordenCompra));
+            }
+        }
+
+        ordenCompraRepository.save(ordenCompra);
 
     }
 

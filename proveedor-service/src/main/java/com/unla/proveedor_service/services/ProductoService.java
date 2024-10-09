@@ -1,5 +1,6 @@
 package com.unla.proveedor_service.services;
 
+import com.unla.proveedor_service.dtos.ProductRequest;
 import com.unla.proveedor_service.dtos.ProductResponse;
 import com.unla.proveedor_service.models.Product;
 import com.unla.proveedor_service.repositories.ProductRepository;
@@ -44,6 +45,12 @@ public class ProductoService {
         Integer a=ordersPausedProcessingService.enviarProductosActualizados(producto);
         return mapToProductResponse(productRepository.save(producto));
     }
+
+    public ProductResponse createProduct(ProductRequest productRequest){
+        Product producto=new Product(productRequest.getNombre(),productRequest.getCodigo(),productRequest.getFoto(),productRequest.getColor(),productRequest.getTalle(),productRequest.getStock());
+        return mapToProductResponse(productRepository.save(producto));
+    }
+
 
 
 

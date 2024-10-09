@@ -54,7 +54,7 @@ public class OrdenProductChangeConsumer {
 
 
         List<ItemOrdenDto> items = ordenCompra.getItems().stream()
-                .map(item -> new ItemOrdenDto(item.getCodigoArticulo(), item.getColor(),item.getTalle(),item.getCantidadSolicitada()))
+                .map(item -> new ItemOrdenDto(item.getId(),item.getCodigoArticulo(), item.getColor(),item.getTalle(),item.getCantidadSolicitada()))
                 .collect(Collectors.toList());
         message.setItems(items);
 

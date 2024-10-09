@@ -1,6 +1,7 @@
 package com.unla.proveedor_service.controllers;
 
 
+import com.unla.proveedor_service.dtos.ProductRequest;
 import com.unla.proveedor_service.dtos.ProductResponse;
 import com.unla.proveedor_service.models.Product;
 import com.unla.proveedor_service.services.ProductoService;
@@ -35,6 +36,12 @@ public class ProveedorController {
     @PutMapping("/productos/{id}/{stock}")
     public ResponseEntity<ProductResponse> actualizarStock(@PathVariable Long id, @PathVariable Integer stock) {
         ProductResponse updatedProduct = productoService.updateStock(id, stock);
+        return ResponseEntity.ok(updatedProduct);
+    }
+
+    @PostMapping("/productos/create")
+    public ResponseEntity<ProductResponse> crearProducto(@RequestBody ProductRequest productRequest) {
+        ProductResponse updatedProduct = productoService.createProduct(productRequest);
         return ResponseEntity.ok(updatedProduct);
     }
 
