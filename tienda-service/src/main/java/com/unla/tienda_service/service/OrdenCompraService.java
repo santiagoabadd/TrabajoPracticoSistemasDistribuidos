@@ -2,10 +2,13 @@ package com.unla.tienda_service.service;
 
 import com.unla.tienda_service.dtos.ItemOrdenDto;
 import com.unla.tienda_service.dtos.OrdenCompraRequestDto;
+import com.unla.tienda_service.messages.ChangeOrderMessage;
 import com.unla.tienda_service.messages.OrdenCompraMessage;
 import com.unla.tienda_service.model.ItemOrden;
 import com.unla.tienda_service.model.OrdenCompra;
+import com.unla.tienda_service.model.Tienda;
 import com.unla.tienda_service.repository.OrdenCompraRepository;
+import com.unla.tienda_service.repository.TiendaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
@@ -17,7 +20,13 @@ import java.util.*;
 public class OrdenCompraService {
 
     @Autowired
+    private KafkaTemplate<String, ChangeOrderMessage> kafkaTemplateChange;
+
+    @Autowired
     private OrdenCompraRepository orderRepository;
+
+    @Autowired
+    private TiendaRepository tiendaRepository;
 
     @Autowired
     private KafkaTemplate<String, OrdenCompraMessage> kafkaTemplate;
@@ -54,6 +63,19 @@ public class OrdenCompraService {
         return ordenCompra;
     }
 
+    public OrdenCompra changeOrderState(Long id){
+        OrdenCompra ordenCompra=orderRepository.findById(id).orElseThrow(()-> new RuntimeException("No existe una orden de compra con ese id"));
+        ordenCompra.setEstado(OrdenCompra.EstadoOrden.RECIBIDA);
+        ChangeOrderMessage changeOrderMessage=new ChangeOrderMessage();
+        changeOrderMessage.setFechaRecepcion(LocalDate.now());
+        changeOrderMessage.setId(id);
+        Tienda tienda=tiendaRepository.findByCodigo(ordenCompra.getCodigoTienda()).orElseThrow(()->new RuntimeException("Tienda no encontrada con el codigo"+ordenCompra.getCodigoTienda()));
+        kafkaTemplateChange.send("recepcion",changeOrderMessage);
+        orderRepository.save(ordenCompra);
+        return ordenCompra;
+    }
+
+
 
 
     public List<OrdenCompra> getAllPausedByProduct(String codigoProducto){
@@ -73,4 +95,6 @@ public class OrdenCompraService {
 
         return ordenesPausadas;
     }
+
+
 }

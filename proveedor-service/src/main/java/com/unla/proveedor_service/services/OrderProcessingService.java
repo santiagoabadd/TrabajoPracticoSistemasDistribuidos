@@ -1,9 +1,6 @@
 package com.unla.proveedor_service.services;
 
-import com.unla.proveedor_service.dtos.DispatchOrdenMessage;
-import com.unla.proveedor_service.dtos.ItemOrdenDto;
-import com.unla.proveedor_service.dtos.OrdenCompraMessage;
-import com.unla.proveedor_service.dtos.ResponseMessage;
+import com.unla.proveedor_service.dtos.*;
 import com.unla.proveedor_service.models.ItemOrden;
 import com.unla.proveedor_service.models.OrdenCompra;
 import com.unla.proveedor_service.models.Product;
@@ -33,13 +30,16 @@ public class OrderProcessingService {
     private KafkaTemplate<String, ResponseMessage> kafkaTemplate;
 
     @Autowired
+    private KafkaTemplate<String, ProductNovedadMessage> kafkaTemplateNovedad;
+
+    @Autowired
     private KafkaTemplate<String, DispatchOrdenMessage> dispatchKafkaTemplate;
 
     @KafkaListener(topics = "orden-de-compras", groupId = "proveedor-group", containerFactory = "kafkaListenerContainerFactory")
     @Transactional
     public void processOrder(OrdenCompraMessage orderMessage) {
         System.out.println(orderMessage.getCodigoTienda()+"CODIGO DE TIENDA RECIBIDA");
-
+        System.out.println(orderMessage.getObservaciones()+"ovbs");
 
 
         List<String> rejectionReasons = new ArrayList<>();
@@ -95,8 +95,11 @@ public class OrderProcessingService {
             acceptanceResponse.setEstado(ResponseMessage.EstadoOrden.ACEPTADA);
             acceptanceResponse.setObservaciones("Orden aceptada sin problemas de stock.");
             acceptanceResponse.setFechaRecepcion(LocalDate.now());
-            ordenCompra.setObservaciones(String.join("Orden aceptada sin problemas de stock."));
+            ordenCompra.setObservaciones("Orden aceptada sin problemas de stock.");
             ordenCompra.setEstado(OrdenCompra.EstadoOrden.ACEPTADA);
+
+            System.out.println(acceptanceResponse.getEstado()+"ORDEN NUEVA ESTADO");
+            System.out.println(acceptanceResponse.getFechaRecepcion()+"ORDEN NUEVA FECHA RECEPCION");
 
             kafkaTemplate.send(orderMessage.getCodigoTienda()+ "-solicitudes", acceptanceResponse);
 
@@ -104,6 +107,12 @@ public class OrderProcessingService {
             DispatchOrdenMessage dispatchOrden = new DispatchOrdenMessage();
             dispatchOrden.setOrdenId(orderMessage.getId());
             dispatchOrden.setFechaEstimadaEnvio(LocalDate.now().plusDays(3));
+
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
 
             dispatchKafkaTemplate.send(orderMessage.getCodigoTienda() + "-despacho", dispatchOrden);
 
@@ -120,9 +129,44 @@ public class OrderProcessingService {
                 ordenCompra.getItems().add(new ItemOrden(item.getId(),item.getCodigoArticulo(),item.getColor(),item.getTalle(),item.getCantidadSolicitada(),ordenCompra));
             }
         }
-
+        System.out.println("-------->"+ordenCompra.getObservaciones());
         ordenCompraRepository.save(ordenCompra);
 
+    }
+
+    @KafkaListener(topics = "recepcion", groupId = "proveedor-group", containerFactory = "kafkaListenerContainerFactory")
+    @Transactional
+    public void processOrderReception(ChangeOrderMessage changOrderMessage){
+
+        System.out.println("AAAAAAAAAAAAAAAAAA222");
+
+        OrdenCompra orden = ordenCompraRepository.findById(changOrderMessage.getId()).orElse(null);
+        if (orden == null) {
+            System.out.println("Orden no encontrada: " + changOrderMessage.getId());
+            return;
+        }
+
+
+        orden.setEstado(OrdenCompra.EstadoOrden.RECIBIDA);
+        System.out.println(orden.toString());
+        ordenCompraRepository.save(orden);
+
+
+    }
+
+    public ProductNovedadMessage sendProductoNovedad(ProductResponse productResponse){
+
+        ProductNovedadMessage productNovedadMessage=new ProductNovedadMessage();
+
+        productNovedadMessage.setCodigo(productResponse.getCodigo());
+        productNovedadMessage.setNombre(productResponse.getNombre());
+        productNovedadMessage.setFoto(productResponse.getFoto());
+        productNovedadMessage.setTalle(productResponse.getTalle());
+        productNovedadMessage.setColor(productResponse.getColor());
+
+        kafkaTemplateNovedad.send("novedades",productNovedadMessage);
+
+        return productNovedadMessage;
     }
 
 

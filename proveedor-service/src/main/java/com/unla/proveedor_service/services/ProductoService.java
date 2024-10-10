@@ -18,11 +18,17 @@ public class ProductoService {
     private final ProductRepository productRepository;
 
     private final OrdersPausedProcessingService ordersPausedProcessingService;
-    @Autowired
-    public ProductoService(ProductRepository productRepository, OrdersPausedProcessingService ordersPausedProcessingService) {
+
+    private final OrderProcessingService orderProcessingService;
+
+    public ProductoService(ProductRepository productRepository, OrdersPausedProcessingService ordersPausedProcessingService, OrderProcessingService orderProcessingService) {
         this.productRepository = productRepository;
         this.ordersPausedProcessingService = ordersPausedProcessingService;
+        this.orderProcessingService = orderProcessingService;
     }
+
+    @Autowired
+
 
     public List<ProductResponse> getAllProducts() {
         var products = productRepository.findAll();
@@ -48,7 +54,9 @@ public class ProductoService {
 
     public ProductResponse createProduct(ProductRequest productRequest){
         Product producto=new Product(productRequest.getNombre(),productRequest.getCodigo(),productRequest.getFoto(),productRequest.getColor(),productRequest.getTalle(),productRequest.getStock());
-        return mapToProductResponse(productRepository.save(producto));
+        ProductResponse productResponse=mapToProductResponse(productRepository.save(producto));
+        orderProcessingService.sendProductoNovedad(productResponse);
+        return productResponse;
     }
 
 

@@ -34,7 +34,8 @@ public class OrdenEstadoConsumer {
     @Transactional
     public void processResponse(ResponseMessage responseMessage, @Header(KafkaHeaders.RECEIVED_TOPIC) String topic) {
         try {
-            System.out.println("AAAAAAAAAAAAAAAAAA111");
+            System.out.println(responseMessage.getEstado()+"ESTADO ORDEN RECIBIDA");
+            System.out.println(responseMessage.getFechaRecepcion()+"FECHA RECEPCION ORDEN RECIBIDA");
 
             String codigoTienda = extractCodigoTiendaFromTopic(topic);
 
@@ -55,6 +56,8 @@ public class OrdenEstadoConsumer {
             orden.setEstado(convertirEstado(responseMessage.getEstado()));
             orden.setFechaRecepcion(responseMessage.getFechaRecepcion());
             orden.setObservaciones(responseMessage.getObservaciones());
+            System.out.println(orden.toString());
+
             ordenCompraRepository.save(orden);
 
             System.out.println("Orden actualizada exitosamente para la tienda: " + tienda.getCodigo());
@@ -85,16 +88,19 @@ public class OrdenEstadoConsumer {
                 return;
             }
 
+
+
             OrdenDespacho ordenDespacho=new OrdenDespacho();
             ordenDespacho.setFechaEstimadaEnvio(dispatchOrdenMessage.getFechaEstimadaEnvio());
             ordenDespacho.setIdOrdenCompra(orden.getId());
-
+            System.out.println(orden.toString());
             ordenDespachoRepository.save(ordenDespacho);
 
             Long idOrdenDespachoGenerado = ordenDespacho.getId();
 
 
             orden.setIdOrdenDespacho(idOrdenDespachoGenerado);
+            System.out.println(orden.toString());
             ordenCompraRepository.save(orden);
 
             System.out.println("Orden actualizada exitosamente para la tienda: " + tienda.getCodigo());

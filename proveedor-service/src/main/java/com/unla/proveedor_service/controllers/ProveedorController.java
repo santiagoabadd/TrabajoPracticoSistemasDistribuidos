@@ -40,10 +40,15 @@ public class ProveedorController {
     }
 
     @PostMapping("/productos/create")
-    public ResponseEntity<ProductResponse> crearProducto(@RequestBody ProductRequest productRequest) {
-        ProductResponse updatedProduct = productoService.createProduct(productRequest);
-        return ResponseEntity.ok(updatedProduct);
+    public ResponseEntity<ProductResponse> crearProducto(@RequestBody ProductRequest productRequest){
+
+        ProductResponse product= productoService.createProduct(productRequest);
+
+        return new ResponseEntity<>(product,HttpStatus.CREATED);
+
     }
+
+
 
 
 
