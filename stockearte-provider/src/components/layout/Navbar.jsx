@@ -11,6 +11,7 @@ export const Navbar = () => {
                         <ul className="flex space-x-4">
                             <li><Link to="/productos" className="hover:text-green-200">Gestión de Productos</Link></li>
                             <li><Link to="/ordenes" className="hover:text-green-200">Gestión de Órdenes</Link></li>
+                            <li><Link to="/novedades" className="hover:text-green-200">Gestión de Novedades</Link></li>
                         </ul>
                     </nav>
                 </div>
