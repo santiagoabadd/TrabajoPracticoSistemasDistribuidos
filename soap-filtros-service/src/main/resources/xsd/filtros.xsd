@@ -1,0 +1,52 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://spring.io/guides/gs-producing-web-service"
+           targetNamespace="http://spring.io/guides/gs-producing-web-service" elementFormDefault="qualified">
+
+    <xs:element name="obtenerFiltrosRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="codigoTienda" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="obtenerFiltrosResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="filtro" type="tns:filtroSoap" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:complexType name="filtroSoap">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="nombre" type="xs:string"/>
+            <xs:element name="codigoTienda" type="xs:string" minOccurs="0"/>
+            <xs:element name="codigoArticulo" type="xs:string" minOccurs="0"/>
+            <xs:element name="fechaDesde" type="xs:date" minOccurs="0"/>
+            <xs:element name="fechaHasta" type="xs:date" minOccurs="0"/>
+            <xs:element name="estado" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:element name="postFiltroRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="filtro" type="tns:filtroSoap"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="postFiltroResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="filtro" type="tns:filtroSoap"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+
+</xs:schema>
