@@ -35,6 +35,23 @@ public class TiendaServiceRPC extends TiendaServiceGrpc.TiendaServiceImplBase {
     }
 
     @Override
+    public void getTiendaByCodigo(GetTiendaByCodigoRequest request, StreamObserver<GetTiendaResponse> responseObserver) {
+        Tienda tienda = tiendaRepository.findByCodigo(request.getCodigo())
+                .orElse(null);
+
+        GetTiendaResponse response = GetTiendaResponse.newBuilder()
+                .setCodigo("")
+                .setEstado(false)
+                .build();
+
+        if(tienda!=null){
+           response=response.toBuilder().setCodigo(tienda.getCodigo()).setEstado(tienda.getEstado()).build();
+        }
+        responseObserver.onNext(response);
+        responseObserver.onCompleted();
+    }
+
+    @Override
     @Transactional
     public void registrarTienda(RegistrarTiendaRequest request, StreamObserver<RegistrarTiendaResponse> responseObserver) {
         Tienda tienda=new Tienda();

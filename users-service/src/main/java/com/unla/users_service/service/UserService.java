@@ -1,13 +1,15 @@
 package com.unla.users_service.service;
 
 
+import com.tiendaservice.grpc.GetTiendaByCodigoRequest;
+import com.tiendaservice.grpc.GetTiendaResponse;
+import com.tiendaservice.grpc.TiendaServiceGrpc;
 import com.unla.users_service.converts.UserBulkUploadConverter;
 import com.unla.users_service.dtos.UserBulkDTO;
 import com.unla.users_service.dtos.UserParseError;
 import com.unla.users_service.dtos.UserResponse;
 import com.unla.users_service.model.User;
 import com.unla.users_service.repository.UserRepository;
-import io.spring.guides.gs_producing_web_service.UserBulkUploadResponse;
 import io.spring.guides.gs_producing_web_service.UserParseErrorSoap;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.csv.CSVFormat;
@@ -30,7 +32,7 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final UserBulkUploadConverter userConverter;
-
+    private final TiendaServiceGrpc.TiendaServiceBlockingStub tiendaServiceBlockingStub;
 
     public User registrarUsuario(User object) {
         try{
@@ -81,7 +83,8 @@ public class UserService {
                 String lastName = csvRecord.get("lastName");
                 String tienda = csvRecord.get("tienda");
                 String password = csvRecord.get("password");
-
+                GetTiendaByCodigoRequest getTiendaByCodigoRequest= GetTiendaByCodigoRequest.newBuilder().setCodigo(tienda).build();
+                GetTiendaResponse tiendaResponse=tiendaServiceBlockingStub.getTiendaByCodigo(getTiendaByCodigoRequest);
                 if (userName == null || userName.isEmpty() ||
                         firstName == null || firstName.isEmpty() ||
                         lastName == null || lastName.isEmpty() ||
@@ -94,7 +97,15 @@ public class UserService {
                     UserParseError error = new UserParseError(lineNumber, userName, "Ya existe un usuario con el nombre: " + userName);
                     errors.add(error);
                     System.out.println("ERROR NUMBER " + lineNumber + ": " + error.toString());
-                } else {
+                } else if(tiendaResponse!=null) {
+                    UserParseError error = new UserParseError(lineNumber, userName, "No existe una tienda con el codigo: " +  tiendaResponse.getCodigo());
+                    errors.add(error);
+                    System.out.println("ERROR NUMBER " + lineNumber + ": " + error.toString());
+                } else if(tiendaResponse.getEstado()==false){
+                    UserParseError error = new UserParseError(lineNumber, userName, "La tienda con el codigo: " +  tiendaResponse.getCodigo() + " no esta activa.");
+                    errors.add(error);
+                    System.out.println("ERROR NUMBER " + lineNumber + ": " + error.toString());
+                } else{
 
                     User user = new User();
                     user.setUserName(userName);
