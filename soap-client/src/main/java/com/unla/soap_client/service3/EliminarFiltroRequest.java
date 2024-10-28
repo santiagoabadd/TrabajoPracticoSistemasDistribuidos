@@ -10,7 +10,6 @@ package com.unla.soap_client.service3;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -25,7 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="filtro" type="{http://spring.io/guides/gs-producing-web-service}filtroSoap"/&gt;
+ *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -36,36 +35,27 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "filtro"
+    "id"
 })
-@XmlRootElement(name = "postFiltroResponse")
-public class PostFiltroResponse {
+@XmlRootElement(name = "eliminarFiltroRequest")
+public class EliminarFiltroRequest {
 
-    @XmlElement(required = true)
-    protected FiltroSoap filtro;
+    protected long id;
 
     /**
-     * Obtiene el valor de la propiedad filtro.
+     * Obtiene el valor de la propiedad id.
      * 
-     * @return
-     *     possible object is
-     *     {@link FiltroSoap }
-     *     
      */
-    public FiltroSoap getFiltro() {
-        return filtro;
+    public long getId() {
+        return id;
     }
 
     /**
-     * Define el valor de la propiedad filtro.
+     * Define el valor de la propiedad id.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link FiltroSoap }
-     *     
      */
-    public void setFiltro(FiltroSoap value) {
-        this.filtro = value;
+    public void setId(long value) {
+        this.id = value;
     }
 
 }

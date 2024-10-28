@@ -38,8 +38,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "filtro"
 })
-@XmlRootElement(name = "postFiltroResponse")
-public class PostFiltroResponse {
+@XmlRootElement(name = "modificarFiltroRequest")
+public class ModificarFiltroRequest {
 
     @XmlElement(required = true)
     protected FiltroSoap filtro;

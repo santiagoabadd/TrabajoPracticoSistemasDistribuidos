@@ -109,6 +109,28 @@ public class SoapClient extends WebServiceGatewaySupport {
         return postFiltroResponse;
     }
 
+    public ModificarFiltroResponse modificarFiltroResponse(FiltroSoap filtroSoap) {
+        ModificarFiltroRequest modificarFiltroRequest = new ModificarFiltroRequest();
+        modificarFiltroRequest.setFiltro(filtroSoap);
+
+        SoapActionCallback soapActionCallback = new SoapActionCallback("http://spring.io/guides/gs-producing-web-service/modificarFiltroRequest");
+
+        ModificarFiltroResponse modificarFiltroResponse = (ModificarFiltroResponse) getWebServiceTemplate().marshalSendAndReceive("http://localhost:8084/ws", modificarFiltroRequest, soapActionCallback);
+
+        return modificarFiltroResponse;
+    }
+
+    public EliminarFiltroResponse eliminarFiltroResponse(Long id) {
+        EliminarFiltroRequest eliminarFiltroRequest = new EliminarFiltroRequest();
+        eliminarFiltroRequest.setId(id);
+
+        SoapActionCallback soapActionCallback = new SoapActionCallback("http://spring.io/guides/gs-producing-web-service/eliminarFiltroRequest");
+
+        EliminarFiltroResponse eliminarFiltroResponse = (EliminarFiltroResponse) getWebServiceTemplate().marshalSendAndReceive("http://localhost:8084/ws", eliminarFiltroRequest, soapActionCallback);
+
+        return eliminarFiltroResponse;
+    }
+
     public UserBulkUploadResponse userBulkUploadResponse(UserBulkUploadRequest request){
 
 

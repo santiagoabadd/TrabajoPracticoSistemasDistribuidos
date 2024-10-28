@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="filtro" type="{http://spring.io/guides/gs-producing-web-service}filtroSoap"/&gt;
+ *         &lt;element name="resultado" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -36,36 +36,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "filtro"
+    "resultado"
 })
-@XmlRootElement(name = "postFiltroResponse")
-public class PostFiltroResponse {
+@XmlRootElement(name = "eliminarFiltroResponse")
+public class EliminarFiltroResponse {
 
     @XmlElement(required = true)
-    protected FiltroSoap filtro;
+    protected String resultado;
 
     /**
-     * Obtiene el valor de la propiedad filtro.
+     * Obtiene el valor de la propiedad resultado.
      * 
      * @return
      *     possible object is
-     *     {@link FiltroSoap }
+     *     {@link String }
      *     
      */
-    public FiltroSoap getFiltro() {
-        return filtro;
+    public String getResultado() {
+        return resultado;
     }
 
     /**
-     * Define el valor de la propiedad filtro.
+     * Define el valor de la propiedad resultado.
      * 
      * @param value
      *     allowed object is
-     *     {@link FiltroSoap }
+     *     {@link String }
      *     
      */
-    public void setFiltro(FiltroSoap value) {
-        this.filtro = value;
+    public void setResultado(String value) {
+        this.resultado = value;
     }
 
 }

@@ -16,7 +16,7 @@ interface FilterParams {
   codigoTienda?: string;
 }
 
-interface SavedFilter  {
+interface SavedFilter {
   id: string;
   nombre: string;
   codigoArticulo?: string;
@@ -24,7 +24,6 @@ interface SavedFilter  {
   fechaHasta?: string;
   estado?: string;
   codigoTienda?: string;
-
 }
 
 export const PurchaseOrders: React.FC = () => {
@@ -37,6 +36,7 @@ export const PurchaseOrders: React.FC = () => {
   const [savedFilters, setSavedFilters] = useState<SavedFilter[]>([]);
   const [selectedFilter, setSelectedFilter] = useState<string>("");
   const [filterName, setFilterName] = useState<string>("");
+  const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
     if (user.role === "Tienda" && user.codigoTienda) {
@@ -44,8 +44,6 @@ export const PurchaseOrders: React.FC = () => {
         ...prev,
         codigoTienda: user.codigoTienda,
       }));
-      console.log("entrooo "+filters+user.codigoTienda)
-
     }
     setInitialFetch(true);
     fetchSavedFilters();
@@ -56,11 +54,6 @@ export const PurchaseOrders: React.FC = () => {
       fetchPurchaseOrders();
     }
   }, [filters, initialFetch]);
-
-  useEffect(() => {
-    console.log(filters)
-    console.log(savedFilters)
-  }, [filters]);
 
   const fetchPurchaseOrders = async () => {
     try {
@@ -83,7 +76,6 @@ export const PurchaseOrders: React.FC = () => {
     }
   };
 
-
   const fetchSavedFilters = async () => {
     try {
       const response = await fetch("http://localhost:8085/getAllFiltros", {
@@ -92,14 +84,12 @@ export const PurchaseOrders: React.FC = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          idUsuario:Number(user.idUsuario),
+          idUsuario: Number(user.idUsuario),
         }),
       });
       
       const data = await response.json();
-      setSavedFilters(data.filtro); 
-      console.log(data.filtro);
-      console.log(savedFilters);
+      setSavedFilters(data.filtro);
     } catch (error) {
       console.error("Error fetching saved filters:", error);
     }
@@ -131,10 +121,8 @@ export const PurchaseOrders: React.FC = () => {
   const handleSavedFilterChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const filterId = e.target.value;
     setSelectedFilter(filterId);
-    console.log("Selected filter ID:", filterId); 
   
     const filter = savedFilters.find(f => f.id.toString() === filterId);
-    console.log("Filtro seleccionado:", filter);
   
     if (filter) {
       setFilters({
@@ -142,19 +130,12 @@ export const PurchaseOrders: React.FC = () => {
         fechaDesde: filter.fechaDesde || "",
         fechaHasta: filter.fechaHasta || "",
         estado: filter.estado || "",
-
         codigoTienda: user.role === "Tienda" ? filters?.codigoTienda || "" : filter.codigoTienda || "",
       });
   
       setStartDate(filter.fechaDesde || "");
       setEndDate(filter.fechaHasta || "");
-  
-      handleFilterChange("codigoArticulo", filter.codigoArticulo || "");
-      handleFilterChange("estado", filter.estado || "");
-  
-      if (user.role !== "Tienda") {
-        handleFilterChange("codigoTienda", filter.codigoTienda || "");
-      }
+      setFilterName(filter.nombre);
     }
   };
 
@@ -163,7 +144,7 @@ export const PurchaseOrders: React.FC = () => {
       alert("Please enter a name for the filter");
       return;
     }
-    const newFilter = { ...filters, nombre: filterName, idUsuario: user.idUsuario};
+    const newFilter = { ...filters, nombre: filterName, idUsuario: user.idUsuario };
     try {
       const response = await fetch("http://localhost:8085/addFiltro", {
         method: "POST",
@@ -177,8 +158,59 @@ export const PurchaseOrders: React.FC = () => {
       }
       fetchSavedFilters();
       setFilterName("");
+      setIsEditing(false);
     } catch (error) {
       console.error("Error saving filter:", error);
+    }
+  };
+
+  const modifyFilter = async () => {
+    if (!selectedFilter || !filterName) {
+      alert("Please select a filter and enter a name");
+      return;
+    }
+    const updatedFilter = {
+      id: Number(selectedFilter),
+      nombre: filterName,
+      idUsuario: user.idUsuario,
+      ...filters
+    };
+    try {
+      const response = await fetch("http://localhost:8085/modificarFiltro", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedFilter),
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      fetchSavedFilters();
+      setIsEditing(false);
+    } catch (error) {
+      console.error("Error modifying filter:", error);
+    }
+  };
+
+  const deleteFilter = async () => {
+    if (!selectedFilter) {
+      alert("Please select a filter to delete");
+      return;
+    }
+    try {
+      const response = await fetch(`http://localhost:8085/eliminarFiltro/${selectedFilter}`, {
+        method: "DELETE",
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      fetchSavedFilters();
+      setSelectedFilter("");
+      setFilterName("");
+      setIsEditing(false);
+    } catch (error) {
+      console.error("Error deleting filter:", error);
     }
   };
 
@@ -298,11 +330,42 @@ export const PurchaseOrders: React.FC = () => {
           className="px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
         />
 
+        {isEditing ? (
+          <>
+            <button
+              onClick={modifyFilter}
+              className="px-4 py-2 bg-yellow-600 text-white rounded-md hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
+            >
+              Modify Filter
+            </button>
+            <button
+              onClick={() => setIsEditing(false)}
+              className="px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+            >
+              Cancel
+            </button>
+          </>
+        ) : (
+          <button
+            onClick={saveFilter}
+            className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+          >
+            Save Filter
+          </button>
+        )}
+
         <button
-          onClick={saveFilter}
-          className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+          onClick={() => setIsEditing(true)}
+          className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
         >
-          Save Filter
+          Edit Filter
+        </button>
+
+        <button
+          onClick={deleteFilter}
+          className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+        >
+          Delete Filter
         </button>
       </div>
 
@@ -316,7 +379,7 @@ export const PurchaseOrders: React.FC = () => {
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Status
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500  uppercase tracking-wider">
                 Store Code
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">

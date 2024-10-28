@@ -56,7 +56,34 @@ public class FiltroEndpoint {
         return response;
     }
 
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "modificarFiltroRequest")
+    @ResponsePayload
+    public ModificarFiltroResponse modificarFiltro(@RequestPayload ModificarFiltroRequest request) {
+        ModificarFiltroResponse response = new ModificarFiltroResponse();
 
+        Filtro filtro = filtroConverter.convertFiltroSoapToFiltro(request.getFiltro());
+        filtro = filtroRepository.save(filtro);
+
+        FiltroSoap filtroSoap = filtroConverter.convertFiltroToFiltroSoap(filtro);
+        response.setFiltro(filtroSoap);
+
+        return response;
+    }
+
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "eliminarFiltroRequest")
+    @ResponsePayload
+    public EliminarFiltroResponse eliminarFiltro(@RequestPayload EliminarFiltroRequest request) {
+        EliminarFiltroResponse response = new EliminarFiltroResponse();
+
+        try {
+            filtroRepository.deleteById(request.getId());
+            response.setResultado("Filtro eliminado con éxito");
+        } catch (Exception e) {
+            response.setResultado("Error al eliminar el filtro: " + e.getMessage());
+        }
+
+        return response;
+    }
 
 
 

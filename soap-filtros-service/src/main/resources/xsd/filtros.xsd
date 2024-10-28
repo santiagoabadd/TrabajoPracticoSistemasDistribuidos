@@ -17,6 +17,38 @@
         </xs:complexType>
     </xs:element>
 
+    <xs:element name="modificarFiltroRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="filtro" type="tns:filtroSoap"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="modificarFiltroResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="filtro" type="tns:filtroSoap"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Eliminar Filtro -->
+    <xs:element name="eliminarFiltroRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="eliminarFiltroResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="resultado" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 
     <xs:complexType name="filtroSoap">
         <xs:sequence>

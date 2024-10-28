@@ -122,7 +122,7 @@ public class UserService {
                     user.setRol("tienda");
                     user.setPassword(password);
                     user.setIdTienda(tiendaResponse.getId());
-                    user.setC
+
 
                     users.add(user);
                     userRepository.save(user);
