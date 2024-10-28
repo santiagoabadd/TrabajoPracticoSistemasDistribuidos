@@ -41,7 +41,7 @@ public class CatalogoEndpoint {
         GetCatalogoResponse response = new GetCatalogoResponse();
 
 
-       List<CatalogoSoap> catalogoSoapList = catalogoConverter.convertCatalogoListToCatalogoSoapList(catalogoRepository.findAll());
+       List<CatalogoSoap> catalogoSoapList = catalogoConverter.convertCatalogoListToCatalogoSoapList(catalogoRepository.findByIdTienda(request.getIdTienda()));
 
         response.getCatalogo().addAll(catalogoSoapList);
         return response;
@@ -102,6 +102,23 @@ public class CatalogoEndpoint {
             response.setPdfData(Base64.getEncoder().encodeToString(pdfData));
         } catch (Exception e) {
             throw new RuntimeException("Error al generar el PDF", e);
+        }
+
+        return response;
+    }
+
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "eliminarCatalogoRequest")
+    @ResponsePayload
+    public EliminarCatalogoResponse deleteCatalogo(@RequestPayload EliminarCatalogoRequest request) {
+        EliminarCatalogoResponse response = new EliminarCatalogoResponse();
+
+        Optional<Catalogo> catalogoOpt = catalogoRepository.findById(request.getIdCatalogo());
+
+        if (catalogoOpt.isPresent()) {
+            catalogoRepository.delete(catalogoOpt.get());
+            response.setResultado(true);
+        } else {
+            response.setResultado(false);
         }
 
         return response;

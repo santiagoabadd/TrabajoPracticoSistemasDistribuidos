@@ -38,15 +38,17 @@ public class TiendaServiceRPC extends TiendaServiceGrpc.TiendaServiceImplBase {
     public void getTiendaByCodigo(GetTiendaByCodigoRequest request, StreamObserver<GetTiendaResponse> responseObserver) {
         Tienda tienda = tiendaRepository.findByCodigo(request.getCodigo())
                 .orElse(null);
-
+System.out.println("request:"+request);
+        System.out.println("tienda:"+tienda);
         GetTiendaResponse response = GetTiendaResponse.newBuilder()
                 .setCodigo("")
                 .setEstado(false)
                 .build();
 
         if(tienda!=null){
-           response=response.toBuilder().setCodigo(tienda.getCodigo()).setEstado(tienda.getEstado()).build();
+           response=response.toBuilder().setCodigo(tienda.getCodigo()).setEstado(tienda.getEstado()).setId(tienda.getId()).build();
         }
+        System.out.println("request:"+response);
         responseObserver.onNext(response);
         responseObserver.onCompleted();
     }

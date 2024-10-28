@@ -69,7 +69,6 @@ class GrpcClient(object):
             lastName=user['lastName'],
             email=user['email'],
             rol=user['rol'],
-            idTienda=user['idTienda'],
             activo=user['activo'],
             password=user['password']
         )
@@ -83,7 +82,7 @@ class GrpcClient(object):
             lastName=user['lastName'],
             email=user['email'],
             rol=user['rol'],
-            idTienda=user['idTienda'],
+            idTienda=int(user['idTienda']),
             activo=user['activo'],
             password=user['password']
         )

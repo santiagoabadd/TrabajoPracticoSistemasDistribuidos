@@ -4,7 +4,7 @@
     <xs:element name="getCatalogoRequest">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="codigoTienda" type="xs:string"/>
+                <xs:element name="idTienda" type="xs:long"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -65,6 +65,21 @@
         </xs:complexType>
     </xs:element>
 
+    <xs:element name="eliminarCatalogoRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="idCatalogo" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="eliminarCatalogoResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="resultado" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 
 
     <xs:complexType name="catalogoSoap">

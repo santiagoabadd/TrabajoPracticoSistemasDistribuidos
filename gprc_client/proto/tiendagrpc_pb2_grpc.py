@@ -44,6 +44,11 @@ class OrdenServiceStub(object):
                 request_serializer=tiendagrpc__pb2.ChangeOrderStateRequest.SerializeToString,
                 response_deserializer=tiendagrpc__pb2.ChangeOrderStateResponse.FromString,
                 _registered_method=True)
+        self.ListarOrdenesByTienda = channel.unary_unary(
+                '/OrdenService/ListarOrdenesByTienda',
+                request_serializer=tiendagrpc__pb2.ListarOrdenesRequest.SerializeToString,
+                response_deserializer=tiendagrpc__pb2.ListarOrdenesResponse.FromString,
+                _registered_method=True)
 
 
 class OrdenServiceServicer(object):
@@ -61,6 +66,12 @@ class OrdenServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def ListarOrdenesByTienda(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_OrdenServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -73,6 +84,11 @@ def add_OrdenServiceServicer_to_server(servicer, server):
                     servicer.ChangeOrderState,
                     request_deserializer=tiendagrpc__pb2.ChangeOrderStateRequest.FromString,
                     response_serializer=tiendagrpc__pb2.ChangeOrderStateResponse.SerializeToString,
+            ),
+            'ListarOrdenesByTienda': grpc.unary_unary_rpc_method_handler(
+                    servicer.ListarOrdenesByTienda,
+                    request_deserializer=tiendagrpc__pb2.ListarOrdenesRequest.FromString,
+                    response_serializer=tiendagrpc__pb2.ListarOrdenesResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -129,6 +145,33 @@ class OrdenService(object):
             '/OrdenService/ChangeOrderState',
             tiendagrpc__pb2.ChangeOrderStateRequest.SerializeToString,
             tiendagrpc__pb2.ChangeOrderStateResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def ListarOrdenesByTienda(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/OrdenService/ListarOrdenesByTienda',
+            tiendagrpc__pb2.ListarOrdenesRequest.SerializeToString,
+            tiendagrpc__pb2.ListarOrdenesResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -269,6 +312,11 @@ class TiendaServiceStub(object):
                 request_serializer=tiendagrpc__pb2.GetTiendaRequest.SerializeToString,
                 response_deserializer=tiendagrpc__pb2.GetTiendaResponse.FromString,
                 _registered_method=True)
+        self.GetTiendaByCodigo = channel.unary_unary(
+                '/TiendaService/GetTiendaByCodigo',
+                request_serializer=tiendagrpc__pb2.GetTiendaByCodigoRequest.SerializeToString,
+                response_deserializer=tiendagrpc__pb2.GetTiendaResponse.FromString,
+                _registered_method=True)
         self.RegistrarTienda = channel.unary_unary(
                 '/TiendaService/RegistrarTienda',
                 request_serializer=tiendagrpc__pb2.RegistrarTiendaRequest.SerializeToString,
@@ -300,6 +348,12 @@ class TiendaServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
     def GetTienda(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetTiendaByCodigo(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -341,6 +395,11 @@ def add_TiendaServiceServicer_to_server(servicer, server):
             'GetTienda': grpc.unary_unary_rpc_method_handler(
                     servicer.GetTienda,
                     request_deserializer=tiendagrpc__pb2.GetTiendaRequest.FromString,
+                    response_serializer=tiendagrpc__pb2.GetTiendaResponse.SerializeToString,
+            ),
+            'GetTiendaByCodigo': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetTiendaByCodigo,
+                    request_deserializer=tiendagrpc__pb2.GetTiendaByCodigoRequest.FromString,
                     response_serializer=tiendagrpc__pb2.GetTiendaResponse.SerializeToString,
             ),
             'RegistrarTienda': grpc.unary_unary_rpc_method_handler(
@@ -395,6 +454,33 @@ class TiendaService(object):
             target,
             '/TiendaService/GetTienda',
             tiendagrpc__pb2.GetTiendaRequest.SerializeToString,
+            tiendagrpc__pb2.GetTiendaResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def GetTiendaByCodigo(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/TiendaService/GetTiendaByCodigo',
+            tiendagrpc__pb2.GetTiendaByCodigoRequest.SerializeToString,
             tiendagrpc__pb2.GetTiendaResponse.FromString,
             options,
             channel_credentials,

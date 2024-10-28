@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface FiltroRepository extends JpaRepository<Filtro, Long> {
     List<Filtro> findByNombre(String nombre);
-
+    List<Filtro> findByIdUsuario(long idUsuario);
 
 }

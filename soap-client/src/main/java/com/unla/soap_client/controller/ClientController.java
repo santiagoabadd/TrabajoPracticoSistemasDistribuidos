@@ -5,6 +5,7 @@ import com.unla.soap_client.client.SoapClient;
 import com.unla.soap_client.service1.*;
 import com.unla.soap_client.service2.*;
 import com.unla.soap_client.service3.FiltroSoap;
+import com.unla.soap_client.service3.ObtenerFiltrosRequest;
 import com.unla.soap_client.service3.ObtenerFiltrosResponse;
 import com.unla.soap_client.service3.PostFiltroResponse;
 import com.unla.soap_client.service4.UserBulkUploadRequest;
@@ -59,10 +60,10 @@ public class ClientController {
         return getOrdenComprasByTiendaResponse;
     }
 
-    @GetMapping("/getAllCatalogos")
-    public GetCatalogoResponse getAllCatalogos() {
+    @PostMapping("/getAllCatalogos")
+    public GetCatalogoResponse getAllCatalogos(@RequestBody GetCatalogoRequest getCatalogoRequest){
 
-        GetCatalogoResponse getCatalogoResponse = soapClientService2.getCatalogoResponse();
+        GetCatalogoResponse getCatalogoResponse = soapClientService2.getCatalogoResponse(getCatalogoRequest);
 
 
         return getCatalogoResponse;
@@ -94,10 +95,10 @@ public class ClientController {
         return getCatalogoPdfResponse;
     }
 
-    @GetMapping("/getAllFiltros")
-    public ObtenerFiltrosResponse obtenerFiltrosResponse() {
+    @PostMapping("/getAllFiltros")
+    public ObtenerFiltrosResponse obtenerFiltrosResponse(@RequestBody ObtenerFiltrosRequest obtenerFiltrosRequest) {
 
-        ObtenerFiltrosResponse obtenerFiltrosResponse = soapClientService3.obtenerFiltrosResponse();
+        ObtenerFiltrosResponse obtenerFiltrosResponse = soapClientService3.obtenerFiltrosResponse(obtenerFiltrosRequest);
 
 
         return obtenerFiltrosResponse;
@@ -119,6 +120,17 @@ public class ClientController {
 
 
         return userBulkUploadResponse;
+    }
+
+    @DeleteMapping("/eliminarCatalogo/{id}")
+    public EliminarCatalogoResponse eliminarCatalogoResponse (@PathVariable Long id) {
+
+        EliminarCatalogoRequest eliminarCatalogoRequest=new EliminarCatalogoRequest();
+        eliminarCatalogoRequest.setIdCatalogo(id);
+        EliminarCatalogoResponse eliminarCatalogoResponse = soapClientService2.eliminarCatalogoResponse(eliminarCatalogoRequest);
+
+
+        return eliminarCatalogoResponse;
     }
 
 

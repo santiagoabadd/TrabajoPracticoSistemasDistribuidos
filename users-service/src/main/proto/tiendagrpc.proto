@@ -149,8 +149,9 @@ message GetTiendaByCodigoRequest {
 }
 
 message GetTiendaResponse {
-    string codigo = 1;
-    bool estado = 2;
+    int64 id = 1;
+    string codigo = 2;
+    bool estado = 3;
 }
 
 message UpdateTiendaRequest {

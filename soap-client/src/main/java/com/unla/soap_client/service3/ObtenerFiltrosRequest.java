@@ -2,7 +2,7 @@
 // Este archivo ha sido generado por la arquitectura JavaTM para la implantación de la referencia de enlace (JAXB) XML v2.3.0 
 // Visite <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a> 
 // Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
-// Generado el: 2024.10.28 a las 06:39:37 AM ART 
+// Generado el: 2024.10.28 a las 02:01:01 PM ART 
 //
 
 
@@ -10,7 +10,6 @@ package com.unla.soap_client.service3;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -25,7 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="codigoTienda" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="idUsuario" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -36,36 +35,27 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "codigoTienda"
+    "idUsuario"
 })
 @XmlRootElement(name = "obtenerFiltrosRequest")
 public class ObtenerFiltrosRequest {
 
-    @XmlElement(required = true)
-    protected String codigoTienda;
+    protected long idUsuario;
 
     /**
-     * Obtiene el valor de la propiedad codigoTienda.
+     * Obtiene el valor de la propiedad idUsuario.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
      */
-    public String getCodigoTienda() {
-        return codigoTienda;
+    public long getIdUsuario() {
+        return idUsuario;
     }
 
     /**
-     * Define el valor de la propiedad codigoTienda.
+     * Define el valor de la propiedad idUsuario.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
      */
-    public void setCodigoTienda(String value) {
-        this.codigoTienda = value;
+    public void setIdUsuario(long value) {
+        this.idUsuario = value;
     }
 
 }

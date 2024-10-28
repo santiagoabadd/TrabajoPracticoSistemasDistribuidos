@@ -10,6 +10,8 @@ export const AuthProvider = ({ children }) => {
     logged: false,
     role: null,
     idTienda: null,
+    codigoTienda:null,
+    idUsuario:null
   });
   useEffect(() => {
     console.log(user);
@@ -50,14 +52,29 @@ export const AuthProvider = ({ children }) => {
         }),
       });
 
+
+
       const data = await response.json();
       const userDetails = data.user;
+
+      const storeResponse = await fetch(`http://localhost:5000/getTienda/${userDetails.idTienda}`);
+    if (!storeResponse.ok) {
+      throw new Error(`HTTP error! Status: ${storeResponse.status}`);
+    }
+
+    const storeData = await storeResponse.json();
+    const codigoTienda = storeData.codigo; // Asegúrate de que la propiedad exista
+
+    console.log(codigoTienda);
+      console.log(userDetails);
 
       setUser({
         email: data.user.username,
         logged: true,
         role: data.user.rol,
         idTienda: data.user.idTienda,
+        codigoTienda: codigoTienda,
+        idUsuario:data.user.id
       });
 
       console.log(data.user.username);
@@ -81,6 +98,7 @@ export const AuthProvider = ({ children }) => {
           logged: true,
           role: data.role,
           idTienda: data.role === "Tienda" ? data.idTienda : null,
+          codigoTienda: data.codigoTienda
         });
       } else {
         throw new Error(data.message);
@@ -96,6 +114,7 @@ export const AuthProvider = ({ children }) => {
       logged: false,
       role: null,
       idTienda: null,
+      codigoTienda: null,
     });
   };
 

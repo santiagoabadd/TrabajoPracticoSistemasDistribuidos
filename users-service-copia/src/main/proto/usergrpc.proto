@@ -1,0 +1,97 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.userservice.grpc";
+
+service UserService {
+    rpc RegisterUser(RegisterUserRequest) returns(GetUserResponse);
+    rpc GetUser(GetUserRequest) returns(GetUserResponse);
+    rpc GetUserByTienda(GetUsersByTiendaRequest) returns(GetUsersByTiendaResponse);
+    rpc DeleteUser(DeleteUserRequest) returns(DeleteUserResponse);
+    rpc GetAllUsers(Empty) returns(GetAllUsersResponse);
+    rpc UpdateUser(UpdateUserRequest) returns(GetUserResponse);
+}
+
+message RegisterUserRequest {
+    string username = 1;
+    string firstName = 2;
+    string lastName = 3;
+    string email = 4;
+    string rol = 5;
+    int64 idTienda = 6;
+    bool activo=7;
+    string password=8;
+}
+
+message GetUserRequest {
+    string username = 1;
+}
+
+message GetUserResponse {
+    string username = 1;
+    string firstName = 2;
+    string lastName = 3;
+    string rol = 4;
+    int64 idTienda = 5;
+    bool activo=7;
+}
+
+message GetUsersByTiendaRequest {
+    int64 idTienda = 1;
+}
+
+message GetUsersByTiendaResponse {
+    repeated UserInfo user = 1;
+}
+
+message UserInfo {
+    int64 id=1;
+    string username = 2;
+    string firstName = 3;
+    string lastName = 4;
+    string rol= 5;
+    int64 idTienda = 6;
+    bool activo=7;
+}
+
+message DeleteUserRequest {
+    int64 id = 1;
+}
+
+message DeleteUserResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message Empty {}
+
+message GetAllUsersResponse {
+    repeated UserInfo user = 1;
+}
+
+message UpdateUserRequest {
+    int64 id = 1;
+    string username = 2;
+    string firstName = 3;
+    string lastName = 4;
+    string email = 5;
+    string rol = 6;
+    int64 idTienda = 7;
+    bool activo=8;
+    string password=9;
+}
+
+
+message JwtRequest {
+  string userName = 1;
+  string password = 2;
+}
+
+message JwtToken {
+  string jwtToken = 1;
+  UserInfo user = 2;
+}
+
+service AuthService {
+  rpc authorize(JwtRequest) returns(JwtToken){}
+}

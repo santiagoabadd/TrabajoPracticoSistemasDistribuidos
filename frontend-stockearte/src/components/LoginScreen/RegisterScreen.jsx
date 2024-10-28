@@ -134,19 +134,6 @@ export const RegisterScreen = () => {
                   <option value="Casa Central">Central</option>
                 </select>
               </div>
-              <div>
-                <label className="block" htmlFor="username">
-                  codigo tienda
-                </label>
-                <input
-                  type="text"
-                  placeholder="Codigo Tienda"
-                  className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
-                  name="codigoTienda"
-                  value={formData.codigoTienda}
-                  onChange={handleChange}
-                />
-              </div>
               <label className="flex items-center">
                 <input
                   type="checkbox"

@@ -23,7 +23,7 @@ public class FiltroConverter {
     public Filtro convertFiltroSoapToFiltro(FiltroSoap filtroSoap) {
         Filtro filtro = new Filtro();
         filtro.setId(filtroSoap.getId());
-        filtro.setCodigoTienda(filtroSoap.getCodigoTienda());
+        filtro.setIdUsuario(filtroSoap.getIdUsuario());
         filtro.setNombre(filtroSoap.getNombre());
         filtro.setCodigoArticulo(filtroSoap.getCodigoArticulo());
         filtro.setFechaHasta(
@@ -45,7 +45,7 @@ public class FiltroConverter {
         FiltroSoap filtroSoap = new FiltroSoap();
         filtroSoap.setId(filtro.getId());
         filtroSoap.setCodigoArticulo(filtro.getCodigoArticulo());
-        filtroSoap.setCodigoTienda(filtro.getCodigoTienda());
+        filtroSoap.setIdUsuario(filtro.getIdUsuario());
         filtroSoap.setNombre(filtro.getNombre());
         filtroSoap.setEstado(filtro.getEstado());
         filtroSoap.setFechaDesde(convertToXMLGregorianCalendar(filtro.getFechaDesde()));

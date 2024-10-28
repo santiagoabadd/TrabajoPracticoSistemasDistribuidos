@@ -65,6 +65,7 @@ public class OrdenCompraEndpoint {
 
 
         List<OrdenCompraSoap> ordenCompra= ordenCompraConverter.convertOrdenCompraToOrdenCompraSoapList(ordenCompraRepository.findByCodigoTienda(request.getCodigoTienda()));
+
         System.out.println(ordenCompra.get(1).getEstado());
         List<OrdenCompra> ordenCompras=ordenCompraConverter.convertOrdenCompraSoapToOrdenCompra(ordenCompra);
         System.out.println(ordenCompras.get(1).getEstado());

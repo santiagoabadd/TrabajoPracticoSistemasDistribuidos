@@ -33,9 +33,10 @@ public class FiltroEndpoint {
     public ObtenerFiltrosResponse obtenerFiltrosResponse(@RequestPayload ObtenerFiltrosRequest request) {
         ObtenerFiltrosResponse response = new ObtenerFiltrosResponse();
 
+        System.out.println(request.getIdUsuario());
+        System.out.println(request.getIdUsuario());
 
-
-        List<FiltroSoap> filtroSoap=filtroConverter.convertFiltroToFiltroSoap(filtroRepository.findAll());
+        List<FiltroSoap> filtroSoap=filtroConverter.convertFiltroToFiltroSoap(filtroRepository.findByIdUsuario(request.getIdUsuario()));
 
 
         response.getFiltro().addAll(filtroSoap);

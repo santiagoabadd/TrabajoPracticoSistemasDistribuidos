@@ -20,7 +20,7 @@ public class Filtro {
     private long id;
 
     private String nombre;
-    private String codigoTienda;
+    private long idUsuario;
     private String codigoArticulo;
     private LocalDate fechaDesde;
     private LocalDate fechaHasta;

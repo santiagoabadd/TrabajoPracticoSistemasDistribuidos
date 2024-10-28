@@ -23,7 +23,7 @@ interface UserEdit {
   lastName: string;
   email: string;
   rol: string;
-  codigoTienda: string;
+  idTienda: number;
   activo: boolean;
   password: string;
 }
@@ -36,7 +36,7 @@ export const UserDetail = ({ user, onClose, onUpdate, isAdding }) => {
     lastName: "",
     email: "",
     rol: "Tienda",
-    codigoTienda: "",
+    idTienda: 0,
     activo: true,
     password: "",
   });
@@ -60,8 +60,7 @@ export const UserDetail = ({ user, onClose, onUpdate, isAdding }) => {
     if (user) {
       setUserData(user);
     }
-    console.log(userData);
-    console.log(stores);
+    console.log(stores[0]);
   }, [user]);
 
   const handleChange = (e) => {
@@ -198,7 +197,7 @@ export const UserDetail = ({ user, onClose, onUpdate, isAdding }) => {
               required
             />
           </div>
-          
+
           <div>
             <label
               htmlFor="store"
@@ -207,16 +206,16 @@ export const UserDetail = ({ user, onClose, onUpdate, isAdding }) => {
               Store
             </label>
             <select
-              id="codigoTienda"
-              name="codigoTienda"
-              value={userData.codigoTienda}
+              id="idTienda"
+              name="idTienda"
+              value={userData.idTienda}
               onChange={handleChange}
               className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             >
               <option value="">Select Store</option>
               {stores.map((store) => (
-                <option key={store.id} value={store.codigo}>
+                <option key={store.id} value={store.id}>
                   {store.codigo}
                 </option>
               ))}

@@ -37,9 +37,9 @@ public class SoapClient extends WebServiceGatewaySupport {
 
 
 
-    public GetCatalogoResponse getCatalogoResponse() {
+    public GetCatalogoResponse getCatalogoResponse(GetCatalogoRequest getCatalogoRequest) {
 
-        GetCatalogoRequest getCatalogoRequest=new GetCatalogoRequest();
+
 
         SoapActionCallback soapActionCallback = new SoapActionCallback("http://spring.io/guides/gs-producing-web-service/getCatalogoRequest");
 
@@ -87,9 +87,8 @@ public class SoapClient extends WebServiceGatewaySupport {
         return getCatalogoPdfResponse;
     }
 
-    public ObtenerFiltrosResponse obtenerFiltrosResponse() {
+    public ObtenerFiltrosResponse obtenerFiltrosResponse(ObtenerFiltrosRequest obtenerFiltrosRequest) {
 
-        ObtenerFiltrosRequest obtenerFiltrosRequest=new ObtenerFiltrosRequest();
 
         SoapActionCallback soapActionCallback = new SoapActionCallback("http://spring.io/guides/gs-producing-web-service/obtenerFiltrosRequest");
 
@@ -119,6 +118,17 @@ public class SoapClient extends WebServiceGatewaySupport {
         UserBulkUploadResponse userBulkUploadResponse = (UserBulkUploadResponse) getWebServiceTemplate().marshalSendAndReceive("http://localhost:8080/ws", request, soapActionCallback);
 
         return userBulkUploadResponse;
+    }
+
+    public EliminarCatalogoResponse eliminarCatalogoResponse(EliminarCatalogoRequest request){
+
+
+
+        SoapActionCallback soapActionCallback = new SoapActionCallback("http://spring.io/guides/gs-producing-web-service/eiminarCatalogoRequest");
+
+        EliminarCatalogoResponse eliminarCatalogoResponse = (EliminarCatalogoResponse) getWebServiceTemplate().marshalSendAndReceive("http://localhost:8083/ws", request, soapActionCallback);
+
+        return eliminarCatalogoResponse;
     }
 
 

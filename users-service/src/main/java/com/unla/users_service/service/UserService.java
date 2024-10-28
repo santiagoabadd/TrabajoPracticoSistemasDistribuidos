@@ -1,6 +1,7 @@
 package com.unla.users_service.service;
 
 
+import com.tiendaservice.grpc.EmptyTienda;
 import com.tiendaservice.grpc.GetTiendaByCodigoRequest;
 import com.tiendaservice.grpc.GetTiendaResponse;
 import com.tiendaservice.grpc.TiendaServiceGrpc;
@@ -85,7 +86,13 @@ public class UserService {
                 String password = csvRecord.get("password");
                 GetTiendaByCodigoRequest getTiendaByCodigoRequest= GetTiendaByCodigoRequest.newBuilder().setCodigo(tienda).build();
                 GetTiendaResponse tiendaResponse=tiendaServiceBlockingStub.getTiendaByCodigo(getTiendaByCodigoRequest);
+                System.out.println("--->: "+tiendaResponse.getEstado() +" --- "+tiendaResponse.getCodigo() +" --- ");
+               // System.out.println("--->: "+tiendaServiceBlockingStub.listarTiendas(EmptyTienda.newBuilder().build()));
+                System.out.println("---> 3424234codigo: "+getTiendaByCodigoRequest.getCodigo());
+                System.out.println("---> 3424234: "+tiendaServiceBlockingStub.getTiendaByCodigo(GetTiendaByCodigoRequest.newBuilder().setCodigo(tienda).build()));
+
                 if (userName == null || userName.isEmpty() ||
+
                         firstName == null || firstName.isEmpty() ||
                         lastName == null || lastName.isEmpty() ||
                         tienda == null || tienda.isEmpty() ||
@@ -97,8 +104,8 @@ public class UserService {
                     UserParseError error = new UserParseError(lineNumber, userName, "Ya existe un usuario con el nombre: " + userName);
                     errors.add(error);
                     System.out.println("ERROR NUMBER " + lineNumber + ": " + error.toString());
-                } else if(tiendaResponse!=null) {
-                    UserParseError error = new UserParseError(lineNumber, userName, "No existe una tienda con el codigo: " +  tiendaResponse.getCodigo());
+                } else if(tiendaResponse.getCodigo().isEmpty()) {
+                    UserParseError error = new UserParseError(lineNumber, userName, "No existe una tienda con el codigo: " +  getTiendaByCodigoRequest.getCodigo());
                     errors.add(error);
                     System.out.println("ERROR NUMBER " + lineNumber + ": " + error.toString());
                 } else if(tiendaResponse.getEstado()==false){
@@ -114,6 +121,8 @@ public class UserService {
                     user.setActivo(true);
                     user.setRol("tienda");
                     user.setPassword(password);
+                    user.setIdTienda(tiendaResponse.getId());
+                    user.setC
 
                     users.add(user);
                     userRepository.save(user);

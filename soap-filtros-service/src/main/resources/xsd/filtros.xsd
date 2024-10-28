@@ -4,7 +4,7 @@
     <xs:element name="obtenerFiltrosRequest">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="codigoTienda" type="xs:string"/>
+                <xs:element name="idUsuario" type="xs:long"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -22,7 +22,7 @@
         <xs:sequence>
             <xs:element name="id" type="xs:long"/>
             <xs:element name="nombre" type="xs:string"/>
-            <xs:element name="codigoTienda" type="xs:string" minOccurs="0"/>
+            <xs:element name="idUsuario" type="xs:long" minOccurs="0"/>
             <xs:element name="codigoArticulo" type="xs:string" minOccurs="0"/>
             <xs:element name="fechaDesde" type="xs:date" minOccurs="0"/>
             <xs:element name="fechaHasta" type="xs:date" minOccurs="0"/>

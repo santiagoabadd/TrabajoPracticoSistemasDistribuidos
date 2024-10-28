@@ -11,6 +11,8 @@ import { UserList } from "../components/Users/UserList"
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
 import Novedades from "../components/Novedades/Novedades"
 import { PurchaseOrders } from "../components/PurchaseOrder/PurchaseOrders"
+import CatalogManagement from "../components/CatalogoManagment/CatalogManagment"
+import CsvUsersUpload from "../components/CsvUsersUpload/CsvUsersUpload"
 
 
 export const AppRouter = () => {
@@ -27,12 +29,22 @@ export const AppRouter = () => {
                 <Routes>
                     <Route path='/' element={<DashBoard/>} />
                     <Route path='/products' element={<ProductList/>} />
+                    <Route path='/ordenes' element={<PurchaseOrders/>} />
                     {(user.role === 'Casa Central' || user.role === 'central') && (
                         <>
                             <Route path='/stores' element={<StoreList/>} />
                             <Route path='/users' element={<UserList/>} />
                             <Route path='/novedades' element={<Novedades/>} />
-                            <Route path='/ordenes' element={<PurchaseOrders/>} />
+                            <Route path='/cargar-csv' element={<CsvUsersUpload/>} />
+
+                            
+
+                        </>
+                    )}
+                     {(user.role === 'Tienda' || user.role === 'tienda') && (
+                        <>
+                            <Route path='/catalogos' element={<CatalogManagement/>} />
+                            
 
                         </>
                     )}

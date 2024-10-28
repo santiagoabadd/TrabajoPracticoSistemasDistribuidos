@@ -2,7 +2,7 @@
 // Este archivo ha sido generado por la arquitectura JavaTM para la implantación de la referencia de enlace (JAXB) XML v2.3.0 
 // Visite <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a> 
 // Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
-// Generado el: 2024.10.28 a las 06:39:37 AM ART 
+// Generado el: 2024.10.28 a las 02:01:01 PM ART 
 //
 
 
@@ -28,7 +28,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *       &lt;sequence&gt;
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
  *         &lt;element name="nombre" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="codigoTienda" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="idUsuario" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/&gt;
  *         &lt;element name="codigoArticulo" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="fechaDesde" type="{http://www.w3.org/2001/XMLSchema}date" minOccurs="0"/&gt;
  *         &lt;element name="fechaHasta" type="{http://www.w3.org/2001/XMLSchema}date" minOccurs="0"/&gt;
@@ -45,7 +45,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlType(name = "filtroSoap", propOrder = {
     "id",
     "nombre",
-    "codigoTienda",
+    "idUsuario",
     "codigoArticulo",
     "fechaDesde",
     "fechaHasta",
@@ -56,7 +56,7 @@ public class FiltroSoap {
     protected long id;
     @XmlElement(required = true)
     protected String nombre;
-    protected String codigoTienda;
+    protected Long idUsuario;
     protected String codigoArticulo;
     @XmlSchemaType(name = "date")
     protected XMLGregorianCalendar fechaDesde;
@@ -105,27 +105,27 @@ public class FiltroSoap {
     }
 
     /**
-     * Obtiene el valor de la propiedad codigoTienda.
+     * Obtiene el valor de la propiedad idUsuario.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link Long }
      *     
      */
-    public String getCodigoTienda() {
-        return codigoTienda;
+    public Long getIdUsuario() {
+        return idUsuario;
     }
 
     /**
-     * Define el valor de la propiedad codigoTienda.
+     * Define el valor de la propiedad idUsuario.
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link Long }
      *     
      */
-    public void setCodigoTienda(String value) {
-        this.codigoTienda = value;
+    public void setIdUsuario(Long value) {
+        this.idUsuario = value;
     }
 
     /**
