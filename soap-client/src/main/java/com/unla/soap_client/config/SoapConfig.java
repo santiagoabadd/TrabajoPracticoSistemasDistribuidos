@@ -29,6 +29,13 @@ public class SoapConfig {
         return marshaller;
     }
 
+    @Bean
+    public Jaxb2Marshaller marshallerService4() {
+        Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
+        marshaller.setContextPath("com.unla.soap_client.service4");
+        return marshaller;
+    }
+
     @Bean(name = "soapClientService1")
     public SoapClient soapClientService1(Jaxb2Marshaller marshallerService1) {
         SoapClient soapClient = new SoapClient();
@@ -53,6 +60,15 @@ public class SoapConfig {
         soapClient.setDefaultUri("http://localhost:8084/ws");
         soapClient.setMarshaller(marshallerService3);
         soapClient.setUnmarshaller(marshallerService3);
+        return soapClient;
+    }
+
+    @Bean(name = "soapClientService4")
+    public SoapClient soapClientService4(Jaxb2Marshaller marshallerService4) {
+        SoapClient soapClient = new SoapClient();
+        soapClient.setDefaultUri("http://localhost:8080/ws");
+        soapClient.setMarshaller(marshallerService4);
+        soapClient.setUnmarshaller(marshallerService4);
         return soapClient;
     }
 

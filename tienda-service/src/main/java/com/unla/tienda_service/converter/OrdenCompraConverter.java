@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+
 @Component
 public class OrdenCompraConverter {
 
@@ -26,10 +27,11 @@ public class OrdenCompraConverter {
         ordenCompra.setId(ordenCompraSoap.getId());
         ordenCompra.setCodigoTienda(ordenCompraSoap.getCodigoTienda());
         ordenCompra.setObservaciones(ordenCompraSoap.getObservaciones());
+        ordenCompra.setEstado(convertToModelEstadoOrden(ordenCompraSoap.getEstado()));
         ordenCompra.setFechaRecepcion(
                 Optional.ofNullable(ordenCompraSoap.getFechaRecepcion())
                         .map(fecha -> convertToLocalDate(fecha.toGregorianCalendar()))
-                        .orElse(null) // O un valor predeterminado como LocalDate.now()
+                        .orElse(null)
         );
         ordenCompra.setFechaSolicitud(convertToLocalDate(ordenCompraSoap.getFechaSolicitud().toGregorianCalendar()));
         ordenCompra.setItems(this.mapItemOrden(ordenCompraSoap.getItems()));
@@ -135,6 +137,25 @@ ordenCompraSoap.setFechaRecepcion(convertToXMLGregorianCalendar(ordenCompra.getF
                 return io.spring.guides.gs_producing_web_service.EstadoOrden.RECIBIDA;
             default:
                 throw new IllegalArgumentException("Estado no reconocido: " + estadoOrden);
+        }
+    }
+
+    public static OrdenCompra.EstadoOrden convertToModelEstadoOrden(io.spring.guides.gs_producing_web_service.EstadoOrden soapEstadoOrden) {
+        if (soapEstadoOrden == null) {
+            return null;
+        }
+
+        switch (soapEstadoOrden) {
+            case SOLICITADA:
+                return OrdenCompra.EstadoOrden.SOLICITADA;
+            case RECHAZADA:
+                return OrdenCompra.EstadoOrden.RECHAZADA;
+            case ACEPTADA:
+                return OrdenCompra.EstadoOrden.ACEPTADA;
+            case RECIBIDA:
+                return OrdenCompra.EstadoOrden.RECIBIDA;
+            default:
+                throw new IllegalArgumentException("Estado no reconocido: " + soapEstadoOrden);
         }
     }
 }

@@ -12,7 +12,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.xml.datatype.XMLGregorianCalendar;
-import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -83,7 +82,7 @@ public class OrdenCompraServiceSoap {
                         .map(item -> {
                             List<Object> key = Arrays.asList(
                                     item.getCodigoArticulo(),
-                                    orden.getEstado(),
+                                    orden.getEstado() != null ? orden.getEstado() : EstadoOrden.ACEPTADA, // Usa un valor por defecto si es nulo
                                     orden.getCodigoTienda()
                             );
                             return new AbstractMap.SimpleEntry<>(key, item.getCantidadSolicitada());
@@ -93,20 +92,28 @@ public class OrdenCompraServiceSoap {
                         Collectors.summingInt(entry -> entry.getValue())
                 ));
 
-        // Transformación de los datos agrupados en objetos OrdenCompraResumenSoap
-        return groupedData.entrySet().stream()
+
+        List<OrdenCompraResumenSoap> resumenList = groupedData.entrySet().stream()
                 .map(entry -> {
                     OrdenCompraResumenSoap resumen = new OrdenCompraResumenSoap();
                     List<Object> keyList = entry.getKey();
 
+                    // Agregar logs para verificar los valores
+                    System.out.println("CodigoArticulo: " + keyList.get(0));
+                    System.out.println("Estado: " + keyList.get(1));
+                    System.out.println("CodigoTienda: " + keyList.get(2));
+                    System.out.println("TotalCantidadSolicitada: " + entry.getValue());
+
                     resumen.setCodigoArticulo((String) keyList.get(0));
-                    resumen.setEstado((EstadoOrden) keyList.get(1));
+                    resumen.setEstado(convertToWsEstadoOrden((com.unla.tienda_service.model.OrdenCompra.EstadoOrden) keyList.get(1)));
                     resumen.setCodigoTienda((String) keyList.get(2));
                     resumen.setTotalCantidadSolicitada(entry.getValue());
 
                     return resumen;
                 })
                 .collect(Collectors.toList());
+
+        return resumenList;
     }
 
     public static Date toDate(XMLGregorianCalendar xmlGregorianCalendar) {
@@ -115,4 +122,21 @@ public class OrdenCompraServiceSoap {
         }
         return xmlGregorianCalendar.toGregorianCalendar().getTime();
     }
+
+    private io.spring.guides.gs_producing_web_service.EstadoOrden convertToWsEstadoOrden(com.unla.tienda_service.model.OrdenCompra.EstadoOrden estado) {
+        switch (estado) {
+            case ACEPTADA:
+                return io.spring.guides.gs_producing_web_service.EstadoOrden.ACEPTADA;
+            case RECHAZADA:
+                return io.spring.guides.gs_producing_web_service.EstadoOrden.RECHAZADA;
+            case SOLICITADA:
+                return io.spring.guides.gs_producing_web_service.EstadoOrden.SOLICITADA;
+            case RECIBIDA:
+                return io.spring.guides.gs_producing_web_service.EstadoOrden.RECIBIDA;
+            default:
+                throw new IllegalArgumentException("Estado desconocido: " + estado);
+        }
+    }
+
+
 }

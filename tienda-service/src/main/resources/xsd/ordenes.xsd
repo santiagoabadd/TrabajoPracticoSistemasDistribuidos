@@ -66,7 +66,7 @@
     <xs:element name="getOrdenComprasByTiendaResponse">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="ordenCompras" type="tns:ordenCompraSoap" maxOccurs="unbounded"/>
+                <xs:element name="ordenComprasResumen" type="tns:ordenCompraResumenSoap" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>

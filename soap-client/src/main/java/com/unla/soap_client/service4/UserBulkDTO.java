@@ -6,7 +6,7 @@
 //
 
 
-package com.unla.soap_client.service2;
+package com.unla.soap_client.service4;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -15,21 +15,20 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para productSoap complex type.
+ * <p>Clase Java para UserBulkDTO complex type.
  * 
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
- * &lt;complexType name="productSoap"&gt;
+ * &lt;complexType name="UserBulkDTO"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
- *         &lt;element name="nombre" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="codigo" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="foto" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="color" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="talle" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="userName" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="firstName" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="lastName" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="tienda" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="password" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -39,162 +38,144 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "productSoap", propOrder = {
-    "id",
-    "nombre",
-    "codigo",
-    "foto",
-    "color",
-    "talle"
+@XmlType(name = "UserBulkDTO", propOrder = {
+    "userName",
+    "firstName",
+    "lastName",
+    "tienda",
+    "password"
 })
-public class ProductSoap {
+public class UserBulkDTO {
 
-    protected long id;
     @XmlElement(required = true)
-    protected String nombre;
+    protected String userName;
     @XmlElement(required = true)
-    protected String codigo;
+    protected String firstName;
     @XmlElement(required = true)
-    protected String foto;
+    protected String lastName;
     @XmlElement(required = true)
-    protected String color;
+    protected String tienda;
     @XmlElement(required = true)
-    protected String talle;
-
-    /**
-     * Obtiene el valor de la propiedad id.
-     * 
-     */
-    public long getId() {
-        return id;
-    }
+    protected String password;
 
     /**
-     * Define el valor de la propiedad id.
-     * 
-     */
-    public void setId(long value) {
-        this.id = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad nombre.
+     * Obtiene el valor de la propiedad userName.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getNombre() {
-        return nombre;
+    public String getUserName() {
+        return userName;
     }
 
     /**
-     * Define el valor de la propiedad nombre.
+     * Define el valor de la propiedad userName.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setNombre(String value) {
-        this.nombre = value;
+    public void setUserName(String value) {
+        this.userName = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad codigo.
+     * Obtiene el valor de la propiedad firstName.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getCodigo() {
-        return codigo;
+    public String getFirstName() {
+        return firstName;
     }
 
     /**
-     * Define el valor de la propiedad codigo.
+     * Define el valor de la propiedad firstName.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setCodigo(String value) {
-        this.codigo = value;
+    public void setFirstName(String value) {
+        this.firstName = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad foto.
+     * Obtiene el valor de la propiedad lastName.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getFoto() {
-        return foto;
+    public String getLastName() {
+        return lastName;
     }
 
     /**
-     * Define el valor de la propiedad foto.
+     * Define el valor de la propiedad lastName.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setFoto(String value) {
-        this.foto = value;
+    public void setLastName(String value) {
+        this.lastName = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad color.
+     * Obtiene el valor de la propiedad tienda.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getColor() {
-        return color;
+    public String getTienda() {
+        return tienda;
     }
 
     /**
-     * Define el valor de la propiedad color.
+     * Define el valor de la propiedad tienda.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setColor(String value) {
-        this.color = value;
+    public void setTienda(String value) {
+        this.tienda = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad talle.
+     * Obtiene el valor de la propiedad password.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getTalle() {
-        return talle;
+    public String getPassword() {
+        return password;
     }
 
     /**
-     * Define el valor de la propiedad talle.
+     * Define el valor de la propiedad password.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setTalle(String value) {
-        this.talle = value;
+    public void setPassword(String value) {
+        this.password = value;
     }
 
 }

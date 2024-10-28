@@ -6,8 +6,10 @@
 //
 
 
-package com.unla.soap_client.service3;
+package com.unla.soap_client.service4;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -25,7 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="filtro" type="{http://spring.io/guides/gs-producing-web-service}filtroSoap"/&gt;
+ *         &lt;element name="errors" type="{http://spring.io/guides/gs-producing-web-service}UserParseErrorSoap" maxOccurs="unbounded"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -36,36 +38,41 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "filtro"
+    "errors"
 })
-@XmlRootElement(name = "postFiltroResponse")
-public class PostFiltroResponse {
+@XmlRootElement(name = "UserBulkUploadResponse")
+public class UserBulkUploadResponse {
 
     @XmlElement(required = true)
-    protected FiltroSoap filtro;
+    protected List<UserParseErrorSoap> errors;
 
     /**
-     * Obtiene el valor de la propiedad filtro.
+     * Gets the value of the errors property.
      * 
-     * @return
-     *     possible object is
-     *     {@link FiltroSoap }
-     *     
-     */
-    public FiltroSoap getFiltro() {
-        return filtro;
-    }
-
-    /**
-     * Define el valor de la propiedad filtro.
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the errors property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link FiltroSoap }
-     *     
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getErrors().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link UserParseErrorSoap }
+     * 
+     * 
      */
-    public void setFiltro(FiltroSoap value) {
-        this.filtro = value;
+    public List<UserParseErrorSoap> getErrors() {
+        if (errors == null) {
+            errors = new ArrayList<UserParseErrorSoap>();
+        }
+        return this.errors;
     }
 
 }

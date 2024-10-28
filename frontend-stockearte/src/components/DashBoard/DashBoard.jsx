@@ -25,6 +25,9 @@ export const DashBoard = () => {
                             <Link to="/novedades" className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-4 px-6 rounded">
                                 Manage Novedades
                             </Link>
+                            <Link to="/ordenes" className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-4 px-6 rounded">
+                                Ordenes De Compra
+                            </Link>
                         </>
                     )}
                 </div>

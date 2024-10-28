@@ -65,8 +65,13 @@ public class OrdenCompraEndpoint {
 
 
         List<OrdenCompraSoap> ordenCompra= ordenCompraConverter.convertOrdenCompraToOrdenCompraSoapList(ordenCompraRepository.findByCodigoTienda(request.getCodigoTienda()));
-
-        response.getOrdenCompras().addAll(ordenCompra);
+        System.out.println(ordenCompra.get(1).getEstado());
+        List<OrdenCompra> ordenCompras=ordenCompraConverter.convertOrdenCompraSoapToOrdenCompra(ordenCompra);
+        System.out.println(ordenCompras.get(1).getEstado());
+        List<OrdenCompraResumenSoap> ordenCompraAgrupada=ordenCompraServiceSoap.getOrdenComprasResumen(ordenCompras);
+        System.out.println(ordenCompraAgrupada.get(1).getEstado());
+        System.out.println("ashee");
+        response.getOrdenComprasResumen().addAll(ordenCompraAgrupada);
         return response;
     }
 

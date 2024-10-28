@@ -6,7 +6,7 @@
 //
 
 
-package com.unla.soap_client.service3;
+package com.unla.soap_client.service4;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="filtro" type="{http://spring.io/guides/gs-producing-web-service}filtroSoap"/&gt;
+ *         &lt;element name="csvData" type="{http://www.w3.org/2001/XMLSchema}base64Binary"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -36,36 +36,34 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "filtro"
+    "csvData"
 })
-@XmlRootElement(name = "postFiltroResponse")
-public class PostFiltroResponse {
+@XmlRootElement(name = "UserBulkUploadRequest")
+public class UserBulkUploadRequest {
 
     @XmlElement(required = true)
-    protected FiltroSoap filtro;
+    protected byte[] csvData;
 
     /**
-     * Obtiene el valor de la propiedad filtro.
+     * Obtiene el valor de la propiedad csvData.
      * 
      * @return
      *     possible object is
-     *     {@link FiltroSoap }
-     *     
+     *     byte[]
      */
-    public FiltroSoap getFiltro() {
-        return filtro;
+    public byte[] getCsvData() {
+        return csvData;
     }
 
     /**
-     * Define el valor de la propiedad filtro.
+     * Define el valor de la propiedad csvData.
      * 
      * @param value
      *     allowed object is
-     *     {@link FiltroSoap }
-     *     
+     *     byte[]
      */
-    public void setFiltro(FiltroSoap value) {
-        this.filtro = value;
+    public void setCsvData(byte[] value) {
+        this.csvData = value;
     }
 
 }

@@ -6,7 +6,7 @@
 Este archivo ha sido generado por la arquitectura JavaTM para la implantación de la referencia de enlace (JAXB) XML v2.3.0 
 Visite <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a> 
 Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
-Generado el: 2024.10.28 a las 04:26:00 AM ART 
+Generado el: 2024.10.28 a las 06:39:37 AM ART 
 
   -->
       
@@ -14,37 +14,31 @@ Generado el: 2024.10.28 a las 04:26:00 AM ART
             
         <schemaBindings map="false">
                   
-            <package name="com.unla.soap_client.service3"/>
+            <package name="com.unla.soap_client.service4"/>
                 
         </schemaBindings>
             
-        <bindings if-exists="true" scd="tns:obtenerFiltrosRequest">
+        <bindings if-exists="true" scd="tns:UserBulkUploadRequest">
                   
-            <class ref="com.unla.soap_client.service3.ObtenerFiltrosRequest"/>
+            <class ref="com.unla.soap_client.service4.UserBulkUploadRequest"/>
                 
         </bindings>
             
-        <bindings if-exists="true" scd="tns:obtenerFiltrosResponse">
+        <bindings if-exists="true" scd="tns:UserBulkUploadResponse">
                   
-            <class ref="com.unla.soap_client.service3.ObtenerFiltrosResponse"/>
+            <class ref="com.unla.soap_client.service4.UserBulkUploadResponse"/>
                 
         </bindings>
             
-        <bindings if-exists="true" scd="~tns:filtroSoap">
+        <bindings if-exists="true" scd="~tns:UserParseErrorSoap">
                   
-            <class ref="com.unla.soap_client.service3.FiltroSoap"/>
+            <class ref="com.unla.soap_client.service4.UserParseErrorSoap"/>
                 
         </bindings>
             
-        <bindings if-exists="true" scd="tns:postFiltroRequest">
+        <bindings if-exists="true" scd="~tns:UserBulkDTO">
                   
-            <class ref="com.unla.soap_client.service3.PostFiltroRequest"/>
-                
-        </bindings>
-            
-        <bindings if-exists="true" scd="tns:postFiltroResponse">
-                  
-            <class ref="com.unla.soap_client.service3.PostFiltroResponse"/>
+            <class ref="com.unla.soap_client.service4.UserBulkDTO"/>
                 
         </bindings>
           

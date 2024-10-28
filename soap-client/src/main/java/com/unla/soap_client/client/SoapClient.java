@@ -3,6 +3,8 @@ package com.unla.soap_client.client;
 import com.unla.soap_client.service1.*;
 import com.unla.soap_client.service2.*;
 import com.unla.soap_client.service3.*;
+import com.unla.soap_client.service4.UserBulkUploadRequest;
+import com.unla.soap_client.service4.UserBulkUploadResponse;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 import org.springframework.ws.soap.client.core.SoapActionCallback;
@@ -13,9 +15,8 @@ public class SoapClient extends WebServiceGatewaySupport {
 
 
 
-    public GetOrdenComprasAgrupadasResponse getOrdenComprasAgrupadasResponse() {
+    public GetOrdenComprasAgrupadasResponse getOrdenComprasAgrupadasResponse(GetOrdenComprasRequest getOrdenComprasRequest) {
 
-        GetOrdenComprasRequest getOrdenComprasRequest=new GetOrdenComprasRequest();
 
         SoapActionCallback soapActionCallback = new SoapActionCallback("http://spring.io/guides/gs-producing-web-service/getOrdenComprasRequest");
 
@@ -108,4 +109,17 @@ public class SoapClient extends WebServiceGatewaySupport {
 
         return postFiltroResponse;
     }
+
+    public UserBulkUploadResponse userBulkUploadResponse(UserBulkUploadRequest request){
+
+
+
+        SoapActionCallback soapActionCallback = new SoapActionCallback("http://spring.io/guides/gs-producing-web-service/userBulkUploadRequest");
+
+        UserBulkUploadResponse userBulkUploadResponse = (UserBulkUploadResponse) getWebServiceTemplate().marshalSendAndReceive("http://localhost:8080/ws", request, soapActionCallback);
+
+        return userBulkUploadResponse;
+    }
+
+
 }

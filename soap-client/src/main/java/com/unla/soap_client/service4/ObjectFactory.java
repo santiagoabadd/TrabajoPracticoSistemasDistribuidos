@@ -6,7 +6,7 @@
 //
 
 
-package com.unla.soap_client.service3;
+package com.unla.soap_client.service4;
 
 import javax.xml.bind.annotation.XmlRegistry;
 
@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlRegistry;
 /**
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
- * generated in the com.unla.soap_client.service3 package. 
+ * generated in the com.unla.soap_client.service4 package. 
  * <p>An ObjectFactory allows you to programatically 
  * construct new instances of the Java representation 
  * for XML content. The Java representation of XML 
@@ -30,50 +30,42 @@ public class ObjectFactory {
 
 
     /**
-     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.unla.soap_client.service3
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.unla.soap_client.service4
      * 
      */
     public ObjectFactory() {
     }
 
     /**
-     * Create an instance of {@link ObtenerFiltrosRequest }
+     * Create an instance of {@link UserBulkUploadRequest }
      * 
      */
-    public ObtenerFiltrosRequest createObtenerFiltrosRequest() {
-        return new ObtenerFiltrosRequest();
+    public UserBulkUploadRequest createUserBulkUploadRequest() {
+        return new UserBulkUploadRequest();
     }
 
     /**
-     * Create an instance of {@link ObtenerFiltrosResponse }
+     * Create an instance of {@link UserBulkUploadResponse }
      * 
      */
-    public ObtenerFiltrosResponse createObtenerFiltrosResponse() {
-        return new ObtenerFiltrosResponse();
+    public UserBulkUploadResponse createUserBulkUploadResponse() {
+        return new UserBulkUploadResponse();
     }
 
     /**
-     * Create an instance of {@link FiltroSoap }
+     * Create an instance of {@link UserParseErrorSoap }
      * 
      */
-    public FiltroSoap createFiltroSoap() {
-        return new FiltroSoap();
+    public UserParseErrorSoap createUserParseErrorSoap() {
+        return new UserParseErrorSoap();
     }
 
     /**
-     * Create an instance of {@link PostFiltroRequest }
+     * Create an instance of {@link UserBulkDTO }
      * 
      */
-    public PostFiltroRequest createPostFiltroRequest() {
-        return new PostFiltroRequest();
-    }
-
-    /**
-     * Create an instance of {@link PostFiltroResponse }
-     * 
-     */
-    public PostFiltroResponse createPostFiltroResponse() {
-        return new PostFiltroResponse();
+    public UserBulkDTO createUserBulkDTO() {
+        return new UserBulkDTO();
     }
 
 }

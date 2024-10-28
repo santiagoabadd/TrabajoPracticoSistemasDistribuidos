@@ -10,6 +10,7 @@ import { StoreList } from "../components/Stores/StoreList"
 import { UserList } from "../components/Users/UserList"
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
 import Novedades from "../components/Novedades/Novedades"
+import { PurchaseOrders } from "../components/PurchaseOrder/PurchaseOrders"
 
 
 export const AppRouter = () => {
@@ -31,6 +32,8 @@ export const AppRouter = () => {
                             <Route path='/stores' element={<StoreList/>} />
                             <Route path='/users' element={<UserList/>} />
                             <Route path='/novedades' element={<Novedades/>} />
+                            <Route path='/ordenes' element={<PurchaseOrders/>} />
+
                         </>
                     )}
                     <Route path='*' element={<Navigate to="/" />} />
