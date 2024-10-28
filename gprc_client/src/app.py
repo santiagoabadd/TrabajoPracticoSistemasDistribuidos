@@ -69,6 +69,7 @@ def authorize():
     client = GrpcClient()
     result = client.authorize(data)
     return MessageToJson(result)
+
 # Rutas del servicio Tienda
 
 @app.route("/getTienda/<int:id>", methods=["GET"])
@@ -138,7 +139,37 @@ def asociarProductos():
     result = client.AsociarProductos(data)
     return MessageToJson(result)
 
+# Rutas del servicio Orden
+@app.route("/registerOrden", methods=["POST"])
+@cross_origin()
+def registerOrden():
+    data = request.get_json() 
+    print(data) 
+    client = GrpcClient()
+    result = client.CreateOrder(data)
+    return MessageToJson(result)
 
+@app.route("/updateOrden/<int:id>", methods=["PUT"])
+@cross_origin()
+def updateOrden(id):
+    client = GrpcClient()
+    result = client.ChangeOrderState(id)
+    return MessageToJson(result)
+
+# Rutas del servicio Novedad
+@app.route("/getNovedades", methods=["GET"])
+@cross_origin()
+def getAllNovedades():
+    client = GrpcClient()
+    result = client.ObtenerNovedades()
+    return MessageToJson(result)
+
+@app.route("/deleteNovedad/<int:id>", methods=["DELETE"])
+@cross_origin()
+def deleteNovedad(id):
+    client = GrpcClient()
+    result = client.DeleteNovedad(id)
+    return MessageToJson(result)
 
 
 # Rutas del servicio Producto

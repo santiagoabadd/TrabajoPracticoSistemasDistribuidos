@@ -19,8 +19,6 @@ public class OrdenDespacho{
     private Long id;
 
     private long idOrdenCompra;
-
-
     private LocalDate fechaEstimadaEnvio;
 
 

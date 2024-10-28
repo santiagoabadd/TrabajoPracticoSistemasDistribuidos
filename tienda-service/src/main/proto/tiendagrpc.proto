@@ -3,6 +3,18 @@ syntax = "proto3";
 option java_multiple_files = true;
 option java_package = "com.tiendaservice.grpc";
 
+
+service OrdenService {
+    rpc CreateOrder(CreateOrderRequest) returns (CreateOrderResponse);
+    rpc ChangeOrderState(ChangeOrderStateRequest) returns (ChangeOrderStateResponse);
+    rpc ListarOrdenesByTienda(ListarOrdenesRequest) returns (ListarOrdenesResponse);
+}
+
+service NovedadesService {
+    rpc ListarNovedades(EmptyNovedad) returns (ListarNovedadesResponse);
+    rpc DeleteNovedad(DeleteNovedadRequest) returns (DeleteNovedadResponse);
+}
+
 service TiendaService {
     rpc GetTienda(GetTiendaRequest) returns (GetTiendaResponse);
     rpc RegistrarTienda(RegistrarTiendaRequest) returns (RegistrarTiendaResponse);
@@ -19,6 +31,84 @@ service TiendaProductService {
     rpc ObtenerProductosPorTienda(TiendaProductsRequest) returns (TiendaProductsResponse);
     rpc ObtenerProductos(EmptyTienda) returns (TiendaProductsResponse);
     rpc AsociarProductos(AsociarProductosRequest) returns (AsociarProductosResponse);
+}
+
+
+message ListarOrdenesRequest{
+    string codigoTienda = 1;
+}
+
+message DeleteNovedadRequest {
+    int64 id = 1;
+}
+
+message DeleteNovedadResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+
+message ListarNovedadesResponse{
+    repeated NovedadesInfo novedades = 1;
+}
+
+message ListarOrdenesResponse{
+    repeated OrdenesInfo ordenes = 1;
+}
+
+message OrdenesInfo{
+    string codigoTienda = 1;
+    string observaciones = 2;
+    string estado = 3;
+    string fechaSolicitud = 4;
+    string fechaRecepcion = 5;
+    OrdenDespacho ordenDespacho = 6;
+
+}
+
+message OrdenDespacho{
+    string fechaEstimadaEnvio = 1;
+}
+
+message NovedadesInfo{
+    int64 id = 1;
+    string nombre = 2;
+    string codigo = 3;
+    string foto = 4;
+    string color = 5;
+    string talle = 6;
+}
+
+
+
+message CreateOrderRequest{
+    string codigoTienda = 1;
+    string observaciones = 2;
+    repeated ItemOrdenDtoGrpc itemOrdenDtoGrpc = 3;
+}
+
+message ItemOrdenDtoGrpc{
+    int64 id = 1;
+    string codigoArticulo = 2;
+    string color = 3;
+    string talle = 4;
+    int32 cantidadSolicitada = 5;
+}
+
+
+message CreateOrderResponse{
+    string codigoTienda = 1;
+    string observaciones = 2;
+    repeated ItemOrdenDtoGrpc itemOrdenDtoGrpc = 3;
+}
+
+message ChangeOrderStateRequest{
+    int64 id = 1;
+}
+
+message ChangeOrderStateResponse{
+    string codigoTienda = 1;
+    string observaciones = 2;
 }
 
 
@@ -157,4 +247,7 @@ message TiendaProductsResponse {
 }
 
 message EmptyTienda{}
+
+
+message EmptyNovedad{}
 

@@ -1,0 +1,93 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://spring.io/guides/gs-producing-web-service"
+           targetNamespace="http://spring.io/guides/gs-producing-web-service" elementFormDefault="qualified">
+
+    <xs:element name="getCatalogoRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="codigoTienda" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getCatalogoPdfRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="catalogoId" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getCatalogoPdfResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="pdfData" type="xs:string"/> <!-- Base64 encoded PDF -->
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="addProductsToCatalogoRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+                <xs:element name="products" type="tns:productSoap" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="addProductsToCatalogoResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="catalogo" type="tns:catalogoSoap"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getCatalogoResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="catalogo" type="tns:catalogoSoap" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="postCatalogoRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="catalogo" type="tns:catalogoSoap"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="postCatalogoResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="catalogo" type="tns:catalogoSoap"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+
+    <xs:complexType name="catalogoSoap">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="idTienda" type="xs:long"/>
+            <xs:element name="nombre" type="xs:string"/>
+            <xs:element name="products" type="tns:productSoap" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:complexType name="productSoap">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="nombre" type="xs:string"/>
+            <xs:element name="codigo" type="xs:string"/>
+            <xs:element name="foto" type="xs:string"/>
+            <xs:element name="color" type="xs:string"/>
+            <xs:element name="talle" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+
+</xs:schema>

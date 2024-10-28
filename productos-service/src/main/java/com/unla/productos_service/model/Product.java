@@ -3,6 +3,9 @@ package com.unla.productos_service.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name= "producto")
 @Getter
@@ -23,7 +26,8 @@ public class Product {
     private String color;
     private String talle;
 
-
+    @ManyToMany(mappedBy = "products")
+    private List<Catalogo> catalogos = new ArrayList<>();
 
 
 

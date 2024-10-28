@@ -1,0 +1,112 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://spring.io/guides/gs-producing-web-service"
+           targetNamespace="http://spring.io/guides/gs-producing-web-service" elementFormDefault="qualified">
+
+    <xs:element name="getOrdenCompraRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="codigoTienda" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getOrdenComprasRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="codigoTienda" type="xs:string" minOccurs="0"/>
+                <xs:element name="codigoArticulo" type="xs:string" minOccurs="0"/>
+                <xs:element name="fechaDesde" type="xs:date" minOccurs="0"/>
+                <xs:element name="fechaHasta" type="xs:date" minOccurs="0"/>
+                <xs:element name="estado" type="tns:estadoOrden" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="ordenCompraResumenSoap">
+        <xs:sequence>
+            <xs:element name="codigoArticulo" type="xs:string"/>
+            <xs:element name="estado" type="tns:estadoOrden"/>
+            <xs:element name="codigoTienda" type="xs:string"/>
+            <xs:element name="totalCantidadSolicitada" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="getOrdenComprasAgrupadasResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ordenComprasResumen" type="tns:ordenCompraResumenSoap" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="getOrdenCompraResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ordenCompra" type="tns:ordenCompraSoap"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getOrdenComprasResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ordenCompras" type="tns:ordenCompraSoap" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getOrdenComprasByTiendaRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="codigoTienda" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getOrdenComprasByTiendaResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ordenCompras" type="tns:ordenCompraSoap" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:complexType name="ordenCompraSoap">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="codigoTienda" type="xs:string"/>
+            <xs:element name="items" type="tns:itemOrdenSoap" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="estado" type="tns:estadoOrden"/>
+            <xs:element name="observaciones" type="xs:string" minOccurs="0"/>
+            <xs:element name="idOrdenDespacho" type="xs:long" minOccurs="0"/>
+            <xs:element name="fechaSolicitud" type="xs:date"/>
+            <xs:element name="fechaRecepcion" type="xs:date" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+
+
+    <xs:complexType name="itemOrdenSoap">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="codigoArticulo" type="xs:string"/>
+            <xs:element name="color" type="xs:string"/>
+            <xs:element name="talle" type="xs:string"/>
+            <xs:element name="cantidadSolicitada" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:simpleType name="estadoOrden">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="SOLICITADA"/>
+            <xs:enumeration value="RECHAZADA"/>
+            <xs:enumeration value="ACEPTADA"/>
+            <xs:enumeration value="RECIBIDA"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+</xs:schema>

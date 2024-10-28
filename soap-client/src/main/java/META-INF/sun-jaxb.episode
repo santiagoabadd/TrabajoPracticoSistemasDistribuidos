@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<bindings xmlns="http://java.sun.com/xml/ns/jaxb" if-exists="true" version="2.1">
+      
+    <!--
+
+Este archivo ha sido generado por la arquitectura JavaTM para la implantación de la referencia de enlace (JAXB) XML v2.3.0 
+Visite <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a> 
+Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
+Generado el: 2024.10.27 a las 09:02:48 PM ART 
+
+  -->
+      
+    <bindings xmlns:tns="http://spring.io/guides/gs-producing-web-service" if-exists="true" scd="x-schema::tns">
+            
+        <schemaBindings map="false">
+                  
+            <package name="com.unla.soap_client.service2"/>
+                
+        </schemaBindings>
+            
+        <bindings if-exists="true" scd="tns:getCatalogoRequest">
+                  
+            <class ref="com.unla.soap_client.service2.GetCatalogoRequest"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:getCatalogoPdfRequest">
+                  
+            <class ref="com.unla.soap_client.service2.GetCatalogoPdfRequest"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:getCatalogoPdfResponse">
+                  
+            <class ref="com.unla.soap_client.service2.GetCatalogoPdfResponse"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:addProductsToCatalogoRequest">
+                  
+            <class ref="com.unla.soap_client.service2.AddProductsToCatalogoRequest"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:productSoap">
+                  
+            <class ref="com.unla.soap_client.service2.ProductSoap"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:addProductsToCatalogoResponse">
+                  
+            <class ref="com.unla.soap_client.service2.AddProductsToCatalogoResponse"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:catalogoSoap">
+                  
+            <class ref="com.unla.soap_client.service2.CatalogoSoap"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:getCatalogoResponse">
+                  
+            <class ref="com.unla.soap_client.service2.GetCatalogoResponse"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:postCatalogoRequest">
+                  
+            <class ref="com.unla.soap_client.service2.PostCatalogoRequest"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:postCatalogoResponse">
+                  
+            <class ref="com.unla.soap_client.service2.PostCatalogoResponse"/>
+                
+        </bindings>
+          
+    </bindings>
+    
+</bindings>

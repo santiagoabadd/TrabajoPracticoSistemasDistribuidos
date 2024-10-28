@@ -78,6 +78,24 @@ public class ProductServiceRPC extends ProductServiceGrpc.ProductServiceImplBase
     }
 
     @Override
+    public void getProductByCode(GetProductByCodeRequest request, StreamObserver<GetProductResponse> responseObserver) {
+        Product product = productRepository.findByCodigo(request.getCodigo())
+                .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
+
+        GetProductResponse response = GetProductResponse.newBuilder()
+                .setId(product.getId())
+                .setCodigo(product.getCodigo())
+                .setNombre(product.getNombre())
+                .setFoto(product.getFoto())
+                .setColor(product.getColor())
+                .setTalle(product.getTalle())
+                .build();
+
+        responseObserver.onNext(response);
+        responseObserver.onCompleted();
+    }
+
+    @Override
     @Transactional
     public void createProduct(CreateProductRequest request, StreamObserver<ProductResponse> responseObserver) {
         Product product = new Product();

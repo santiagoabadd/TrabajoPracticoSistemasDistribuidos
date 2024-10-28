@@ -57,7 +57,7 @@ export const AuthProvider = ({ children }) => {
         email: data.user.username,
         logged: true,
         role: data.user.rol,
-        idTienda: data.user.rol === "Tienda" ? userDetails.store : null,
+        idTienda: data.user.idTienda,
       });
 
       console.log(data.user.username);

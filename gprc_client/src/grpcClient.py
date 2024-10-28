@@ -34,6 +34,13 @@ class GrpcClient(object):
 		self.tienda_channel = grpc.insecure_channel('{}:{}'.format(self.host, self.servertienda_port))
 		self.tienda_stub = tiendagrpc_grpc.TiendaServiceStub(self.tienda_channel)
 
+		self.orden_channel = grpc.insecure_channel('{}:{}'.format(self.host, self.servertienda_port))
+		self.orden_stub = tiendagrpc_grpc.OrdenServiceStub(self.orden_channel)
+		
+		self.novedad_channel = grpc.insecure_channel('{}:{}'.format(self.host, self.servertienda_port))
+		self.novedad_stub = tiendagrpc_grpc.NovedadesServiceStub(self.novedad_channel)
+		
+
 		self.tiendaProduct_channel = grpc.insecure_channel('{}:{}'.format(self.host, self.servertienda_port))
 		self.tiendaProduct_stub = tiendagrpc_grpc.TiendaProductServiceStub(self.tiendaProduct_channel)
 
@@ -163,20 +170,51 @@ class GrpcClient(object):
 		return self.tiendaProduct_stub.ObtenerProductos(request)
 	
 	def AsociarProductos(self, tiendaProducts):
-    	# Crear una lista de IDs de tiendas
 		tiendaIds = list(map(int, tiendaProducts['tiendaIds']))
     
-    # Crear el objeto para enviar, usando la lista de IDs y el productId
 		request_data = tiendagrpc_pb2.AsociarProductosRequest(
 			tiendaIds=tiendaIds,
 			productId=int(tiendaProducts['productId']) 
     	)
     
-		# Imprimir el objeto que se va a enviar
 		print(f"Enviando datos: {request_data}")
-
-		# Llamar al stub con el objeto creado
 		return self.tiendaProduct_stub.AsociarProductos(request_data)
+	
+	## Metodos de Ordenes///////////////////
+
+	def CreateOrder(self, orden):
+		items = [
+        	tiendagrpc_pb2.ItemOrdenDtoGrpc(
+				codigoArticulo=item['codigoArticulo'],
+				color=item['color'],
+				talle=item['talle'],
+				cantidadSolicitada=item['cantidadSolicitada'])
+        	for item in orden['itemOrdenDtoGrpc']
+    	]	
+
+		pOrden = tiendagrpc_pb2.CreateOrderRequest(
+			codigoTienda=orden['codigoTienda'],
+			observaciones=orden['observaciones'],
+			itemOrdenDtoGrpc=items
+          
+        )
+		return self.orden_stub.CreateOrder(pOrden)
+	
+	def ChangeOrderState(self, id):
+		request = tiendagrpc_pb2.ChangeOrderStateRequest(id=id)
+		return self.orden_stub.ChangeOrderState(request)
+	
+	## Metodos de Novedades///////////////////
+
+	def ObtenerNovedades(self):
+		request = tiendagrpc_pb2.EmptyNovedad()
+		return self.novedad_stub.ListarNovedades(request)
+	
+	def DeleteNovedad(self, id):
+		request = tiendagrpc_pb2.DeleteNovedadRequest(id=id)
+		return self.novedad_stub.DeleteNovedad(request)
+    
+	
 		
 	## Metodos Product ///////////////////
 

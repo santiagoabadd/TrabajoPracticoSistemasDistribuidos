@@ -44,6 +44,11 @@ class ProductServiceStub(object):
                 request_serializer=productgrpc__pb2.GetProductRequest.SerializeToString,
                 response_deserializer=productgrpc__pb2.GetProductResponse.FromString,
                 _registered_method=True)
+        self.GetProductByCode = channel.unary_unary(
+                '/ProductService/GetProductByCode',
+                request_serializer=productgrpc__pb2.GetProductByCodeRequest.SerializeToString,
+                response_deserializer=productgrpc__pb2.GetProductResponse.FromString,
+                _registered_method=True)
         self.GetProductByNombre = channel.unary_unary(
                 '/ProductService/GetProductByNombre',
                 request_serializer=productgrpc__pb2.GetProductByNombreRequest.SerializeToString,
@@ -76,6 +81,12 @@ class ProductServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def GetProduct(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetProductByCode(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -116,6 +127,11 @@ def add_ProductServiceServicer_to_server(servicer, server):
             'GetProduct': grpc.unary_unary_rpc_method_handler(
                     servicer.GetProduct,
                     request_deserializer=productgrpc__pb2.GetProductRequest.FromString,
+                    response_serializer=productgrpc__pb2.GetProductResponse.SerializeToString,
+            ),
+            'GetProductByCode': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetProductByCode,
+                    request_deserializer=productgrpc__pb2.GetProductByCodeRequest.FromString,
                     response_serializer=productgrpc__pb2.GetProductResponse.SerializeToString,
             ),
             'GetProductByNombre': grpc.unary_unary_rpc_method_handler(
@@ -192,6 +208,33 @@ class ProductService(object):
             target,
             '/ProductService/GetProduct',
             productgrpc__pb2.GetProductRequest.SerializeToString,
+            productgrpc__pb2.GetProductResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def GetProductByCode(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/ProductService/GetProductByCode',
+            productgrpc__pb2.GetProductByCodeRequest.SerializeToString,
             productgrpc__pb2.GetProductResponse.FromString,
             options,
             channel_credentials,

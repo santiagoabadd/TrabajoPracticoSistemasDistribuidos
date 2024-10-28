@@ -25,6 +25,236 @@ if _version_not_supported:
     )
 
 
+class OrdenServiceStub(object):
+    """Missing associated documentation comment in .proto file."""
+
+    def __init__(self, channel):
+        """Constructor.
+
+        Args:
+            channel: A grpc.Channel.
+        """
+        self.CreateOrder = channel.unary_unary(
+                '/OrdenService/CreateOrder',
+                request_serializer=tiendagrpc__pb2.CreateOrderRequest.SerializeToString,
+                response_deserializer=tiendagrpc__pb2.CreateOrderResponse.FromString,
+                _registered_method=True)
+        self.ChangeOrderState = channel.unary_unary(
+                '/OrdenService/ChangeOrderState',
+                request_serializer=tiendagrpc__pb2.ChangeOrderStateRequest.SerializeToString,
+                response_deserializer=tiendagrpc__pb2.ChangeOrderStateResponse.FromString,
+                _registered_method=True)
+
+
+class OrdenServiceServicer(object):
+    """Missing associated documentation comment in .proto file."""
+
+    def CreateOrder(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def ChangeOrderState(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+
+def add_OrdenServiceServicer_to_server(servicer, server):
+    rpc_method_handlers = {
+            'CreateOrder': grpc.unary_unary_rpc_method_handler(
+                    servicer.CreateOrder,
+                    request_deserializer=tiendagrpc__pb2.CreateOrderRequest.FromString,
+                    response_serializer=tiendagrpc__pb2.CreateOrderResponse.SerializeToString,
+            ),
+            'ChangeOrderState': grpc.unary_unary_rpc_method_handler(
+                    servicer.ChangeOrderState,
+                    request_deserializer=tiendagrpc__pb2.ChangeOrderStateRequest.FromString,
+                    response_serializer=tiendagrpc__pb2.ChangeOrderStateResponse.SerializeToString,
+            ),
+    }
+    generic_handler = grpc.method_handlers_generic_handler(
+            'OrdenService', rpc_method_handlers)
+    server.add_generic_rpc_handlers((generic_handler,))
+    server.add_registered_method_handlers('OrdenService', rpc_method_handlers)
+
+
+ # This class is part of an EXPERIMENTAL API.
+class OrdenService(object):
+    """Missing associated documentation comment in .proto file."""
+
+    @staticmethod
+    def CreateOrder(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/OrdenService/CreateOrder',
+            tiendagrpc__pb2.CreateOrderRequest.SerializeToString,
+            tiendagrpc__pb2.CreateOrderResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def ChangeOrderState(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/OrdenService/ChangeOrderState',
+            tiendagrpc__pb2.ChangeOrderStateRequest.SerializeToString,
+            tiendagrpc__pb2.ChangeOrderStateResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+
+class NovedadesServiceStub(object):
+    """Missing associated documentation comment in .proto file."""
+
+    def __init__(self, channel):
+        """Constructor.
+
+        Args:
+            channel: A grpc.Channel.
+        """
+        self.ListarNovedades = channel.unary_unary(
+                '/NovedadesService/ListarNovedades',
+                request_serializer=tiendagrpc__pb2.EmptyNovedad.SerializeToString,
+                response_deserializer=tiendagrpc__pb2.ListarNovedadesResponse.FromString,
+                _registered_method=True)
+        self.DeleteNovedad = channel.unary_unary(
+                '/NovedadesService/DeleteNovedad',
+                request_serializer=tiendagrpc__pb2.DeleteNovedadRequest.SerializeToString,
+                response_deserializer=tiendagrpc__pb2.DeleteNovedadResponse.FromString,
+                _registered_method=True)
+
+
+class NovedadesServiceServicer(object):
+    """Missing associated documentation comment in .proto file."""
+
+    def ListarNovedades(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def DeleteNovedad(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+
+def add_NovedadesServiceServicer_to_server(servicer, server):
+    rpc_method_handlers = {
+            'ListarNovedades': grpc.unary_unary_rpc_method_handler(
+                    servicer.ListarNovedades,
+                    request_deserializer=tiendagrpc__pb2.EmptyNovedad.FromString,
+                    response_serializer=tiendagrpc__pb2.ListarNovedadesResponse.SerializeToString,
+            ),
+            'DeleteNovedad': grpc.unary_unary_rpc_method_handler(
+                    servicer.DeleteNovedad,
+                    request_deserializer=tiendagrpc__pb2.DeleteNovedadRequest.FromString,
+                    response_serializer=tiendagrpc__pb2.DeleteNovedadResponse.SerializeToString,
+            ),
+    }
+    generic_handler = grpc.method_handlers_generic_handler(
+            'NovedadesService', rpc_method_handlers)
+    server.add_generic_rpc_handlers((generic_handler,))
+    server.add_registered_method_handlers('NovedadesService', rpc_method_handlers)
+
+
+ # This class is part of an EXPERIMENTAL API.
+class NovedadesService(object):
+    """Missing associated documentation comment in .proto file."""
+
+    @staticmethod
+    def ListarNovedades(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/NovedadesService/ListarNovedades',
+            tiendagrpc__pb2.EmptyNovedad.SerializeToString,
+            tiendagrpc__pb2.ListarNovedadesResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def DeleteNovedad(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/NovedadesService/DeleteNovedad',
+            tiendagrpc__pb2.DeleteNovedadRequest.SerializeToString,
+            tiendagrpc__pb2.DeleteNovedadResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+
 class TiendaServiceStub(object):
     """Missing associated documentation comment in .proto file."""
 

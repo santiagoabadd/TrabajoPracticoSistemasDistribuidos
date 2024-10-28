@@ -24,7 +24,7 @@ public class OrdenCompra {
     private String codigoTienda;
 
     @JsonManagedReference
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "orden_compra_id")
     private List<ItemOrden> items;
 

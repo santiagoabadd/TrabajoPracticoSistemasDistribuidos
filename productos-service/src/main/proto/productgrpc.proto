@@ -7,6 +7,7 @@ option java_package = "com.productoservice.grpc";
 service ProductService {
     rpc GetAllProducts(EmptyProduct ) returns (GetAllProductsResponse);
     rpc GetProduct(GetProductRequest) returns (GetProductResponse);
+    rpc GetProductByCode(GetProductByCodeRequest) returns (GetProductResponse);
     rpc GetProductByNombre(GetProductByNombreRequest) returns (GetProductResponse);
     rpc CreateProduct(CreateProductRequest) returns (ProductResponse);
     rpc UpdateProduct(UpdateProductRequest) returns (ProductResponse);
@@ -27,6 +28,11 @@ message EmptyProduct {}
 
 message GetProductRequest {
     int64 id = 1;
+
+}
+
+message GetProductByCodeRequest {
+     string codigo = 1;
 
 }
 

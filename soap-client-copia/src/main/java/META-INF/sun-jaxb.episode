@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<bindings xmlns="http://java.sun.com/xml/ns/jaxb" if-exists="true" version="2.1">
+      
+    <!--
+
+Este archivo ha sido generado por la arquitectura JavaTM para la implantación de la referencia de enlace (JAXB) XML v2.3.0 
+Visite <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a> 
+Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
+Generado el: 2024.10.27 a las 08:47:33 PM ART 
+
+  -->
+      
+    <bindings xmlns:tns="http://spring.io/guides/gs-producing-web-service" if-exists="true" scd="x-schema::tns">
+            
+        <schemaBindings map="false">
+                  
+            <package name="com.unla.soap_client.wsdl"/>
+                
+        </schemaBindings>
+            
+        <bindings if-exists="true" scd="tns:getOrdenCompraRequest">
+                  
+            <class ref="com.unla.soap_client.wsdl.GetOrdenCompraRequest"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:getOrdenComprasRequest">
+                  
+            <class ref="com.unla.soap_client.wsdl.GetOrdenComprasRequest"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:getOrdenComprasAgrupadasResponse">
+                  
+            <class ref="com.unla.soap_client.wsdl.GetOrdenComprasAgrupadasResponse"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:ordenCompraResumenSoap">
+                  
+            <class ref="com.unla.soap_client.wsdl.OrdenCompraResumenSoap"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:getOrdenCompraResponse">
+                  
+            <class ref="com.unla.soap_client.wsdl.GetOrdenCompraResponse"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:ordenCompraSoap">
+                  
+            <class ref="com.unla.soap_client.wsdl.OrdenCompraSoap"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:getOrdenComprasResponse">
+                  
+            <class ref="com.unla.soap_client.wsdl.GetOrdenComprasResponse"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:getOrdenComprasByTiendaRequest">
+                  
+            <class ref="com.unla.soap_client.wsdl.GetOrdenComprasByTiendaRequest"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:getOrdenComprasByTiendaResponse">
+                  
+            <class ref="com.unla.soap_client.wsdl.GetOrdenComprasByTiendaResponse"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:itemOrdenSoap">
+                  
+            <class ref="com.unla.soap_client.wsdl.ItemOrdenSoap"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:estadoOrden">
+                  
+            <typesafeEnumClass ref="com.unla.soap_client.wsdl.EstadoOrden"/>
+                
+        </bindings>
+          
+    </bindings>
+    
+</bindings>
