@@ -20,8 +20,10 @@ import org.springframework.security.access.vote.UnanimousBased;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.web.SecurityFilterChain;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -72,6 +74,15 @@ public class SecurityConfig {
         return new UnanimousBased(accessDecisionVoters);
     }
 
-
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+                .csrf(csrf -> csrf.disable()) // Disable CSRF protection
+                .authorizeRequests(auth -> auth
+                        .requestMatchers("/ws/**").permitAll() // Allow all requests to SOAP endpoints
+                        .anyRequest().permitAll() // Allow all other requests
+                );
+        return http.build();
+    }
 
 }

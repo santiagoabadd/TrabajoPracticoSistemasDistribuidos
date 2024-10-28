@@ -1,0 +1,40 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://spring.io/guides/gs-producing-web-service"
+           targetNamespace="http://spring.io/guides/gs-producing-web-service" elementFormDefault="qualified">
+
+
+    <xs:element name="UserBulkUploadRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="csvData" type="xs:base64Binary"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="UserBulkUploadResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="errors" type="tns:UserParseErrorSoap" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="UserParseErrorSoap">
+        <xs:sequence>
+            <xs:element name="lineNumber" type="xs:int"/>
+            <xs:element name="userName" type="xs:string" minOccurs="0"/>
+            <xs:element name="errorMessage" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="UserBulkDTO">
+        <xs:sequence>
+            <xs:element name="userName" type="xs:string"/>
+            <xs:element name="firstName" type="xs:string"/>
+            <xs:element name="lastName" type="xs:string"/>
+            <xs:element name="tienda" type="xs:string"/>
+            <xs:element name="password" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
